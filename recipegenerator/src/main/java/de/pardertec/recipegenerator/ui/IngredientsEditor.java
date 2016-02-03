@@ -6,7 +6,8 @@ import de.pardertec.recipegenerator.model.VeganismStatus;
 import javax.swing.*;
 import java.awt.*;
 
-import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.*;
+import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.RADIO_BOX_SIZE;
+import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.SINGLE_COLUMN_SIZE;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorderLayout;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBoxLayout;
 
@@ -14,6 +15,7 @@ import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBoxLay
  * Created by Thiemo on 31.01.2016.
  */
 public class IngredientsEditor extends AbstractEditorPanel {
+
 
     @Override
     protected JPanel createPanel() {

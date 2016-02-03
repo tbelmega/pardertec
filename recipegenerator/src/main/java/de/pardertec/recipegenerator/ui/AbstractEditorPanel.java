@@ -3,9 +3,7 @@ package de.pardertec.recipegenerator.ui;
 import javax.swing.*;
 import java.awt.*;
 
-import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.BUTTON_DIMENSION;
-import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.LIST_SIZE;
-import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.SINGLE_COLUMN_SIZE;
+import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.*;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBoxLayout;
 
 /**
@@ -21,6 +19,7 @@ public abstract class AbstractEditorPanel {
 
     protected abstract JPanel createPanel();
 
+
     public Component getPanel() {
         return panel;
     }
@@ -28,9 +27,9 @@ public abstract class AbstractEditorPanel {
     protected JPanel createCustomListPanel() {
         JPanel customListPanel = createPanelWithCustomBoxLayout();
         customListPanel.setPreferredSize(SINGLE_COLUMN_SIZE);
-        List ingredientsList = new List();
-        ingredientsList.setPreferredSize(LIST_SIZE);
-        customListPanel.add(ingredientsList);
+        JList list = new JList();
+        list.setPreferredSize(LIST_SIZE);
+        customListPanel.add(list);
         Button btnNew = new Button(BTN_NEW);
         btnNew.setMaximumSize(BUTTON_DIMENSION);
         customListPanel.add(btnNew);

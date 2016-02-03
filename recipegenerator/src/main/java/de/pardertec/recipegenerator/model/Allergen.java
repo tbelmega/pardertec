@@ -2,7 +2,6 @@ package de.pardertec.recipegenerator.model;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.json.JSONObject;
 
 /**
  * Created by Thiemo on 27.01.2016.

@@ -6,11 +6,11 @@ import org.json.JSONObject;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import static de.pardertec.recipegenerator.model.Ingredient.JSON_KEY_ALLERGENS;
 import static de.pardertec.recipegenerator.model.Measure.*;
+import static de.pardertec.recipegenerator.model.Recipe.JSON_KEY_INGREDIENTS;
+import static de.pardertec.recipegenerator.model.RecipeCollection.JSON_KEY_RECIPES;
 import static de.pardertec.recipegenerator.model.VeganismStatus.*;
-import static de.pardertec.recipegenerator.model.RecipeCollection.*;
-import static de.pardertec.recipegenerator.model.Recipe.*;
-import static de.pardertec.recipegenerator.model.Ingredient.*;
 import static de.pardertec.util.JSONUtil.assertEqualJSONContent;
 import static de.pardertec.util.JSONUtil.assertJSONArrayContainsValue;
 import static org.testng.AssertJUnit.assertFalse;
@@ -114,8 +114,10 @@ public class RecipeCollectionTest {
         assertEqualJSONContent(LAKTOSE.toJson(), allergens.getJSONObject(0));
     }
 
-
     public static Recipe createSpaghettiBologneseRecipe() {
+        final Allergen LAKTOSE = new Allergen("Laktose");
+        final Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
+
         Ingredient oil = new Ingredient("Sonnenblumenöl", MILLILITERS, VEGAN);
         Ingredient onions = new Ingredient("Zwiebeln", PIECES, VEGAN);
         Ingredient tomatoPaste = new Ingredient("Tomatenmark", GRAMS, VEGAN);
@@ -146,4 +148,5 @@ public class RecipeCollectionTest {
         myRecipe.setText("foo");
         return myRecipe;
     }
+
 }

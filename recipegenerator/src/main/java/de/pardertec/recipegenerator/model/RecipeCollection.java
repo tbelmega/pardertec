@@ -6,8 +6,6 @@ import org.json.JSONObject;
 import java.util.HashSet;
 import java.util.Set;
 
-import static de.pardertec.recipegenerator.model.Recipe.*;
-import static de.pardertec.recipegenerator.model.Ingredient.*;
 
 /**
  * Created by Thiemo on 30.01.2016.
@@ -20,6 +18,12 @@ public class RecipeCollection {
     private Set<Recipe> recipes = new HashSet<>();
     private Set<Ingredient> ingredients = new HashSet<>();
     private Set<Allergen> allergens = new HashSet<>();
+
+    /**
+     * Prevent instances.
+     */
+    private RecipeCollection() {
+    }
 
     public static RecipeCollection getInstance() {
         return instance;
@@ -50,8 +54,8 @@ public class RecipeCollection {
     public JSONObject toJson() {
         JSONObject jsonRepresentation = new JSONObject();
         jsonRepresentation.put(JSON_KEY_RECIPES, createRecipesRepresentation());
-        jsonRepresentation.put(JSON_KEY_INGREDIENTS, createIngredientsRepresentation());
-        jsonRepresentation.put(JSON_KEY_ALLERGENS, createAllergensRepresentation());
+        jsonRepresentation.put(Recipe.JSON_KEY_INGREDIENTS, createIngredientsRepresentation());
+        jsonRepresentation.put(Ingredient.JSON_KEY_ALLERGENS, createAllergensRepresentation());
         return jsonRepresentation;
     }
 

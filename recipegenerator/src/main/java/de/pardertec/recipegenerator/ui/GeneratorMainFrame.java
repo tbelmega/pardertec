@@ -3,7 +3,7 @@ package de.pardertec.recipegenerator.ui;
 import javax.swing.*;
 import java.awt.*;
 
-import static de.pardertec.recipegenerator.ui.UiUtil.*;
+import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorderLayout;
 
 
 /**
@@ -31,15 +31,23 @@ public class GeneratorMainFrame {
     public final JFrame mainFrame = new JFrame(HEADLINE_RECIPE_GENERATOR);
     private final JPanel contentPane;
     private BorderLayout contentPaneLayout;
-    private AllergensEditor allergensEditor = new AllergensEditor();
-    private IngredientsEditor ingredientsEditor = new IngredientsEditor();
-    private RecipesEditor recipesEditor = new RecipesEditor();
+
+    private AllergensEditor allergensEditor;
+    private IngredientsEditor ingredientsEditor;
+    private RecipesEditor recipesEditor;
 
     public static void main(String[] args) {
-            new GeneratorMainFrame().initializeFrame();
+        //RecipeCollection.getInstance().add(RecipeCollection.createSpaghettiBologneseRecipe());
+
+        GeneratorMainFrame main = new GeneratorMainFrame();
+        main.initializeFrame();
     }
 
     public GeneratorMainFrame(){
+        this.allergensEditor = new AllergensEditor();
+        this.ingredientsEditor = new IngredientsEditor();
+        this.recipesEditor = new RecipesEditor();
+
         this.contentPane = createPanelWithCustomBorderLayout();
         this.mainFrame.setContentPane(this.contentPane);
         this.contentPaneLayout = (BorderLayout) contentPane.getLayout();
@@ -59,7 +67,7 @@ public class GeneratorMainFrame {
         return topPanel;
     }
 
-    private void initializeFrame() {
+    void initializeFrame() {
         mainFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         mainFrame.setPreferredSize(new Dimension(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT));
 
