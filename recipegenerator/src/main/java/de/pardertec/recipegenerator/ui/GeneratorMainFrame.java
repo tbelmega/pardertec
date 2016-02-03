@@ -23,6 +23,7 @@ public class GeneratorMainFrame {
     public static final Dimension SOUTHERN_PANEL_SIZE = new Dimension(MAIN_WINDOW_WIDTH, RESOLUTION_BASE / 2);
     public static final Dimension WESTERN_PANEL_SIZE = new Dimension((int) (RESOLUTION_BASE * 1.5), RESOLUTION_BASE * 6);
     public static final Dimension SINGLE_COLUMN_SIZE = new Dimension(MAIN_WINDOW_WIDTH / 3, RESOLUTION_BASE * 6);
+    public static final Dimension RADIO_BOX_SIZE = new Dimension(MAIN_WINDOW_WIDTH / 3, RESOLUTION_BASE);
     public static final Dimension LIST_SIZE = new Dimension(MAIN_WINDOW_WIDTH / 3, RESOLUTION_BASE * 5);
 
     public static final Dimension BUTTON_DIMENSION = new Dimension(RESOLUTION_BASE * 3, RESOLUTION_BASE);

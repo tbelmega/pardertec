@@ -14,4 +14,5 @@ public enum VeganismStatus { CONTAINS_MEAT("Enthält Fleisch"), VEGETARIAN("Vege
     public String toString(){
         return this.stringRepresentation;
     }
+
 }

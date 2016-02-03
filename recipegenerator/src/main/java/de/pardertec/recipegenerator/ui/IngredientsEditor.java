@@ -1,9 +1,12 @@
 package de.pardertec.recipegenerator.ui;
 
+import de.pardertec.recipegenerator.model.Measure;
+import de.pardertec.recipegenerator.model.VeganismStatus;
+
 import javax.swing.*;
 import java.awt.*;
 
-import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.SINGLE_COLUMN_SIZE;
+import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.*;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorderLayout;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBoxLayout;
 
@@ -18,6 +21,15 @@ public class IngredientsEditor extends AbstractEditorPanel {
 
         JPanel ingredientPanel = createPanelWithCustomBoxLayout();
         ingredientPanel.setPreferredSize(SINGLE_COLUMN_SIZE);
+
+        JComboBox veganismBox = new JComboBox(VeganismStatus.values());
+        veganismBox.setMaximumSize(RADIO_BOX_SIZE);
+        ingredientPanel.add(veganismBox);
+
+        JComboBox measureBox = new JComboBox(Measure.values());
+        measureBox.setMaximumSize(RADIO_BOX_SIZE);
+        ingredientPanel.add(measureBox);
+
         List allergensList = new List();
         ingredientPanel.add(allergensList);
 
