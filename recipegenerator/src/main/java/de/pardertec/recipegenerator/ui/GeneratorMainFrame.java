@@ -1,5 +1,7 @@
 package de.pardertec.recipegenerator.ui;
 
+import de.pardertec.recipegenerator.model.RecipeCollection;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -24,7 +26,8 @@ public class GeneratorMainFrame {
     public static final Dimension WESTERN_PANEL_SIZE = new Dimension((int) (RESOLUTION_BASE * 1.5), RESOLUTION_BASE * 6);
     public static final Dimension SINGLE_COLUMN_SIZE = new Dimension(MAIN_WINDOW_WIDTH / 3, RESOLUTION_BASE * 6);
     public static final Dimension RADIO_BOX_SIZE = new Dimension(MAIN_WINDOW_WIDTH / 3, RESOLUTION_BASE);
-    public static final Dimension LIST_SIZE = new Dimension(MAIN_WINDOW_WIDTH / 3, RESOLUTION_BASE * 5);
+    public static final Dimension LIST_SIZE = new Dimension(MAIN_WINDOW_WIDTH / 3, RESOLUTION_BASE * 4);
+    public static final Dimension SCROLLER_SIZE = new Dimension(RESOLUTION_BASE / 2, RESOLUTION_BASE * 5);
 
     public static final Dimension BUTTON_DIMENSION = new Dimension(RESOLUTION_BASE * 3, RESOLUTION_BASE);
 
@@ -37,7 +40,7 @@ public class GeneratorMainFrame {
     private RecipesEditor recipesEditor;
 
     public static void main(String[] args) {
-        //RecipeCollection.getInstance().add(RecipeCollection.createSpaghettiBologneseRecipe());
+        RecipeCollection.getInstance().add(RecipeCollection.createSpaghettiBologneseRecipe());
 
         GeneratorMainFrame main = new GeneratorMainFrame();
         main.initializeFrame();
@@ -95,5 +98,6 @@ public class GeneratorMainFrame {
             contentPane.remove(centerComponent);
         contentPane.add(newComponent, BorderLayout.CENTER);
         mainFrame.pack();
+        mainFrame.repaint();
     }
 }

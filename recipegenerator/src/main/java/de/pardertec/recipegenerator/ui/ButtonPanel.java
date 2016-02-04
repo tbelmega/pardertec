@@ -31,9 +31,13 @@ public class ButtonPanel {
         btnRecipes.addActionListener(new ShowRecipesEditorAction());
         this.panel.add(btnRecipes);
 
+        this.panel.add(new JPanel());
+
         Button btnIngredients = new Button(BUTTON_MANAGE_INGREDIENTS);
         btnIngredients.addActionListener(new ShowIngredientsEditorAction());
         this.panel.add(btnIngredients);
+
+        this.panel.add(new JPanel());
 
         Button btnAllergens = new Button(BUTTON_MANAGE_ALLERGENS);
         btnAllergens.addActionListener(new ShowAllergensEditorAction());

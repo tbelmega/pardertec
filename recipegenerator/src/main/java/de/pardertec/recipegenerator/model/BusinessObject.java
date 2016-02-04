@@ -32,4 +32,8 @@ public abstract class BusinessObject {
     public String getId(){
         return id.toString();
     }
+
+    public String getName() {
+        return name;
+    }
 }

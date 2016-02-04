@@ -1,6 +1,8 @@
 package de.pardertec.recipegenerator.ui;
 
+import de.pardertec.recipegenerator.model.Ingredient;
 import de.pardertec.recipegenerator.model.Measure;
+import de.pardertec.recipegenerator.model.RecipeCollection;
 import de.pardertec.recipegenerator.model.VeganismStatus;
 
 import javax.swing.*;
@@ -19,7 +21,13 @@ public class IngredientsEditor extends AbstractEditorPanel {
 
     @Override
     protected JPanel createPanel() {
-        JPanel ingredientsListPanel = createCustomListPanel();
+        DefaultListModel model = new DefaultListModel<>();
+
+        for (Ingredient i : RecipeCollection.getInstance().getIngredients()) {
+            model.addElement(i.getName());
+        }
+
+        JPanel ingredientsListPanel = createCustomListPanel(model);
 
         JPanel ingredientPanel = createPanelWithCustomBoxLayout();
         ingredientPanel.setPreferredSize(SINGLE_COLUMN_SIZE);

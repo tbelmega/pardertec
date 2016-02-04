@@ -1,7 +1,13 @@
 package de.pardertec.recipegenerator.ui;
 
+import de.pardertec.recipegenerator.model.Recipe;
+import de.pardertec.recipegenerator.model.RecipeCollection;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.SINGLE_COLUMN_SIZE;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorderLayout;
@@ -14,12 +20,41 @@ public class RecipesEditor extends AbstractEditorPanel {
 
 
     protected JPanel createPanel() {
-        JPanel recipesListPanel = createCustomListPanel();
+        DefaultListModel model = new DefaultListModel<>();
+
+        for (Recipe r : RecipeCollection.getInstance().getRecipes()) {
+            model.addElement(r.getName());
+        }
+
+        JPanel recipesListPanel = createCustomListPanel(model);
+
+
+        MouseListener mouseListener = new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+
+
+                    String selectedItem = (String) mainList.getSelectedValue();
+                    DefaultListModel model = new DefaultListModel();
+
+                    // add selectedItem to your second list.
+//                    DefaultListModel model = (DefaultListModel) list2.getModel();
+//                    if(model == null)
+//                    {
+//                        model = new DefaultListModel();
+//                        list2.setModel(model);
+//                    }
+//                    model.addElement(selectedItem);
+
+                }
+            }
+        };
+        mainList.addMouseListener(mouseListener);
 
         JPanel recipePanel = createPanelWithCustomBoxLayout();
         recipePanel.setPreferredSize(SINGLE_COLUMN_SIZE);
-        List ingredientsList = new List();
-        recipePanel.add(ingredientsList);
+
+        recipePanel.add(new List());
         TextArea recipeText = new TextArea();
         recipePanel.add(recipeText);
 

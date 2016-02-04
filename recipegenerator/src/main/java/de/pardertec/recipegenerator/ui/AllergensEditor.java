@@ -1,5 +1,8 @@
 package de.pardertec.recipegenerator.ui;
 
+import de.pardertec.recipegenerator.model.Allergen;
+import de.pardertec.recipegenerator.model.RecipeCollection;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,12 +14,17 @@ import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorder
 public class AllergensEditor extends AbstractEditorPanel {
 
     protected JPanel createPanel() {
-        JPanel allergensListPanel =  createCustomListPanel();
+        DefaultListModel model = new DefaultListModel<>();
+
+        for (Allergen a : RecipeCollection.getInstance().getAllergens()) {
+            model.addElement(a.getName());
+        }
+
+        JPanel allergensListPanel = createCustomListPanel(model);
 
         JPanel allergensEditor = createPanelWithCustomBorderLayout();
         allergensEditor.add(allergensListPanel, BorderLayout.CENTER);
         allergensEditor.add(createEmptySidePanel(), BorderLayout.EAST);
         return allergensEditor;
-
     }
 }
