@@ -7,10 +7,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static de.pardertec.recipegenerator.model.Ingredient.JSON_KEY_ALLERGENS;
-import static de.pardertec.recipegenerator.model.Measure.*;
+import static de.pardertec.recipegenerator.model.Measure.GRAMS;
 import static de.pardertec.recipegenerator.model.Recipe.JSON_KEY_INGREDIENTS;
 import static de.pardertec.recipegenerator.model.RecipeCollection.JSON_KEY_RECIPES;
-import static de.pardertec.recipegenerator.model.VeganismStatus.*;
+import static de.pardertec.recipegenerator.model.RecipeCollection.createSpaghettiBologneseRecipe;
+import static de.pardertec.recipegenerator.model.VeganismStatus.CONTAINS_MEAT;
 import static de.pardertec.util.JSONUtil.assertEqualJSONContent;
 import static de.pardertec.util.JSONUtil.assertJSONArrayContainsValue;
 import static org.testng.AssertJUnit.assertFalse;
@@ -114,39 +115,5 @@ public class RecipeCollectionTest {
         assertEqualJSONContent(LAKTOSE.toJson(), allergens.getJSONObject(0));
     }
 
-    public static Recipe createSpaghettiBologneseRecipe() {
-        final Allergen LAKTOSE = new Allergen("Laktose");
-        final Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
-
-        Ingredient oil = new Ingredient("Sonnenblumenöl", MILLILITERS, VEGAN);
-        Ingredient onions = new Ingredient("Zwiebeln", PIECES, VEGAN);
-        Ingredient tomatoPaste = new Ingredient("Tomatenmark", GRAMS, VEGAN);
-        Ingredient sugar = new Ingredient("Zucker", GRAMS, VEGAN);
-        Ingredient salt = new Ingredient("Salz", GRAMS, VEGAN);
-        Ingredient pepper = new Ingredient("Pfeffer", GRAMS, VEGAN);
-        Ingredient garlicClove = new Ingredient("Knochblauchzehe", PIECES, VEGAN);
-        Ingredient sievedTomatos = new Ingredient("Passierte Tomaten", GRAMS, VEGAN);
-        Ingredient spaghetti = new Ingredient("Spaghetti", GRAMS, VEGETARIAN);
-        Ingredient parmesan = new Ingredient("Parmesankäse", GRAMS, VEGETARIAN);
-        parmesan.addAllergen(LAKTOSE);
-
-        Recipe myRecipe = new Recipe("Spaghetti Bolognese");
-
-        myRecipe.setIngredientWithAmount(MEAT, 500);
-        myRecipe.setIngredientWithAmount(oil, 20);
-        myRecipe.setIngredientWithAmount(onions, 0);
-        myRecipe.setIngredientWithAmount(tomatoPaste, 50);
-        myRecipe.setIngredientWithAmount(sugar, 50);
-        myRecipe.setIngredientWithAmount(salt, 50);
-        myRecipe.setIngredientWithAmount(pepper, 50);
-        myRecipe.setIngredientWithAmount(garlicClove, 2);
-        myRecipe.setIngredientWithAmount(sievedTomatos, 500);
-        myRecipe.setIngredientWithAmount(spaghetti, 500);
-        myRecipe.setIngredientWithAmount(parmesan, 100);
-
-        myRecipe.setServings(4);
-        myRecipe.setText("foo");
-        return myRecipe;
-    }
 
 }

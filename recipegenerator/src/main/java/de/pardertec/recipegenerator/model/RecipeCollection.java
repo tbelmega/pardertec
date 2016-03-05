@@ -12,6 +12,8 @@ import static de.pardertec.recipegenerator.model.VeganismStatus.*;
 
 /**
  * Created by Thiemo on 30.01.2016.
+ *
+ * Singleton pattern.
  */
 public class RecipeCollection {
 
@@ -23,7 +25,7 @@ public class RecipeCollection {
     private Set<Allergen> allergens = new HashSet<>();
 
     /**
-     * Prevent instances.
+     * Private constructor -> prevent instances.
      */
     private RecipeCollection() {
     }
@@ -54,6 +56,11 @@ public class RecipeCollection {
         return this.recipes.contains(myRecipe);
     }
 
+    /**
+     * This method creates a JSON representation of the RecipeCollection, including all recipes/ingredients/allergens
+     *
+     * @return
+     */
     public JSONObject toJson() {
         JSONObject jsonRepresentation = new JSONObject();
         jsonRepresentation.put(JSON_KEY_RECIPES, createRecipesRepresentation());
@@ -86,6 +93,10 @@ public class RecipeCollection {
         return allRecipes;
     }
 
+    /**
+     * Creates a recipe as test data.
+     * @return
+     */
     public static Recipe createSpaghettiBologneseRecipe() {
         final Allergen LAKTOSE = new Allergen("Laktose");
         final Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
