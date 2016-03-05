@@ -4,6 +4,7 @@ import org.json.JSONObject;
 import org.testng.annotations.Test;
 
 import static de.pardertec.recipegenerator.model.RecipeCollection.createSpaghettiBologneseRecipe;
+import static org.testng.AssertJUnit.fail;
 
 /**
  * Created by Thiemo on 05.03.2016.
@@ -28,6 +29,7 @@ public class DataExportTest {
         System.out.println(recipeCollectionAsString);
 
         //assert
+        fail("This is no actual test.");
     }
 
 }
