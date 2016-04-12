@@ -81,15 +81,15 @@ public class GeneratorMainFrame {
     }
 
     public void showAllergensEditor() {
-        replaceCenterComponent(allergensEditor.getPanel());
+        replaceCenterComponent(allergensEditor.getEditorPanel());
     }
 
     public void showIngredientsEditor() {
-        replaceCenterComponent(ingredientsEditor.getPanel());
+        replaceCenterComponent(ingredientsEditor.getEditorPanel());
     }
 
     public void showRecipesEditor() {
-        replaceCenterComponent(recipesEditor.getPanel());
+        replaceCenterComponent(recipesEditor.getEditorPanel());
     }
 
     private void replaceCenterComponent(Component newComponent) {

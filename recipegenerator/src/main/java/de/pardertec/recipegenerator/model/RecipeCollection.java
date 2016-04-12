@@ -52,6 +52,7 @@ public class RecipeCollection {
         this.allergens.add(allergen);
     }
 
+
     public boolean contains(Recipe myRecipe) {
         return this.recipes.contains(myRecipe);
     }
@@ -94,11 +95,12 @@ public class RecipeCollection {
     }
 
     /**
-     * Creates a recipe as test data.
+     * Creates a recipe as test data. Bad practice for production code don't do this!
      * @return
      */
+    public static final Allergen LAKTOSE = new Allergen("Laktose");
     public static Recipe createSpaghettiBologneseRecipe() {
-        final Allergen LAKTOSE = new Allergen("Laktose");
+
         final Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
 
         Ingredient oil = new Ingredient("Sonnenblumenöl", MILLILITERS, VEGAN);
@@ -135,21 +137,29 @@ public class RecipeCollection {
     /**
      * @return a new copy of the allergens set
      */
-    public Set<Allergen> getAllergens() {
+    public Set<Allergen> getAllergensCopy() {
         return new HashSet<>(allergens);
     }
 
     /**
      * @return a new copy of the ingredients set
      */
-    public Set<Ingredient> getIngredients() {
+    public Set<Ingredient> getIngredientsCopy() {
         return new HashSet<>(ingredients);
     }
 
     /**
      * @return a new copy of the recipes set
      */
-    public Set<Recipe> getRecipes() {
+    public Set<Recipe> getRecipesCopy() {
         return new HashSet<>(recipes);
+    }
+
+    public void remove(Allergen a) {
+        this.allergens.remove(a);
+    }
+
+    public void remove(Ingredient i) {
+        this.ingredients.remove(i);
     }
 }

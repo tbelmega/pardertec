@@ -22,8 +22,6 @@ import static org.testng.AssertJUnit.assertTrue;
  */
 public class RecipeCollectionTest {
 
-
-    public static final Allergen LAKTOSE = new Allergen("Laktose");
     public static final Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
     public static final Recipe SPAGHETTI_BOLOGNESE = createSpaghettiBologneseRecipe();
     static RecipeCollection allRecipes;
@@ -112,7 +110,7 @@ public class RecipeCollectionTest {
         JSONArray allergens = recipeCollection.getJSONArray(JSON_KEY_ALLERGENS);
 
         //assert
-        assertEqualJSONContent(LAKTOSE.toJson(), allergens.getJSONObject(0));
+        assertEqualJSONContent(RecipeCollection.LAKTOSE.toJson(), allergens.getJSONObject(0));
     }
 
 
