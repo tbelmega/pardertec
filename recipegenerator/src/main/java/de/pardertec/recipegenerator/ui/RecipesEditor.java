@@ -1,112 +1,121 @@
 package de.pardertec.recipegenerator.ui;
 
+import de.pardertec.recipegenerator.model.Ingredient;
 import de.pardertec.recipegenerator.model.Recipe;
 import de.pardertec.recipegenerator.model.RecipeCollection;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
+import java.util.Set;
 
 import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.*;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorderLayout;
-import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBoxLayout;
 
 /**
  * Created by Thiemo on 31.01.2016.
  */
-public class RecipesEditor {
+public class RecipesEditor extends AbstactEditor {
 
-
-    public static final String BTN_NEW = "Neu";
-    public static final String BTN_DELETE = "Löschen";
-    protected JList mainList;
-    private Button btnNew = new Button(IngredientsEditor.BTN_NEW);
-    private Button btnDelete = new Button(IngredientsEditor.BTN_DELETE);
+    //Main panel (reciepe list)
+    private JPanel recipesListPanel;
+    private JList<Recipe> recipeList = new JList<>(new DefaultListModel<>());
+    private Button btnNew = new Button(BTN_NEW);
+    private Button btnDelete = new Button(BTN_DELETE);
     private JPanel btnPanel = new JPanel();
-    protected JPanel editorPanel = createEditorPanel();
+    protected JPanel editorPanel;
 
-    protected JPanel createEditorPanel() {
-        DefaultListModel model = new DefaultListModel<>();
+    //Right panel (recipe details)
+    private JPanel recipeDetailsPanel;
+    JComboBox<Integer> servingsBox = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 8, 10, 12});
+    private JList<Ingredient> ingredientList = new JList<>(new DefaultListModel<>());
+    private JTextArea recipeText = new JTextArea();
+
+    public RecipesEditor() {
+        createEditorPanel();
+    }
+
+    protected void createEditorPanel() {
+
+        //Main panel (reciepe list)
+        recipesListPanel = createPanelWithCustomBorderLayout();
+        recipesListPanel.setPreferredSize(SINGLE_COLUMN_SIZE);
+
+        //Center list for recipes
+        recipeList.setMinimumSize(LIST_SIZE);
+        recipeList.setPreferredSize(LIST_SIZE);
+        recipeList.addMouseListener(new RecipeListClickListener());
+        selectFirstEntry(recipeList);
+        createScrollbar(recipeList);
+        recipesListPanel.add(recipeList, BorderLayout.CENTER);
+
+        //Button "New"
+        btnNew.setMaximumSize(BUTTON_DIMENSION);
+        btnNew.addActionListener(new AddRecipeAction());
+        btnPanel.add(btnNew);
+
+        //Button "Delete"
+        btnDelete.setMaximumSize(BUTTON_DIMENSION);
+        btnDelete.addActionListener(new DeleteRecipeAction());
+        btnPanel.add(btnDelete);
+
+        recipesListPanel.add(btnPanel, BorderLayout.SOUTH);
+
+        updateReciepeList();
+
+        //Right panel (recipe details)
+        recipeDetailsPanel = new JPanel(new GridBagLayout());
+        recipeDetailsPanel.setPreferredSize(SINGLE_COLUMN_SIZE);
+
+        //Recipe text area
+        recipeText.addFocusListener(new RecipeTextFocusListener());
+        recipeText.setPreferredSize(TEXT_AREA_SIZE);
+        GridBagConstraints recipeTextAreaConstraints = new GridBagConstraints();
+
+        recipeTextAreaConstraints.insets = INSETS;
+        recipeTextAreaConstraints.gridx = 0;
+        recipeTextAreaConstraints.gridy = 0;
+        recipeTextAreaConstraints.fill = GridBagConstraints.HORIZONTAL;
+        recipeDetailsPanel.add(recipeText, recipeTextAreaConstraints);
+
+        //Selection drop down servings
+        servingsBox.addActionListener(new ServingsModifiedListener());
+        GridBagConstraints servingsBoxConstraints = new GridBagConstraints();
+        servingsBoxConstraints.insets = INSETS;
+        servingsBoxConstraints.gridx = 0;
+        servingsBoxConstraints.gridy = 1;
+        servingsBoxConstraints.fill = GridBagConstraints.HORIZONTAL;
+        recipeDetailsPanel.add(servingsBox, servingsBoxConstraints);
+
+        //Ingredients list
+        ingredientList.addMouseListener(new IngredientListClickedListener());
+        ingredientList.setPreferredSize(TEXT_AREA_SIZE);
+        GridBagConstraints ingredientsListConstraints = new GridBagConstraints();
+        ingredientsListConstraints.insets = INSETS;
+        ingredientsListConstraints.gridx = 0;
+        ingredientsListConstraints.gridy = 2;
+        ingredientsListConstraints.fill = GridBagConstraints.BOTH;
+        recipeDetailsPanel.add(ingredientList, ingredientsListConstraints);
+
+
+        //Add created elements to editor
+        editorPanel = createPanelWithCustomBorderLayout();
+        editorPanel.add(recipesListPanel, BorderLayout.CENTER);
+        editorPanel.add(recipeDetailsPanel, BorderLayout.EAST);
+    }
+
+    private void updateReciepeList() {
+        DefaultListModel<Recipe> recipelistModel = new DefaultListModel<>();
 
         for (Recipe r : RecipeCollection.getInstance().getRecipesCopy()) {
-            model.addElement(r.getName());
+            recipelistModel.addElement(r);
         }
 
-        JPanel recipesListPanel = createCustomListPanel(model);
-
-
-        MouseListener mouseListener = new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-
-                    String selectedItem = (String) mainList.getSelectedValue();
-                    DefaultListModel model = new DefaultListModel();
-
-                    // add selectedItem to your second list.
-//                    DefaultListModel model = (DefaultListModel) list2.getModel();
-//                    if(model == null)
-//                    {
-//                        model = new DefaultListModel();
-//                        list2.setModel(model);
-//                    }
-//                    model.addElement(selectedItem);
-
-                }
-            }
-        };
-        mainList.addMouseListener(mouseListener);
-
-        JPanel recipePanel = createPanelWithCustomBoxLayout();
-        recipePanel.setPreferredSize(SINGLE_COLUMN_SIZE);
-
-        recipePanel.add(new List());
-        TextArea recipeText = new TextArea();
-        recipePanel.add(recipeText);
-
-
-        JPanel recipesEditor = createPanelWithCustomBorderLayout();
-        recipesEditor.add(recipesListPanel, BorderLayout.CENTER);
-        recipesEditor.add(recipePanel, BorderLayout.EAST);
-        return recipesEditor;
-    }
-
-    protected ActionListener createListenerForDeleteButton() {
-        return null;
-    }
-
-    protected ActionListener createListenerForNewButton() {
-        return null;
+        recipeList.setModel(recipelistModel);
     }
 
     public Component getEditorPanel() {
         return editorPanel;
-    }
-
-    protected JPanel createCustomListPanel(ListModel listModel) {
-        JPanel customListPanel = createPanelWithCustomBorderLayout();
-        customListPanel.setPreferredSize(SINGLE_COLUMN_SIZE);
-
-        mainList = new JList(listModel);
-        mainList.setMinimumSize(LIST_SIZE);
-        mainList.setPreferredSize(LIST_SIZE);
-        createScrollbar(mainList);
-        customListPanel.add(mainList, BorderLayout.CENTER);
-
-        btnNew.setMaximumSize(BUTTON_DIMENSION);
-        btnNew.addActionListener(createListenerForNewButton());
-        btnPanel.add(btnNew);
-
-        btnDelete.setMaximumSize(BUTTON_DIMENSION);
-        btnDelete.addActionListener(createListenerForDeleteButton());
-        btnPanel.add(btnDelete);
-        customListPanel.add(btnPanel, BorderLayout.SOUTH);
-
-
-        return customListPanel;
     }
 
     private void createScrollbar(JList list) {
@@ -114,9 +123,129 @@ public class RecipesEditor {
         listScroller.setPreferredSize(SCROLLER_SIZE);
     }
 
-    protected JPanel createEmptySidePanel() {
-        JPanel emptyPanel = createPanelWithCustomBoxLayout();
-        emptyPanel.setPreferredSize(SINGLE_COLUMN_SIZE);
-        return emptyPanel;
+    private class DeleteRecipeAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Recipe r = recipeList.getSelectedValue();
+            RecipeCollection.getInstance().remove(r);
+            RecipesEditor.this.updateReciepeList();
+        }
+    }
+
+    private class AddRecipeAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String s = (String) JOptionPane.showInputDialog(
+                    RecipesEditor.this.editorPanel,
+                    "Bezeichnung eingeben",
+                    "Neues Rezept",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    null,
+                    "");
+
+            if ((s != null) && (s.length() > 0)) {
+                RecipeCollection.getInstance().add(new Recipe(s));
+            }
+
+            RecipesEditor.this.updateReciepeList();
+        }
+    }
+
+    private class RecipeListClickListener extends MouseAdapter {
+        @Override
+        public void mouseClicked(MouseEvent evt) {
+            JList<Recipe> list = (JList) evt.getSource();
+
+            RecipesEditor.this.updateRecipeDetails(list.getSelectedValue());
+        }
+    }
+
+    private void updateRecipeDetails(Recipe recipe) {
+        recipeText.setText(recipe.getText());
+        servingsBox.setSelectedItem(recipe.getServings());
+
+        DefaultListModel<Ingredient> ingredients = new DefaultListModel<>();
+        for (Ingredient i : recipe.getIngredients().keySet()) {
+            ingredients.addElement(i);
+        }
+        ingredientList.setModel(ingredients);
+    }
+
+    private class RecipeTextFocusListener implements FocusListener {
+
+        @Override
+        public void focusGained(FocusEvent e) {
+
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+            Recipe r = recipeList.getSelectedValue();
+
+            if (r == null) return;
+
+            r.setText(recipeText.getText());
+        }
+    }
+
+    private class ServingsModifiedListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Recipe r = recipeList.getSelectedValue();
+            r.setServings((Integer) servingsBox.getSelectedItem());
+            RecipesEditor.this.updateRecipeDetails(r);
+        }
+    }
+
+    private class IngredientListClickedListener extends MouseAdapter {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            Recipe r = recipeList.getSelectedValue();
+            if (r == null) return;
+
+
+            if (clickedBelowTheListItems(e)) {
+                addIngredientByDialog(r);
+            } else {
+                r.removeIngredient(ingredientList.getSelectedValue());
+            }
+            RecipesEditor.this.updateRecipeDetails(r);
+        }
+
+        private void addIngredientByDialog(Recipe r) {
+            Set<Ingredient> allIngredients = RecipeCollection.getInstance().getIngredientsCopy();
+            Ingredient[] possibilities = allIngredients.toArray(new Ingredient[allIngredients.size()]);
+
+            Ingredient i = (Ingredient) JOptionPane.showInputDialog(
+                    RecipesEditor.this.editorPanel,
+                    "Zutat auswählen",
+                    "Zutat hinzufügen",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    possibilities,
+                    "");
+
+            if (i == null) return;
+
+            int amount = Integer.parseInt(
+
+                    (String) JOptionPane.showInputDialog(
+                            RecipesEditor.this.editorPanel,
+                            "Menge in " + i.getMeasure() + " eingeben",
+                            "Zutat hinzufügen",
+                            JOptionPane.PLAIN_MESSAGE,
+                            null,
+                            null,
+                            "")
+            );
+
+            r.setIngredientWithAmount(i, amount);
+        }
+
+        private boolean clickedBelowTheListItems(MouseEvent e) {
+            int index = ingredientList.locationToIndex(e.getPoint());
+            return index == -1 || !ingredientList.getCellBounds(index, index).contains(e.getPoint());
+        }
     }
 }

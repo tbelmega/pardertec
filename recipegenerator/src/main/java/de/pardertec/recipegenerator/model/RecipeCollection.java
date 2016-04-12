@@ -162,4 +162,8 @@ public class RecipeCollection {
     public void remove(Ingredient i) {
         this.ingredients.remove(i);
     }
+
+    public void remove(Recipe r) {
+        this.recipes.remove(r);
+    }
 }

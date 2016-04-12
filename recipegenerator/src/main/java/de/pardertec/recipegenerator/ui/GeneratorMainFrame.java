@@ -21,12 +21,18 @@ public class GeneratorMainFrame {
     public static final int MAIN_WINDOW_WIDTH = 10 * RESOLUTION_BASE;
     public static final int MAIN_WINDOW_HEIGHT = 7 * RESOLUTION_BASE;
 
+    public static final int INSET_SIZE = 2;
+    public static final Insets INSETS = new Insets(INSET_SIZE, INSET_SIZE, INSET_SIZE, INSET_SIZE);
+
+    public static final int COLUMN_WIDTH = MAIN_WINDOW_WIDTH / 3;
+
     public static final Dimension NORTHERN_PANEL_SIZE = new Dimension(MAIN_WINDOW_WIDTH, RESOLUTION_BASE / 2);
     public static final Dimension SOUTHERN_PANEL_SIZE = new Dimension(MAIN_WINDOW_WIDTH, RESOLUTION_BASE / 2);
     public static final Dimension WESTERN_PANEL_SIZE = new Dimension((int) (RESOLUTION_BASE * 1.5), RESOLUTION_BASE * 6);
-    public static final Dimension SINGLE_COLUMN_SIZE = new Dimension(MAIN_WINDOW_WIDTH / 3, RESOLUTION_BASE * 6);
-    public static final Dimension RADIO_BOX_SIZE = new Dimension(MAIN_WINDOW_WIDTH / 3, RESOLUTION_BASE);
-    public static final Dimension LIST_SIZE = new Dimension(MAIN_WINDOW_WIDTH / 3, RESOLUTION_BASE * 4);
+    public static final Dimension SINGLE_COLUMN_SIZE = new Dimension(COLUMN_WIDTH, RESOLUTION_BASE * 6);
+    public static final Dimension RADIO_BOX_SIZE = new Dimension(COLUMN_WIDTH, RESOLUTION_BASE);
+    public static final Dimension LIST_SIZE = new Dimension(COLUMN_WIDTH, RESOLUTION_BASE * 4);
+    public static final Dimension TEXT_AREA_SIZE = new Dimension(COLUMN_WIDTH - (3 * INSET_SIZE), (int) (RESOLUTION_BASE * 1.8));
     public static final Dimension SCROLLER_SIZE = new Dimension(RESOLUTION_BASE / 2, RESOLUTION_BASE * 5);
 
     public static final Dimension BUTTON_DIMENSION = new Dimension(RESOLUTION_BASE * 3, RESOLUTION_BASE);

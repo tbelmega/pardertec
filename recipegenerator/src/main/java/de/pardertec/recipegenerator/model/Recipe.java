@@ -43,8 +43,16 @@ public class Recipe extends BusinessObject  {
         this.servings = servings;
     }
 
+    public int getServings() {
+        return servings;
+    }
+
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getText() {
+        return text;
     }
 
     public JSONObject toJson(){
@@ -89,4 +97,5 @@ public class Recipe extends BusinessObject  {
                 append(ingredients).
                 toHashCode();
     }
+
 }

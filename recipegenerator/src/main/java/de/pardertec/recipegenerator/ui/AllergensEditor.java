@@ -15,10 +15,7 @@ import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBoxLay
 /**
  * Created by Thiemo on 31.01.2016.
  */
-public class AllergensEditor {
-
-    public static final String BTN_NEW = "Neu";
-    public static final String BTN_DELETE = "Löschen";
+public class AllergensEditor extends AbstactEditor {
 
     private JList<Allergen> mainList = new JList<>(new DefaultListModel<>());
     private JPanel allergensListPanel;
@@ -28,11 +25,11 @@ public class AllergensEditor {
     private JPanel editorPanel;
 
     public AllergensEditor() {
-        this.editorPanel = createEditorPanel();
+        createEditorPanel();
     }
 
 
-    private JPanel createEditorPanel() {
+    private void createEditorPanel() {
 
         //Main panel (allergen list)
         allergensListPanel = createPanelWithCustomBorderLayout();
@@ -59,10 +56,9 @@ public class AllergensEditor {
         updateModel();
 
         //Add created elements to Editor
-        JPanel allergensEditor = createPanelWithCustomBorderLayout();
-        allergensEditor.add(allergensListPanel, BorderLayout.CENTER);
-        allergensEditor.add(createEmptySidePanel(), BorderLayout.EAST);
-        return allergensEditor;
+        editorPanel = createPanelWithCustomBorderLayout();
+        editorPanel.add(allergensListPanel, BorderLayout.CENTER);
+        editorPanel.add(createEmptySidePanel(), BorderLayout.EAST);
     }
 
     void updateModel() {
