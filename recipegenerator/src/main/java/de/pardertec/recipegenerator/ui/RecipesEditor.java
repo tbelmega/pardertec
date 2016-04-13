@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Map;
 import java.util.Set;
 
 import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.*;
@@ -18,18 +19,23 @@ import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorder
  */
 public class RecipesEditor extends AbstactEditor {
 
+    private static final String BTN_ADD_INGREDIENT = "Zutat hinzufügen";
+
     //Main panel (reciepe list)
     private JPanel recipesListPanel;
     private JList<Recipe> recipeList = new JList<>(new DefaultListModel<>());
     private Button btnNew = new Button(BTN_NEW);
     private Button btnDelete = new Button(BTN_DELETE);
+    private Button btnAddIngredient = new Button(BTN_ADD_INGREDIENT);
     private JPanel btnPanel = new JPanel();
-    protected JPanel editorPanel = new JPanel();
 
+    protected JPanel editorPanel = new JPanel();
     //Right panel (recipe details)
     private JPanel recipeDetailsPanel;
-    private JComboBox<Integer> servingsBox = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 8, 10, 12});
-    private JList<Ingredient> ingredientList = new JList<>(new DefaultListModel<>());
+    private JComboBox<String> servingsBox = new JComboBox<>(new String[]{"1 Portion", "2 Portionen", "3 Portionen",
+            "4 Portionen", "5 Portionen", "6 Portionen", "7 Portionen", "8 Portionen",
+            "9 Portionen", "10 Portionen", "11 Portionen", "12 Portionen"});
+    private JList<Map.Entry<Ingredient, Integer>> ingredientList = new JList<>(new DefaultListModel<>());
     private JTextArea recipeText = new JTextArea();
 
     public RecipesEditor() {
@@ -43,8 +49,8 @@ public class RecipesEditor extends AbstactEditor {
 
         //Center list for recipes
         recipeList.addMouseListener(new RecipeListClickListener());
-        createScrollbar(recipeList);
-        recipesListPanel.add(recipeList, BorderLayout.CENTER);
+        //TODO scrollbar
+        recipesListPanel.add(new JScrollPane(recipeList), BorderLayout.CENTER);
 
         //Button "New"
         btnNew.addActionListener(new AddRecipeAction());
@@ -63,8 +69,9 @@ public class RecipesEditor extends AbstactEditor {
 
         //Recipe text area
         recipeText.setLineWrap(true);
+        recipeText.setWrapStyleWord(true);
         recipeText.addFocusListener(new RecipeTextFocusListener());
-        recipeText.setPreferredSize(new Dimension((int) (COLUMN_WIDTH * 1.5), RESOLUTION_BASE * 2));
+        recipeText.setPreferredSize(new Dimension((int) (COLUMN_WIDTH * 1.5), RESOLUTION_BASE * 3));
 
         GridBagConstraints recipeTextAreaConstraints = new GridBagConstraints();
         recipeTextAreaConstraints.insets = INSETS;
@@ -90,7 +97,14 @@ public class RecipesEditor extends AbstactEditor {
         ingredientsListConstraints.gridx = 0;
         ingredientsListConstraints.gridy = 2;
         ingredientsListConstraints.fill = GridBagConstraints.BOTH;
-        recipeDetailsPanel.add(ingredientList, ingredientsListConstraints);
+        recipeDetailsPanel.add(new JScrollPane(ingredientList), ingredientsListConstraints);
+
+        //Add ingredient button
+        btnAddIngredient.addActionListener(new AddIngredientlistener());
+        GridBagConstraints buttonAddIngredientConstrains = new GridBagConstraints();
+        buttonAddIngredientConstrains.gridx = 0;
+        buttonAddIngredientConstrains.gridy = 3;
+        recipeDetailsPanel.add(btnAddIngredient, buttonAddIngredientConstrains);
 
 
         //Add created elements to editor
@@ -117,10 +131,7 @@ public class RecipesEditor extends AbstactEditor {
         return editorPanel;
     }
 
-    private void createScrollbar(JList list) {
-        JScrollPane listScroller = new JScrollPane(list);
-        listScroller.setPreferredSize(SCROLLER_SIZE);
-    }
+
 
     private class DeleteRecipeAction implements ActionListener {
         @Override
@@ -163,10 +174,10 @@ public class RecipesEditor extends AbstactEditor {
         if (recipe == null) return;
 
         recipeText.setText(recipe.getText());
-        servingsBox.setSelectedItem(recipe.getServings());
+        servingsBox.setSelectedIndex(recipe.getServings() - 1);
 
-        DefaultListModel<Ingredient> ingredients = new DefaultListModel<>();
-        for (Ingredient i : recipe.getIngredients().keySet()) {
+        DefaultListModel<Map.Entry<Ingredient, Integer>> ingredients = new DefaultListModel<>();
+        for (Map.Entry<Ingredient, Integer> i : recipe.getIngredients().entrySet()) {
             ingredients.addElement(i);
         }
         ingredientList.setModel(ingredients);
@@ -193,7 +204,7 @@ public class RecipesEditor extends AbstactEditor {
         @Override
         public void actionPerformed(ActionEvent e) {
             Recipe r = recipeList.getSelectedValue();
-            r.setServings((Integer) servingsBox.getSelectedItem());
+            r.setServings(servingsBox.getSelectedIndex() + 1);
             RecipesEditor.this.updateRecipeDetails(r);
         }
     }
@@ -208,44 +219,56 @@ public class RecipesEditor extends AbstactEditor {
             if (clickedBelowTheListItems(e)) {
                 addIngredientByDialog(r);
             } else {
-                r.removeIngredient(ingredientList.getSelectedValue());
+                if (e.getClickCount() > 1) r.removeIngredient(ingredientList.getSelectedValue().getKey());
             }
             RecipesEditor.this.updateRecipeDetails(r);
         }
 
-        private void addIngredientByDialog(Recipe r) {
-            Set<Ingredient> allIngredients = RecipeCollection.getInstance().getIngredientsCopy();
-            Ingredient[] possibilities = allIngredients.toArray(new Ingredient[allIngredients.size()]);
 
-            Ingredient i = (Ingredient) JOptionPane.showInputDialog(
-                    RecipesEditor.this.editorPanel,
-                    "Zutat auswählen",
-                    "Zutat hinzufügen",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    possibilities,
-                    "");
-
-            if (i == null) return;
-
-            int amount = Integer.parseInt(
-
-                    (String) JOptionPane.showInputDialog(
-                            RecipesEditor.this.editorPanel,
-                            "Menge in " + i.getMeasure() + " eingeben",
-                            "Zutat hinzufügen",
-                            JOptionPane.PLAIN_MESSAGE,
-                            null,
-                            null,
-                            "")
-            );
-
-            r.setIngredientWithAmount(i, amount);
-        }
 
         private boolean clickedBelowTheListItems(MouseEvent e) {
             int index = ingredientList.locationToIndex(e.getPoint());
             return index == -1 || !ingredientList.getCellBounds(index, index).contains(e.getPoint());
         }
+    }
+
+    private class AddIngredientlistener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Recipe r = recipeList.getSelectedValue();
+            if (r == null) return;
+            addIngredientByDialog(r);
+            RecipesEditor.this.updateRecipeDetails(r);
+        }
+    }
+
+    private void addIngredientByDialog(Recipe r) {
+        Set<Ingredient> allIngredients = RecipeCollection.getInstance().getIngredientsCopy();
+        Ingredient[] possibilities = allIngredients.toArray(new Ingredient[allIngredients.size()]);
+
+        Ingredient i = (Ingredient) JOptionPane.showInputDialog(
+                RecipesEditor.this.editorPanel,
+                "Zutat auswählen",
+                "Zutat hinzufügen",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                possibilities,
+                "");
+
+        if (i == null) return;
+
+        int amount = Integer.parseInt(
+
+                (String) JOptionPane.showInputDialog(
+                        RecipesEditor.this.editorPanel,
+                        "Menge in " + i.getMeasure() + " eingeben",
+                        "Zutat hinzufügen",
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        null,
+                        "")
+        );
+
+        r.setIngredientWithAmount(i, amount);
     }
 }

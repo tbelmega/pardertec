@@ -124,4 +124,9 @@ public class Ingredient extends BusinessObject {
         }
         return i;
     }
+
+    @Override
+    public String toString() {
+        return this.name + ", " + this.measure + " ";
+    }
 }

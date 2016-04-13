@@ -58,7 +58,8 @@ public class BottomPanel {
         {
             public void actionPerformed(ActionEvent e)
             {
-                frameToClose.dispose();
+                int dialogResult = JOptionPane.showConfirmDialog(frameToClose, "Programm schließen?", "Warnung", JOptionPane.YES_NO_OPTION);
+                if (dialogResult == JOptionPane.YES_OPTION) frameToClose.dispose();
             }
         });
     }

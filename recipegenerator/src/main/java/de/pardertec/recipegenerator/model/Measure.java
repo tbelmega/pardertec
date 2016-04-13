@@ -4,7 +4,7 @@ package de.pardertec.recipegenerator.model;
  * Created by Thiemo on 27.01.2016.
  */
 public enum Measure {
-    GRAMS("Gramm"), MILLILITERS("Milliliter"), PIECES("Stück");
+    GRAMS("Gramm"), MILLILITERS("Milliliter"), PIECES("Stück"), PINCH("Prise"), TABLESPOON("Esslöffel"), TEASPOON("Teelöffel");
 
     private final String stringRepresentation;
 
