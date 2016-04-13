@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * Created by Thiemo on 27.01.2016.
@@ -27,8 +28,16 @@ public class Ingredient extends BusinessObject {
         this.status = status;
     }
 
+    protected Ingredient(UUID uuid, String name, Measure measure, VeganismStatus veganismStatus) {
+        super(uuid, name);
+        this.measure = measure;
+        this.status = veganismStatus;
+    }
+
+
+
     public void addAllergen(Allergen allergen){
-        this.allergens.add(allergen);
+        if (allergen != null) this.allergens.add(allergen);
     }
 
     public void removeAllergen(Allergen allergen){
@@ -94,5 +103,25 @@ public class Ingredient extends BusinessObject {
             allergens.put(a.getId());
         }
         return allergens;
+    }
+
+    public static Ingredient fromJSON(JSONObject jsonObject) {
+        String name = jsonObject.getString(JSON_KEY_NAME);
+        String id = jsonObject.getString(JSON_KEY_ID);
+        String measure = jsonObject.getString(JSON_KEY_MEASURE);
+        String status = jsonObject.getString(JSON_KEY_STATUS);
+        JSONArray allergens = jsonObject.getJSONArray(JSON_KEY_ALLERGENS);
+
+        Ingredient i = new Ingredient(UUID.fromString(id),
+                name,
+                Measure.getEnum(measure),
+                VeganismStatus.getEnum(status));
+
+        for (int j = 0; j < allergens.length(); j++) {
+            String allergenId = allergens.getString(j);
+            Allergen a = RecipeCollection.getAllergen(UUID.fromString(allergenId));
+            i.addAllergen(a);
+        }
+        return i;
     }
 }

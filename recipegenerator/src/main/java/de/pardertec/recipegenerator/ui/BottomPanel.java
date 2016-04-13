@@ -111,9 +111,9 @@ public class BottomPanel {
             File f = fc.getSelectedFile();
             try {
                 String s = FileUtil.readFile(f);
-                JOptionPane.showMessageDialog(panel, "Import successful.");
                 RecipeCollection.importJSON(s);
-            } catch (IOException e) {
+                JOptionPane.showMessageDialog(panel, "Import successful.");
+            } catch (Exception e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(panel, "Import failed.");
             }

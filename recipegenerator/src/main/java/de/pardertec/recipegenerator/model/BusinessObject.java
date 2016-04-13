@@ -7,7 +7,7 @@ import java.util.UUID;
 /**
  * Created by Thiemo on 27.01.2016.
  */
-public abstract class BusinessObject {
+public abstract class BusinessObject implements Comparable<BusinessObject> {
     public static final String JSON_KEY_ID = "id";
     public static final String JSON_KEY_NAME = "name";
     public final UUID id;
@@ -16,6 +16,11 @@ public abstract class BusinessObject {
     public BusinessObject(String name) {
         this.name = name;
         this.id = UUID.randomUUID();
+    }
+
+    protected BusinessObject(UUID uuid, String name) {
+        this.id = uuid;
+        this.name = name;
     }
 
 
@@ -39,5 +44,10 @@ public abstract class BusinessObject {
 
     public String toString() {
         return name;
+    }
+
+    @Override
+    public int compareTo(BusinessObject o) {
+        return this.name.compareTo(o.name);
     }
 }

@@ -27,10 +27,6 @@ public class GeneratorMainFrame {
     public static final Dimension NORTHERN_PANEL_SIZE = new Dimension(MAIN_WINDOW_WIDTH, RESOLUTION_BASE / 2);
     public static final Dimension SOUTHERN_PANEL_SIZE = new Dimension(MAIN_WINDOW_WIDTH, RESOLUTION_BASE / 2);
     public static final Dimension WESTERN_PANEL_SIZE = new Dimension((int) (RESOLUTION_BASE * 1.5), RESOLUTION_BASE * 6);
-    public static final Dimension SINGLE_COLUMN_SIZE = new Dimension(COLUMN_WIDTH, RESOLUTION_BASE * 6);
-    public static final Dimension RADIO_BOX_SIZE = new Dimension(COLUMN_WIDTH, RESOLUTION_BASE);
-    public static final Dimension LIST_SIZE = new Dimension(COLUMN_WIDTH, RESOLUTION_BASE * 4);
-    public static final Dimension TEXT_AREA_SIZE = new Dimension(COLUMN_WIDTH - (3 * INSET_SIZE), (int) (RESOLUTION_BASE * 1.8));
     public static final Dimension SCROLLER_SIZE = new Dimension(RESOLUTION_BASE / 2, RESOLUTION_BASE * 5);
 
     public static final Dimension BUTTON_DIMENSION = new Dimension(RESOLUTION_BASE * 3, RESOLUTION_BASE);
@@ -77,7 +73,7 @@ public class GeneratorMainFrame {
 
     void initializeFrame() {
         mainFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        mainFrame.setPreferredSize(new Dimension(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT));
+        mainFrame.setMinimumSize(new Dimension(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT));
 
         //cause the LayoutManger to set the sizes of the frame and all sub components
         mainFrame.pack();
@@ -87,14 +83,17 @@ public class GeneratorMainFrame {
 
     public void showAllergensEditor() {
         replaceCenterComponent(allergensEditor.getEditorPanel());
+        allergensEditor.updateallergensList();
     }
 
     public void showIngredientsEditor() {
         replaceCenterComponent(ingredientsEditor.getEditorPanel());
+        ingredientsEditor.updateIngredientsList();
     }
 
     public void showRecipesEditor() {
         replaceCenterComponent(recipesEditor.getEditorPanel());
+        recipesEditor.updateReciepeList();
     }
 
     private void replaceCenterComponent(Component newComponent) {

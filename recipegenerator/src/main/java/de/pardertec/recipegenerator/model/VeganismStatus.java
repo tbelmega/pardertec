@@ -15,4 +15,10 @@ public enum VeganismStatus { CONTAINS_MEAT("Enthält Fleisch"), VEGETARIAN("Vege
         return this.stringRepresentation;
     }
 
+    public static VeganismStatus getEnum(String s) {
+        for (VeganismStatus status : VeganismStatus.values()) {
+            if (status.toString().equalsIgnoreCase(s)) return status;
+        }
+        throw new IllegalArgumentException("No enum value for String " + s);
+    }
 }

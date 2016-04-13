@@ -5,6 +5,7 @@ import de.pardertec.recipegenerator.model.Recipe;
 import de.pardertec.recipegenerator.model.RecipeCollection;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Set;
@@ -23,11 +24,11 @@ public class RecipesEditor extends AbstactEditor {
     private Button btnNew = new Button(BTN_NEW);
     private Button btnDelete = new Button(BTN_DELETE);
     private JPanel btnPanel = new JPanel();
-    protected JPanel editorPanel;
+    protected JPanel editorPanel = new JPanel();
 
     //Right panel (recipe details)
     private JPanel recipeDetailsPanel;
-    JComboBox<Integer> servingsBox = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 8, 10, 12});
+    private JComboBox<Integer> servingsBox = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 8, 10, 12});
     private JList<Ingredient> ingredientList = new JList<>(new DefaultListModel<>());
     private JTextArea recipeText = new JTextArea();
 
@@ -37,24 +38,19 @@ public class RecipesEditor extends AbstactEditor {
 
     protected void createEditorPanel() {
 
-        //Main panel (reciepe list)
+        //Main panel (recipe list)
         recipesListPanel = createPanelWithCustomBorderLayout();
-        recipesListPanel.setPreferredSize(SINGLE_COLUMN_SIZE);
 
         //Center list for recipes
-        recipeList.setMinimumSize(LIST_SIZE);
-        recipeList.setPreferredSize(LIST_SIZE);
         recipeList.addMouseListener(new RecipeListClickListener());
         createScrollbar(recipeList);
         recipesListPanel.add(recipeList, BorderLayout.CENTER);
 
         //Button "New"
-        btnNew.setMaximumSize(BUTTON_DIMENSION);
         btnNew.addActionListener(new AddRecipeAction());
         btnPanel.add(btnNew);
 
         //Button "Delete"
-        btnDelete.setMaximumSize(BUTTON_DIMENSION);
         btnDelete.addActionListener(new DeleteRecipeAction());
         btnPanel.add(btnDelete);
 
@@ -64,13 +60,13 @@ public class RecipesEditor extends AbstactEditor {
 
         //Right panel (recipe details)
         recipeDetailsPanel = new JPanel(new GridBagLayout());
-        recipeDetailsPanel.setPreferredSize(SINGLE_COLUMN_SIZE);
 
         //Recipe text area
+        recipeText.setLineWrap(true);
         recipeText.addFocusListener(new RecipeTextFocusListener());
-        recipeText.setPreferredSize(TEXT_AREA_SIZE);
-        GridBagConstraints recipeTextAreaConstraints = new GridBagConstraints();
+        recipeText.setPreferredSize(new Dimension((int) (COLUMN_WIDTH * 1.5), RESOLUTION_BASE * 2));
 
+        GridBagConstraints recipeTextAreaConstraints = new GridBagConstraints();
         recipeTextAreaConstraints.insets = INSETS;
         recipeTextAreaConstraints.gridx = 0;
         recipeTextAreaConstraints.gridy = 0;
@@ -88,7 +84,7 @@ public class RecipesEditor extends AbstactEditor {
 
         //Ingredients list
         ingredientList.addMouseListener(new IngredientListClickedListener());
-        ingredientList.setPreferredSize(TEXT_AREA_SIZE);
+        ingredientList.setPreferredSize(new Dimension(COLUMN_WIDTH, RESOLUTION_BASE * 2));
         GridBagConstraints ingredientsListConstraints = new GridBagConstraints();
         ingredientsListConstraints.insets = INSETS;
         ingredientsListConstraints.gridx = 0;
@@ -98,12 +94,14 @@ public class RecipesEditor extends AbstactEditor {
 
 
         //Add created elements to editor
-        editorPanel = createPanelWithCustomBorderLayout();
+        BoxLayout layout = new BoxLayout(editorPanel, BoxLayout.LINE_AXIS);
+        editorPanel.setLayout(layout);
+        editorPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
         editorPanel.add(recipesListPanel, BorderLayout.CENTER);
         editorPanel.add(recipeDetailsPanel, BorderLayout.EAST);
     }
 
-    private void updateReciepeList() {
+    void updateReciepeList() {
         DefaultListModel<Recipe> recipelistModel = new DefaultListModel<>();
 
         for (Recipe r : RecipeCollection.getInstance().getRecipesCopy()) {

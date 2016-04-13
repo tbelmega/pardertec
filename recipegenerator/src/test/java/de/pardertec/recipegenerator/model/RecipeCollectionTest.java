@@ -21,14 +21,17 @@ import static org.testng.AssertJUnit.assertTrue;
  */
 public class RecipeCollectionTest {
 
+
+    public static final Allergen LAKTOSE = new Allergen("Laktose");
     public static final Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
-    public static final Recipe SPAGHETTI_BOLOGNESE = createSpaghettiBologneseRecipe();
+    public static Recipe spaghettiBolognese;
     static RecipeCollection allRecipes;
 
     @BeforeTest
     public void getRecipeCollection(){
+        spaghettiBolognese = createSpaghettiBologneseRecipe();
         allRecipes =  RecipeCollection.getInstance();
-        allRecipes.add(SPAGHETTI_BOLOGNESE);
+        allRecipes.add(spaghettiBolognese);
     }
 
     @Test
@@ -38,7 +41,7 @@ public class RecipeCollectionTest {
         //act
 
         //assert
-        assertTrue(allRecipes.contains(SPAGHETTI_BOLOGNESE));
+        assertTrue(allRecipes.contains(spaghettiBolognese));
     }
 
     @Test
@@ -85,7 +88,7 @@ public class RecipeCollectionTest {
         JSONArray recipes = recipeCollection.getJSONArray(JSON_KEY_RECIPES);
 
         //assert
-        assertEqualJSONContent(SPAGHETTI_BOLOGNESE.toJson(), recipes.getJSONObject(0));
+        assertEqualJSONContent(spaghettiBolognese.toJson(), recipes.getJSONObject(0));
     }
 
     @Test
@@ -113,17 +116,10 @@ public class RecipeCollectionTest {
     }
 
 
-    /**
-     * Creates a recipe as test data. Bad practice for production code don't do this!
-     *
-     * @return
-     */
-    public static final Allergen LAKTOSE = new Allergen("Laktose");
 
     public static Recipe createSpaghettiBologneseRecipe() {
 
-        final Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
-
+        Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
         Ingredient oil = new Ingredient("Sonnenblumenöl", MILLILITERS, VEGAN);
         Ingredient onions = new Ingredient("Zwiebeln", PIECES, VEGAN);
         Ingredient tomatoPaste = new Ingredient("Tomatenmark", GRAMS, VEGAN);

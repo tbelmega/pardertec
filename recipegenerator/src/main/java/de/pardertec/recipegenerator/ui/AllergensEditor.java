@@ -33,27 +33,22 @@ public class AllergensEditor extends AbstactEditor {
 
         //Main panel (allergen list)
         allergensListPanel = createPanelWithCustomBorderLayout();
-        allergensListPanel.setPreferredSize(SINGLE_COLUMN_SIZE);
 
         //Center list for allergens
-        mainList.setMinimumSize(LIST_SIZE);
-        mainList.setPreferredSize(LIST_SIZE);
         createScrollbar(mainList);
         allergensListPanel.add(mainList, BorderLayout.CENTER);
 
         //Button "New"
-        btnNew.setMaximumSize(BUTTON_DIMENSION);
         btnNew.addActionListener(createListenerForNewButton());
         btnPanel.add(btnNew);
 
         //Button "Delete"
-        btnDelete.setMaximumSize(BUTTON_DIMENSION);
         btnDelete.addActionListener(createListenerForDeleteButton());
         btnPanel.add(btnDelete);
 
         allergensListPanel.add(btnPanel, BorderLayout.SOUTH);
 
-        updateModel();
+        updateallergensList();
 
         //Add created elements to Editor
         editorPanel = createPanelWithCustomBorderLayout();
@@ -61,7 +56,7 @@ public class AllergensEditor extends AbstactEditor {
         editorPanel.add(createEmptySidePanel(), BorderLayout.EAST);
     }
 
-    void updateModel() {
+    void updateallergensList() {
         DefaultListModel<Allergen> editorListModel = new DefaultListModel<>();
         for (Allergen a : RecipeCollection.getInstance().getAllergensCopy()) {
             editorListModel.addElement(a);
@@ -85,7 +80,7 @@ public class AllergensEditor extends AbstactEditor {
 
     private JPanel createEmptySidePanel() {
         JPanel emptyPanel = createPanelWithCustomBoxLayout();
-        emptyPanel.setPreferredSize(SINGLE_COLUMN_SIZE);
+        emptyPanel.setPreferredSize(new Dimension(COLUMN_WIDTH, RESOLUTION_BASE * 6));
         emptyPanel.setBorder(BorderFactory.createEmptyBorder());
         return emptyPanel;
     }
@@ -108,7 +103,7 @@ public class AllergensEditor extends AbstactEditor {
                 RecipeCollection.getInstance().add(new Allergen(s));
             }
 
-            AllergensEditor.this.updateModel();
+            AllergensEditor.this.updateallergensList();
         }
     }
 
@@ -121,7 +116,7 @@ public class AllergensEditor extends AbstactEditor {
         public void actionPerformed(ActionEvent e) {
             Allergen a = mainList.getSelectedValue();
             RecipeCollection.getInstance().remove(a);
-            AllergensEditor.this.updateModel();
+            AllergensEditor.this.updateallergensList();
         }
     }
 }

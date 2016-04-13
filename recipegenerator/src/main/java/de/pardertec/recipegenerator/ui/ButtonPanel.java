@@ -21,6 +21,7 @@ public class ButtonPanel {
         this.owner = owner;
 
         this.panel = UiUtil.createPanelWithCustomBoxLayout();
+        this.panel.setBorder(BorderFactory.createEmptyBorder());
         this.panel.setPreferredSize(size);
         this.panel.setMaximumSize(size);
         addButtons();

@@ -16,4 +16,12 @@ public enum Measure {
         return this.stringRepresentation;
     }
 
+
+    public static Measure getEnum(String s) {
+        for (Measure m : Measure.values()) {
+            if (m.toString().equalsIgnoreCase(s)) return m;
+        }
+        throw new IllegalArgumentException("No enum value for String " + s);
+    }
+
 }
