@@ -162,6 +162,8 @@ public class RecipesEditor extends AbstactEditor {
     }
 
     private void updateRecipeDetails(Recipe recipe) {
+        if (recipe == null) return;
+
         recipeText.setText(recipe.getText());
         servingsBox.setSelectedItem(recipe.getServings());
 

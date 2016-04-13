@@ -24,6 +24,8 @@ public class BottomPanel {
 
     private JFileChooser fileChooser = new JFileChooser();
     private File executionDirectory = new File("").getAbsoluteFile();
+    private Button btnImport;
+    private Button btnExport;
 
     public BottomPanel(JFrame owner, Dimension size){
         this.owner = owner;
@@ -36,11 +38,11 @@ public class BottomPanel {
     }
 
     private void addButtons() {
-        Button btnImport = new Button(BUTTON_IMPORT);
+        btnImport = new Button(BUTTON_IMPORT);
         btnImport.addActionListener(new ImportRecipesAction());
         this.panel.add(btnImport);
 
-        Button btnExport = new Button(BUTTON_EXPORT);
+        btnExport = new Button(BUTTON_EXPORT);
         btnExport.addActionListener(new ExportRecipesAction());
         this.panel.add(btnExport);
 
@@ -65,7 +67,11 @@ public class BottomPanel {
         return this.panel;
     }
 
-    private class ExportRecipesAction implements ActionListener {
+    public void showImportDialog() {
+        new ImportRecipesAction().actionPerformed(new ActionEvent(btnImport, 0, null));
+    }
+
+    class ExportRecipesAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             fileChooser.setCurrentDirectory(executionDirectory);
@@ -90,7 +96,7 @@ public class BottomPanel {
         }
     }
 
-    private class ImportRecipesAction implements ActionListener {
+    class ImportRecipesAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             fileChooser.setCurrentDirectory(executionDirectory);

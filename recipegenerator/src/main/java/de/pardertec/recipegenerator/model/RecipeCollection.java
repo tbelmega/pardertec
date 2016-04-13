@@ -6,9 +6,6 @@ import org.json.JSONObject;
 import java.util.HashSet;
 import java.util.Set;
 
-import static de.pardertec.recipegenerator.model.Measure.*;
-import static de.pardertec.recipegenerator.model.VeganismStatus.*;
-
 
 /**
  * Created by Thiemo on 30.01.2016.
@@ -92,46 +89,6 @@ public class RecipeCollection {
             allRecipes.put(r.toJson());
         }
         return allRecipes;
-    }
-
-    /**
-     * Creates a recipe as test data. Bad practice for production code don't do this!
-     * @return
-     */
-    public static final Allergen LAKTOSE = new Allergen("Laktose");
-    public static Recipe createSpaghettiBologneseRecipe() {
-
-        final Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
-
-        Ingredient oil = new Ingredient("Sonnenblumenöl", MILLILITERS, VEGAN);
-        Ingredient onions = new Ingredient("Zwiebeln", PIECES, VEGAN);
-        Ingredient tomatoPaste = new Ingredient("Tomatenmark", GRAMS, VEGAN);
-        Ingredient sugar = new Ingredient("Zucker", GRAMS, VEGAN);
-        Ingredient salt = new Ingredient("Salz", GRAMS, VEGAN);
-        Ingredient pepper = new Ingredient("Pfeffer", GRAMS, VEGAN);
-        Ingredient garlicClove = new Ingredient("Knochblauchzehe", PIECES, VEGAN);
-        Ingredient sievedTomatos = new Ingredient("Passierte Tomaten", GRAMS, VEGAN);
-        Ingredient spaghetti = new Ingredient("Spaghetti", GRAMS, VEGETARIAN);
-        Ingredient parmesan = new Ingredient("Parmesankäse", GRAMS, VEGETARIAN);
-        parmesan.addAllergen(LAKTOSE);
-
-        Recipe myRecipe = new Recipe("Spaghetti Bolognese");
-
-        myRecipe.setIngredientWithAmount(MEAT, 500);
-        myRecipe.setIngredientWithAmount(oil, 20);
-        myRecipe.setIngredientWithAmount(onions, 0);
-        myRecipe.setIngredientWithAmount(tomatoPaste, 50);
-        myRecipe.setIngredientWithAmount(sugar, 50);
-        myRecipe.setIngredientWithAmount(salt, 50);
-        myRecipe.setIngredientWithAmount(pepper, 50);
-        myRecipe.setIngredientWithAmount(garlicClove, 2);
-        myRecipe.setIngredientWithAmount(sievedTomatos, 500);
-        myRecipe.setIngredientWithAmount(spaghetti, 500);
-        myRecipe.setIngredientWithAmount(parmesan, 100);
-
-        myRecipe.setServings(4);
-        myRecipe.setText("foo");
-        return myRecipe;
     }
 
     /**

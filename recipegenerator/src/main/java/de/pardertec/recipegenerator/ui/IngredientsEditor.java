@@ -159,6 +159,8 @@ public class IngredientsEditor extends AbstactEditor {
     }
 
     private void updateIngredientDetails(Ingredient ingredient) {
+        if (ingredient == null) return;
+
         veganismBox.setSelectedItem(ingredient.getStatus());
         measureBox.setSelectedItem(ingredient.getMeasure());
 

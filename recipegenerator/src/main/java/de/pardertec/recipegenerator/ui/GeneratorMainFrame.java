@@ -1,7 +1,5 @@
 package de.pardertec.recipegenerator.ui;
 
-import de.pardertec.recipegenerator.model.RecipeCollection;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -44,12 +42,12 @@ public class GeneratorMainFrame {
     private AllergensEditor allergensEditor;
     private IngredientsEditor ingredientsEditor;
     private RecipesEditor recipesEditor;
+    private BottomPanel bottomPanel;
 
     public static void main(String[] args) {
-        RecipeCollection.getInstance().add(RecipeCollection.createSpaghettiBologneseRecipe());
-
         GeneratorMainFrame main = new GeneratorMainFrame();
         main.initializeFrame();
+        main.bottomPanel.showImportDialog();
     }
 
     public GeneratorMainFrame(){
@@ -67,7 +65,8 @@ public class GeneratorMainFrame {
     private void initializeContent() {
         contentPane.add(createTopPanel(), BorderLayout.NORTH);
         contentPane.add(new ButtonPanel(this, WESTERN_PANEL_SIZE).getPanel(), BorderLayout.WEST);
-        contentPane.add(new BottomPanel(mainFrame, SOUTHERN_PANEL_SIZE).getPanel(), BorderLayout.SOUTH);
+        bottomPanel = new BottomPanel(mainFrame, SOUTHERN_PANEL_SIZE);
+        contentPane.add(bottomPanel.getPanel(), BorderLayout.SOUTH);
     }
 
     private static Component createTopPanel() {
