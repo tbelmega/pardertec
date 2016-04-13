@@ -166,4 +166,8 @@ public class RecipeCollection {
     public void remove(Recipe r) {
         this.recipes.remove(r);
     }
+
+    public static void importJSON(String s) {
+
+    }
 }

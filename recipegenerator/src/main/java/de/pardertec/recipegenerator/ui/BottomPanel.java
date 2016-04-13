@@ -1,9 +1,14 @@
 package de.pardertec.recipegenerator.ui;
 
+import de.pardertec.recipegenerator.model.RecipeCollection;
+import de.pardertec.util.FileUtil;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Thiemo on 31.01.2016.
@@ -17,6 +22,9 @@ public class BottomPanel {
     private final JPanel panel;
     private final JFrame owner;
 
+    private JFileChooser fileChooser = new JFileChooser();
+    private File executionDirectory = new File("").getAbsoluteFile();
+
     public BottomPanel(JFrame owner, Dimension size){
         this.owner = owner;
         this.panel = UiUtil.createPanelWithCustomGridLayout(1, 0);
@@ -28,11 +36,15 @@ public class BottomPanel {
     }
 
     private void addButtons() {
-        Button btn_import = new Button(BUTTON_IMPORT);
-        btn_import.addActionListener(new ButtonPressedAction(owner));
-        this.panel.add(btn_import);
-        Button btn_export = new Button(BUTTON_EXPORT);
-        this.panel.add(btn_export);
+        Button btnImport = new Button(BUTTON_IMPORT);
+        btnImport.addActionListener(new ImportRecipesAction());
+        this.panel.add(btnImport);
+
+        Button btnExport = new Button(BUTTON_EXPORT);
+        btnExport.addActionListener(new ExportRecipesAction());
+        this.panel.add(btnExport);
+
+
         addCloseButton(this.owner, panel);
     }
 
@@ -53,18 +65,52 @@ public class BottomPanel {
         return this.panel;
     }
 
-    private class ButtonPressedAction implements ActionListener {
-        private final JFrame owner;
+    private class ExportRecipesAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            fileChooser.setCurrentDirectory(executionDirectory);
+            fileChooser.setSelectedFile(new File("recipe_collection_export_" + System.currentTimeMillis() + ".json"));
+            int returnValue = fileChooser.showSaveDialog(BottomPanel.this.panel);
 
-        public ButtonPressedAction(JFrame owner) {
-           this.owner = owner;
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                exportRecipes(fileChooser.getSelectedFile());
+            }
         }
 
-        public void actionPerformed(ActionEvent e)
-        {
-            JDialog d = new JDialog(this.owner, "Hello", true);
-            d.setLocationRelativeTo(this.owner);
-            d.setVisible(true);
+        private void exportRecipes(File f) {
+            //File f =
+            String s = RecipeCollection.getInstance().toJson().toString(4);
+
+            try {
+                FileUtil.writeTextFile(f, s);
+                JOptionPane.showMessageDialog(panel, "Export successful.\n" + f.getAbsolutePath());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(panel, "Export failed.");
+            }
+        }
+    }
+
+    private class ImportRecipesAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            fileChooser.setCurrentDirectory(executionDirectory);
+            int returnValue = fileChooser.showOpenDialog(BottomPanel.this.panel);
+
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                importRecipes(fileChooser);
+            }
+        }
+
+        private void importRecipes(JFileChooser fc) {
+            File f = fc.getSelectedFile();
+            try {
+                String s = FileUtil.readFile(f);
+                JOptionPane.showMessageDialog(panel, "Import successful.");
+                RecipeCollection.importJSON(s);
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(panel, "Import failed.");
+            }
         }
     }
 }

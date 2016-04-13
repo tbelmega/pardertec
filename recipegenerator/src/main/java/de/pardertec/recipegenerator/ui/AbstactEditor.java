@@ -9,9 +9,10 @@ public abstract class AbstactEditor {
     public static final String BTN_NEW = "Neu";
     public static final String BTN_DELETE = "Löschen";
 
-    protected void selectFirstEntry(JList<?> recipeList) {
+    protected void selectFirstEntry(JList<?> list) {
         try {
-            recipeList.setSelectedIndex(0);
+            list.setSelectedIndex(0);
+
         } catch (Exception e) {
 
         }

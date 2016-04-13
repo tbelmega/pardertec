@@ -1,9 +1,6 @@
 package de.pardertec.util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
@@ -37,5 +34,12 @@ public class FileUtil {
         String content = scan.next();
         scan.close();
         return content;
+    }
+
+    public static void writeTextFile(File f, String text) throws IOException {
+        FileWriter write = new FileWriter(f);
+        write.write(text);
+        write.flush();
+        write.close();
     }
 }

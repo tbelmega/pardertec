@@ -45,7 +45,6 @@ public class RecipesEditor extends AbstactEditor {
         recipeList.setMinimumSize(LIST_SIZE);
         recipeList.setPreferredSize(LIST_SIZE);
         recipeList.addMouseListener(new RecipeListClickListener());
-        selectFirstEntry(recipeList);
         createScrollbar(recipeList);
         recipesListPanel.add(recipeList, BorderLayout.CENTER);
 
@@ -112,6 +111,8 @@ public class RecipesEditor extends AbstactEditor {
         }
 
         recipeList.setModel(recipelistModel);
+        selectFirstEntry(recipeList);
+        updateRecipeDetails(recipeList.getSelectedValue());
     }
 
     public Component getEditorPanel() {
@@ -156,7 +157,6 @@ public class RecipesEditor extends AbstactEditor {
         @Override
         public void mouseClicked(MouseEvent evt) {
             JList<Recipe> list = (JList) evt.getSource();
-
             RecipesEditor.this.updateRecipeDetails(list.getSelectedValue());
         }
     }

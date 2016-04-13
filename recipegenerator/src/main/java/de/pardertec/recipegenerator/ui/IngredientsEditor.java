@@ -46,7 +46,6 @@ public class IngredientsEditor extends AbstactEditor {
         ingredientsList.setMinimumSize(LIST_SIZE);
         ingredientsList.setPreferredSize(LIST_SIZE);
         ingredientsList.addMouseListener(new IngredientListClickListener());
-        selectFirstEntry(ingredientsList);
         createScrollbar(ingredientsList);
         ingredientsListPanel.add(ingredientsList, BorderLayout.CENTER);
 
@@ -107,6 +106,8 @@ public class IngredientsEditor extends AbstactEditor {
             ingredientListModel.addElement(i);
         }
         ingredientsList.setModel(ingredientListModel);
+        selectFirstEntry(ingredientsList);
+        updateIngredientDetails(ingredientsList.getSelectedValue());
     }
 
     public Component getEditorPanel() {
