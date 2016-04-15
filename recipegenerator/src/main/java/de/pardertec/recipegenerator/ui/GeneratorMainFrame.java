@@ -93,7 +93,7 @@ public class GeneratorMainFrame {
 
     public void showRecipesEditor() {
         replaceCenterComponent(recipesEditor.getEditorPanel());
-        recipesEditor.updateReciepeList();
+        recipesEditor.updateRecipeList();
     }
 
     private void replaceCenterComponent(Component newComponent) {

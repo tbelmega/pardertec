@@ -6,6 +6,8 @@ import de.pardertec.recipegenerator.model.RecipeCollection;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Map;
@@ -37,6 +39,7 @@ public class RecipesEditor extends AbstactEditor {
             "9 Portionen", "10 Portionen", "11 Portionen", "12 Portionen"});
     private JList<Map.Entry<Ingredient, Integer>> ingredientList = new JList<>(new DefaultListModel<>());
     private JTextArea recipeText = new JTextArea();
+    private Recipe displayedRecipeDetails;
 
     public RecipesEditor() {
         createEditorPanel();
@@ -48,8 +51,7 @@ public class RecipesEditor extends AbstactEditor {
         recipesListPanel = createPanelWithCustomBorderLayout();
 
         //Center list for recipes
-        recipeList.addMouseListener(new RecipeListClickListener());
-        //TODO scrollbar
+        recipeList.getSelectionModel().addListSelectionListener(new SelectedRecipeChangeListener());
         recipesListPanel.add(new JScrollPane(recipeList), BorderLayout.CENTER);
 
         //Button "New"
@@ -62,7 +64,7 @@ public class RecipesEditor extends AbstactEditor {
 
         recipesListPanel.add(btnPanel, BorderLayout.SOUTH);
 
-        updateReciepeList();
+        updateRecipeList();
 
         //Right panel (recipe details)
         recipeDetailsPanel = new JPanel(new GridBagLayout());
@@ -115,7 +117,7 @@ public class RecipesEditor extends AbstactEditor {
         editorPanel.add(recipeDetailsPanel, BorderLayout.EAST);
     }
 
-    void updateReciepeList() {
+    void updateRecipeList() {
         DefaultListModel<Recipe> recipelistModel = new DefaultListModel<>();
 
         for (Recipe r : RecipeCollection.getInstance().getRecipesCopy()) {
@@ -126,6 +128,21 @@ public class RecipesEditor extends AbstactEditor {
         selectFirstEntry(recipeList);
         updateRecipeDetails(recipeList.getSelectedValue());
     }
+
+    void updateRecipeList(Recipe selectedRecipe) {
+        DefaultListModel<Recipe> recipeListModel = new DefaultListModel<>();
+
+        for (Recipe r : RecipeCollection.getInstance().getRecipesCopy()) {
+            recipeListModel.addElement(r);
+        }
+
+        recipeList.setModel(recipeListModel);
+        saveRecipeText();
+        recipeList.setSelectedValue(selectedRecipe, true);
+        updateRecipeDetails(recipeList.getSelectedValue());
+    }
+
+
 
     public Component getEditorPanel() {
         return editorPanel;
@@ -138,7 +155,7 @@ public class RecipesEditor extends AbstactEditor {
         public void actionPerformed(ActionEvent e) {
             Recipe r = recipeList.getSelectedValue();
             RecipeCollection.getInstance().remove(r);
-            RecipesEditor.this.updateReciepeList();
+            RecipesEditor.this.updateRecipeList();
         }
     }
 
@@ -155,18 +172,11 @@ public class RecipesEditor extends AbstactEditor {
                     "");
 
             if ((s != null) && (s.length() > 0)) {
-                RecipeCollection.getInstance().add(new Recipe(s));
+                Recipe recipe = new Recipe(s);
+                RecipeCollection.getInstance().add(recipe);
+                RecipesEditor.this.updateRecipeList(recipe);
             }
 
-            RecipesEditor.this.updateReciepeList();
-        }
-    }
-
-    private class RecipeListClickListener extends MouseAdapter {
-        @Override
-        public void mouseClicked(MouseEvent evt) {
-            JList<Recipe> list = (JList) evt.getSource();
-            RecipesEditor.this.updateRecipeDetails(list.getSelectedValue());
         }
     }
 
@@ -192,12 +202,12 @@ public class RecipesEditor extends AbstactEditor {
 
         @Override
         public void focusLost(FocusEvent e) {
-            Recipe r = recipeList.getSelectedValue();
-
-            if (r == null) return;
-
-            r.setText(recipeText.getText());
+            saveRecipeText();
         }
+    }
+
+    private void saveRecipeText() {
+        if (displayedRecipeDetails != null) displayedRecipeDetails.setText(recipeText.getText());
     }
 
     private class ServingsModifiedListener implements ActionListener {
@@ -270,5 +280,14 @@ public class RecipesEditor extends AbstactEditor {
         );
 
         r.setIngredientWithAmount(i, amount);
+    }
+
+    private class SelectedRecipeChangeListener implements ListSelectionListener {
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            saveRecipeText();
+            displayedRecipeDetails = recipeList.getSelectedValue();
+            RecipesEditor.this.updateRecipeDetails(displayedRecipeDetails);
+        }
     }
 }

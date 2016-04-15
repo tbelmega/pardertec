@@ -1,0 +1,430 @@
+{
+    "recipes": [
+        {
+            "servings": 4,
+            "name": "Thiemos Spezialnudeln",
+            "ingredients": [
+                {
+                    "amount": 500,
+                    "ingredient": "7f28756b-9182-43fd-877a-f2fd6d2c7684"
+                },
+                {
+                    "amount": 50,
+                    "ingredient": "8de478ac-ce12-4bca-bd0f-b27165cff495"
+                },
+                {
+                    "amount": 50,
+                    "ingredient": "b144565a-6c7a-4100-a7a9-4a6a5292ffdb"
+                },
+                {
+                    "amount": 500,
+                    "ingredient": "4716f2a7-bf4d-4981-b24f-9f56454df46a"
+                },
+                {
+                    "amount": 1,
+                    "ingredient": "c7dbed01-cc47-4f65-be37-514f8005a17e"
+                },
+                {
+                    "amount": 100,
+                    "ingredient": "5e172428-91a2-492c-9f74-d11e80c9bdff"
+                },
+                {
+                    "amount": 250,
+                    "ingredient": "df5e3999-05ad-4750-aa64-91c22a3c9acc"
+                },
+                {
+                    "amount": 200,
+                    "ingredient": "d3576858-e779-412f-b47c-eb36c171a541"
+                },
+                {
+                    "amount": 100,
+                    "ingredient": "f0d01502-e3b9-40ac-badd-c8231ecffe48"
+                }
+            ],
+            "id": "02449af1-d909-430a-ac6c-12c4c7a2ec1e",
+            "text": "Etwas Öl in die Pfanne geben und erhitzen. Eine Zwiebel würfeln und anbraten, bis die Würfel glasig werden.\nPassierte Tomaten hinzugeben und bei leichter Hitze etwa 20 Minuten einkochen lassen.\nParallel Wasser für Nudeln aufsetzen, Salz und Öl ins Wasser geben. Sobald das Wasser kocht, Herdplatte auf kleinste Stufe stellen, Nudeln ins Wasser geben und ca 10 Minuten kochen lassen.\nSchmelzkäse in die Soße geben und schmelzen lassen. Salz, Pfeffer und Zucker hinzugeben. Die Soße umrühren, bis sie eine gleichmäßige Farbe angenommen hat.\nSeranoschinken in kleine Streifen reißen und in die Soße geben. Die Soße mit Gewürzen abschmecken.\nDen Rucolasalat waschen. Die Soße vom Herd nehmen, Rucola in die Soße werfen und umrühren.\nZur Verdauung empfiehlt sich Jägermeister."
+        },
+        {
+            "servings": 4,
+            "name": "Spaghetti Bolognese",
+            "ingredients": [
+                {
+                    "amount": 500,
+                    "ingredient": "7f28756b-9182-43fd-877a-f2fd6d2c7684"
+                },
+                {
+                    "amount": 500,
+                    "ingredient": "34a140e8-d008-4c60-be4a-68941ea18c91"
+                },
+                {
+                    "amount": 20,
+                    "ingredient": "8de478ac-ce12-4bca-bd0f-b27165cff495"
+                },
+                {
+                    "amount": 80,
+                    "ingredient": "9fd9bbc2-8e8e-4fc5-9e6b-ae3086b4e5b7"
+                },
+                {
+                    "amount": 50,
+                    "ingredient": "b144565a-6c7a-4100-a7a9-4a6a5292ffdb"
+                },
+                {
+                    "amount": 1,
+                    "ingredient": "c7dbed01-cc47-4f65-be37-514f8005a17e"
+                },
+                {
+                    "amount": 50,
+                    "ingredient": "5e172428-91a2-492c-9f74-d11e80c9bdff"
+                },
+                {
+                    "amount": 500,
+                    "ingredient": "ddc98dca-0f6e-460e-a3bb-a70ef5347804"
+                },
+                {
+                    "amount": 100,
+                    "ingredient": "4ba9a066-9bdb-45f9-a5ce-52b30f1b41e0"
+                },
+                {
+                    "amount": 50,
+                    "ingredient": "f0d01502-e3b9-40ac-badd-c8231ecffe48"
+                },
+                {
+                    "amount": 2,
+                    "ingredient": "179e8631-a7e8-4217-98b6-4982d9a44207"
+                }
+            ],
+            "id": "19688d4a-916d-48d3-b12b-e2a3768b7198",
+            "text": "Rezepttext für Spaghetti Bolognese...\nLorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        {
+            "servings": 2,
+            "name": "Caesar Salad",
+            "ingredients": [
+                {
+                    "amount": 150,
+                    "ingredient": "e27e8df5-a146-41bd-9cf5-9bda9bb9c4e9"
+                },
+                {
+                    "amount": 50,
+                    "ingredient": "8de478ac-ce12-4bca-bd0f-b27165cff495"
+                },
+                {
+                    "amount": 1,
+                    "ingredient": "23b43d50-ac0f-4624-90a5-f6312512a8bf"
+                },
+                {
+                    "amount": 1,
+                    "ingredient": "c7dbed01-cc47-4f65-be37-514f8005a17e"
+                },
+                {
+                    "amount": 300,
+                    "ingredient": "04f75a32-894a-4b67-93a7-01cdc647cf13"
+                },
+                {
+                    "amount": 200,
+                    "ingredient": "4ba9a066-9bdb-45f9-a5ce-52b30f1b41e0"
+                },
+                {
+                    "amount": 2,
+                    "ingredient": "ad1b0d00-2a92-4742-8d1c-5a388cf5f1bd"
+                },
+                {
+                    "amount": 1,
+                    "ingredient": "b4616aa0-c068-4698-bbc2-b3120286d07d"
+                }
+            ],
+            "id": "061a35ae-4ea9-4e3d-bc62-ff2ee6c11f64",
+            "text": "Hähnchen in Streifen schneiden. Pfeffern, salzen, mit etwas Öl in der Pfanne anbraten.\nEier hartkochen.\nSalat waschen und zerpflücken. Paprika, Gurke, Karotte und Zwiebel klein schneiden und mit dem Salat in eine Schüssel geben.\nJoghurt in eine Schale geben und Brühe, Kräuter, Senf, Olivenöl und Zucken hineinrühen.\nHähnchen und kleingeschnittenes Ei in den Salat mischen und mit dem Dressing übergießen."
+        }
+    ],
+    "ingredients": [
+        {
+            "measure": "Gramm",
+            "name": "Spiralnudeln",
+            "id": "4716f2a7-bf4d-4981-b24f-9f56454df46a",
+            "status": "Vegetarisch",
+            "allergens": [
+                "7db72e76-a7ed-417a-b699-f4c2234c927a",
+                "25012345-3a08-46b6-8c15-38c850b84b96"
+            ]
+        },
+        {
+            "measure": "Gramm",
+            "name": "Seranoschinken",
+            "id": "d3576858-e779-412f-b47c-eb36c171a541",
+            "status": "Enthält Fleisch",
+            "allergens": ["140ed6e6-29b9-4040-847e-940231b226e6"]
+        },
+        {
+            "measure": "Gramm",
+            "name": "Hackfleisch, gemischt",
+            "id": "ddc98dca-0f6e-460e-a3bb-a70ef5347804",
+            "status": "Enthält Fleisch",
+            "allergens": [
+                "a6bb5785-08b5-4e56-a5e3-d1531deb1638",
+                "140ed6e6-29b9-4040-847e-940231b226e6"
+            ]
+        },
+        {
+            "measure": "Stück",
+            "name": "Knochblauchzehe",
+            "id": "179e8631-a7e8-4217-98b6-4982d9a44207",
+            "status": "Vegan",
+            "allergens": []
+        },
+        {
+            "measure": "Stück",
+            "name": "Ei",
+            "id": "ad1b0d00-2a92-4742-8d1c-5a388cf5f1bd",
+            "status": "Vegetarisch",
+            "allergens": ["7db72e76-a7ed-417a-b699-f4c2234c927a"]
+        },
+        {
+            "measure": "Milliliter",
+            "name": "Tomatenmark",
+            "id": "9fd9bbc2-8e8e-4fc5-9e6b-ae3086b4e5b7",
+            "status": "Vegan",
+            "allergens": []
+        },
+        {
+            "measure": "Gramm",
+            "name": "Parmesankäse",
+            "id": "4ba9a066-9bdb-45f9-a5ce-52b30f1b41e0",
+            "status": "Vegetarisch",
+            "allergens": ["7cbfae2d-c315-4403-a013-72a21bdfbfa9"]
+        },
+        {
+            "measure": "Gramm",
+            "name": "Rucolasalat",
+            "id": "df5e3999-05ad-4750-aa64-91c22a3c9acc",
+            "status": "Vegan",
+            "allergens": []
+        },
+        {
+            "measure": "Gramm",
+            "name": "Zucker",
+            "id": "5e172428-91a2-492c-9f74-d11e80c9bdff",
+            "status": "Vegan",
+            "allergens": []
+        },
+        {
+            "measure": "Gramm",
+            "name": "Pfeffer",
+            "id": "b144565a-6c7a-4100-a7a9-4a6a5292ffdb",
+            "status": "Vegan",
+            "allergens": []
+        },
+        {
+            "measure": "Gramm",
+            "name": "Spaghetti",
+            "id": "34a140e8-d008-4c60-be4a-68941ea18c91",
+            "status": "Vegetarisch",
+            "allergens": [
+                "7db72e76-a7ed-417a-b699-f4c2234c927a",
+                "25012345-3a08-46b6-8c15-38c850b84b96"
+            ]
+        },
+        {
+            "measure": "Milliliter",
+            "name": "Joghurt",
+            "id": "e27e8df5-a146-41bd-9cf5-9bda9bb9c4e9",
+            "status": "Vegetarisch",
+            "allergens": ["6f2aac4d-1d21-4da8-9fd5-f4dce43f97fb"]
+        },
+        {
+            "measure": "Milliliter",
+            "name": "Passierte Tomaten",
+            "id": "7f28756b-9182-43fd-877a-f2fd6d2c7684",
+            "status": "Vegan",
+            "allergens": []
+        },
+        {
+            "measure": "Milliliter",
+            "name": "Sonnenblumenöl",
+            "id": "8de478ac-ce12-4bca-bd0f-b27165cff495",
+            "status": "Vegan",
+            "allergens": []
+        },
+        {
+            "measure": "Gramm",
+            "name": "Hähnchenbrustfilet",
+            "id": "04f75a32-894a-4b67-93a7-01cdc647cf13",
+            "status": "Enthält Fleisch",
+            "allergens": ["6d06d984-f1c0-41c0-8a13-e491e3f84393"]
+        },
+        {
+            "measure": "Stück",
+            "name": "Paprika",
+            "id": "23b43d50-ac0f-4624-90a5-f6312512a8bf",
+            "status": "Vegan",
+            "allergens": []
+        },
+        {
+            "measure": "Stück",
+            "name": "Gurke",
+            "id": "b4616aa0-c068-4698-bbc2-b3120286d07d",
+            "status": "Enthält Fleisch",
+            "allergens": []
+        },
+        {
+            "measure": "Stück",
+            "name": "Zwiebeln",
+            "id": "c7dbed01-cc47-4f65-be37-514f8005a17e",
+            "status": "Vegan",
+            "allergens": []
+        },
+        {
+            "measure": "Gramm",
+            "name": "Salz",
+            "id": "f0d01502-e3b9-40ac-badd-c8231ecffe48",
+            "status": "Vegan",
+            "allergens": []
+        }
+    ],
+    "allergens": [
+        {
+            "name": "Kakao",
+            "id": "e6e4f0f8-a4fa-4a16-8d25-6e19bff56ef9"
+        },
+        {
+            "name": "Glutamat",
+            "id": "a84c7691-2a8c-4871-9beb-0935f91820a7"
+        },
+        {
+            "name": "Laktose",
+            "id": "7cbfae2d-c315-4403-a013-72a21bdfbfa9"
+        },
+        {
+            "name": "Schalen- und Krebstiere",
+            "id": "6d3d69f2-8ba0-4019-aeb6-81c2ea8f004b"
+        },
+        {
+            "name": "Hülsenfrüchte/Leguminosen",
+            "id": "05b1cd95-ddca-479d-853b-ff1404b0a524"
+        },
+        {
+            "name": "Weizen (Gluten)",
+            "id": "25012345-3a08-46b6-8c15-38c850b84b96"
+        },
+        {
+            "name": "Fisch",
+            "id": "0b50dfa9-1c5c-4a87-927a-01529d13ee90"
+        },
+        {
+            "name": "Cashewnuss (Schalenfrüchte/Nüsse)",
+            "id": "949f7b79-34d4-48b1-8aa2-cb7d72b4db22"
+        },
+        {
+            "name": "Weichtiere",
+            "id": "28671e08-735d-4176-83e8-75addd4a5387"
+        },
+        {
+            "name": "Lupine",
+            "id": "d2f456c1-5762-4ee6-ae16-d5c3a4410868"
+        },
+        {
+            "name": "Soja",
+            "id": "9ac37364-9a49-401c-8556-62b56e4d884c"
+        },
+        {
+            "name": "Erdnuss",
+            "id": "105251bd-1771-46b9-b04c-f53fedef9dae"
+        },
+        {
+            "name": "Koriander",
+            "id": "9902c513-e94b-412c-9832-cd44ae916f49"
+        },
+        {
+            "name": "Schwefeloxid / Sulfide (E220 bis E228)",
+            "id": "e2d9d1db-6b39-4e72-aa94-869521a161f0"
+        },
+        {
+            "name": "Hafer (Gluten)",
+            "id": "d91d3a86-4ba2-4807-8193-2e0e89e88c11"
+        },
+        {
+            "name": "Walnuss (Schalenfrüchte/Nüsse)",
+            "id": "96dea450-ec83-4215-a649-d6ad9631bdd6"
+        },
+        {
+            "name": "Pistazie (Schalenfrüchte/Nüsse)",
+            "id": "c9da3bdb-e6ae-4e7d-85f8-44ff4d1e3915"
+        },
+        {
+            "name": "Sellerie",
+            "id": "9720b21e-0272-481f-9825-6fe6c1e68228"
+        },
+        {
+            "name": "Paranuss (Schalenfrüchte/Nüsse)",
+            "id": "b77ff34b-0b12-4b2b-b00e-1bc26afb15da"
+        },
+        {
+            "name": "Pekanuss (Schalenfrüchte/Nüsse)",
+            "id": "85ffe4cb-9549-4eda-9c5d-8168d7a1ef52"
+        },
+        {
+            "name": "Haselnuss (Schalenfrüchte/Nüsse)",
+            "id": "c07c63fd-633c-4878-8354-ebfa074ef1c7"
+        },
+        {
+            "name": "Kuhmilch",
+            "id": "6f2aac4d-1d21-4da8-9fd5-f4dce43f97fb"
+        },
+        {
+            "name": "Gerste (Gluten)",
+            "id": "62adb96b-b7e5-4e88-9862-4eccb2676ec4"
+        },
+        {
+            "name": "Sesam",
+            "id": "a62d86e9-74d7-4a1e-8c7f-b8fa5fa9f386"
+        },
+        {
+            "name": "Kamut (Gluten)",
+            "id": "fd676a85-6211-4d2e-b03d-385fc35487c1"
+        },
+        {
+            "name": "Mais",
+            "id": "08e58bb3-839e-46ff-9e2e-38de0405ce28"
+        },
+        {
+            "name": "Hühnerfleisch",
+            "id": "6d06d984-f1c0-41c0-8a13-e491e3f84393"
+        },
+        {
+            "name": "Roggen (Gluten)",
+            "id": "06bae046-8626-4b9e-9167-9248990049c4"
+        },
+        {
+            "name": "Mandel (Schalenfrüchte/Nüsse)",
+            "id": "c8d97230-f640-4570-9917-c8380abed1a7"
+        },
+        {
+            "name": "Dinkel (Gluten)",
+            "id": "cd8c97bd-2345-44f6-a816-dc5cd5d6576e"
+        },
+        {
+            "name": "Senf",
+            "id": "e677aa69-1382-4cce-9b81-18691b03c48a"
+        },
+        {
+            "name": "Macadamianuss (Schalenfrüchte/Nüsse)",
+            "id": "2fa2bdd1-ae5a-45e0-9e62-0c4366b57fea"
+        },
+        {
+            "name": "Karotte",
+            "id": "805d72b3-51bf-4547-bd6d-a805560f7c49"
+        },
+        {
+            "name": "Schweinefleisch",
+            "id": "140ed6e6-29b9-4040-847e-940231b226e6"
+        },
+        {
+            "name": "Ei",
+            "id": "7db72e76-a7ed-417a-b699-f4c2234c927a"
+        },
+        {
+            "name": "Rindfleisch",
+            "id": "a6bb5785-08b5-4e56-a5e3-d1531deb1638"
+        }
+    ]
+}
