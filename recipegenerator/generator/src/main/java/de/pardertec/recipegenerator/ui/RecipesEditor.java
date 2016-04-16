@@ -18,7 +18,7 @@ import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorder
 /**
  * Created by Thiemo on 31.01.2016.
  */
-public class RecipesEditor extends AbstactEditor {
+public class RecipesEditor extends AbstractEditor {
 
     private static final String BTN_ADD_INGREDIENT = "Zutat hinzufügen";
 

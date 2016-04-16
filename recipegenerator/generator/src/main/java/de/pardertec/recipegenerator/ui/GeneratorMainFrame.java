@@ -83,7 +83,7 @@ public class GeneratorMainFrame {
 
     public void showAllergensEditor() {
         replaceCenterComponent(allergensEditor.getEditorPanel());
-        allergensEditor.updateallergensList();
+        allergensEditor.updateAllergensList();
     }
 
     public void showIngredientsEditor() {

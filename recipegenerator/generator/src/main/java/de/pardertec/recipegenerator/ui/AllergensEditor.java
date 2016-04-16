@@ -15,7 +15,7 @@ import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBoxLay
 /**
  * Created by Thiemo on 31.01.2016.
  */
-public class AllergensEditor extends AbstactEditor {
+public class AllergensEditor extends AbstractEditor {
 
     private JList<Allergen> mainList = new JList<>(new DefaultListModel<>());
     private JPanel allergensListPanel;
@@ -48,7 +48,7 @@ public class AllergensEditor extends AbstactEditor {
 
         allergensListPanel.add(btnPanel, BorderLayout.SOUTH);
 
-        updateallergensList();
+        updateAllergensList();
 
         //Add created elements to Editor
         editorPanel = createPanelWithCustomBorderLayout();
@@ -56,7 +56,7 @@ public class AllergensEditor extends AbstactEditor {
         editorPanel.add(createEmptySidePanel(), BorderLayout.EAST);
     }
 
-    void updateallergensList() {
+    void updateAllergensList() {
         DefaultListModel<Allergen> editorListModel = new DefaultListModel<>();
         for (Allergen a : RecipeCollection.getInstance().getAllergensCopy()) {
             editorListModel.addElement(a);
@@ -103,7 +103,7 @@ public class AllergensEditor extends AbstactEditor {
                 RecipeCollection.getInstance().add(new Allergen(s));
             }
 
-            AllergensEditor.this.updateallergensList();
+            AllergensEditor.this.updateAllergensList();
         }
     }
 
@@ -116,7 +116,7 @@ public class AllergensEditor extends AbstactEditor {
         public void actionPerformed(ActionEvent e) {
             Allergen a = mainList.getSelectedValue();
             RecipeCollection.getInstance().remove(a);
-            AllergensEditor.this.updateallergensList();
+            AllergensEditor.this.updateAllergensList();
         }
     }
 }

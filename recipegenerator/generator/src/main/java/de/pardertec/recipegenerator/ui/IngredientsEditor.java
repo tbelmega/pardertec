@@ -17,7 +17,7 @@ import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorder
 /**
  * Created by Thiemo on 31.01.2016.
  */
-public class IngredientsEditor extends AbstactEditor {
+public class IngredientsEditor extends AbstractEditor {
 
 
     //Main panel (ingredient list)
