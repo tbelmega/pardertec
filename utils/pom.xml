@@ -20,7 +20,15 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <outputDirectory>../libs</outputDirectory>
+                </configuration>
+            </plugin>
         </plugins>
+
     </build>
     <dependencies>
         <dependency>
