@@ -11,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.SortedSet;
 
-import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.*;
+import static de.pardertec.recipegenerator.ui.RecipeGenerator.*;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorderLayout;
 
 /**
@@ -26,7 +26,6 @@ public class IngredientsEditor extends AbstractEditor {
     private Button btnNew = new Button(BTN_NEW);
     private Button btnDelete = new Button(BTN_DELETE);
     private JPanel btnPanel = new JPanel();
-    private JPanel editorPanel = new JPanel();
 
     //Right panel (ingredient details)
     private JPanel ingredientDetailPanel;
@@ -115,10 +114,6 @@ public class IngredientsEditor extends AbstractEditor {
         measureBox.setSelectedItem(ingredient.getMeasure());
 
         updateAllergensList(ingredient);
-    }
-
-    public Component getEditorPanel() {
-        return editorPanel;
     }
 
     private void createScrollbar(JList list) {

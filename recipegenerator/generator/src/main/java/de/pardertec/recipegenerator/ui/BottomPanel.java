@@ -19,14 +19,17 @@ public class BottomPanel {
     public static final String BUTTON_CLOSE = "Schließen";
     public static final String BUTTON_EXPORT = "Export";
     public static final String BUTTON_IMPORT = "Import";
+    public static final String CLOSE_DIALOG_TITLE = "Warnung";
+    public static final String CLOSE_DIALOG_MESSAGE = "Programm schließen?";
 
     private final JPanel panel;
     private final JFrame owner;
 
     private JFileChooser fileChooser = new JFileChooser();
     private File executionDirectory = new File("").getAbsoluteFile();
-    private Button btnImport;
-    private Button btnExport;
+    private JButton btnImport;
+    private JButton btnExport;
+    private JButton btnClose;
 
     public BottomPanel(JFrame owner, Dimension size){
         this.owner = owner;
@@ -39,30 +42,18 @@ public class BottomPanel {
     }
 
     private void addButtons() {
-        btnImport = new Button(BUTTON_IMPORT);
+        btnImport = new JButton(BUTTON_IMPORT);
         btnImport.addActionListener(new ImportRecipesAction());
         this.panel.add(btnImport);
 
-        btnExport = new Button(BUTTON_EXPORT);
+        btnExport = new JButton(BUTTON_EXPORT);
         btnExport.addActionListener(new ExportRecipesAction());
         this.panel.add(btnExport);
 
+        btnClose = new JButton(BUTTON_CLOSE);
+        btnClose.addActionListener(new CloseAction());
+        this.panel.add(btnClose);
 
-        addCloseButton(this.owner, panel);
-    }
-
-    private static void addCloseButton(final JFrame frameToClose, JPanel container) {
-        Button btn_close = new Button(BUTTON_CLOSE);
-        container.add(btn_close);
-
-        btn_close.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                int dialogResult = JOptionPane.showConfirmDialog(frameToClose, "Programm schließen?", "Warnung", JOptionPane.YES_NO_OPTION);
-                if (dialogResult == JOptionPane.YES_OPTION) frameToClose.dispose();
-            }
-        });
     }
 
     public JPanel getPanel() {
@@ -73,7 +64,19 @@ public class BottomPanel {
         new ImportRecipesAction().actionPerformed(new ActionEvent(btnImport, 0, null));
     }
 
-    class ExportRecipesAction implements ActionListener {
+    private class CloseAction implements ActionListener {
+        public void actionPerformed(ActionEvent e)
+        {
+            int dialogResult = JOptionPane.showConfirmDialog(BottomPanel.this.owner,
+                    CLOSE_DIALOG_MESSAGE,
+                    CLOSE_DIALOG_TITLE,
+                    JOptionPane.YES_NO_OPTION);
+            if (dialogResult == JOptionPane.YES_OPTION) BottomPanel.this.owner.dispose();
+        }
+    }
+
+
+    private class ExportRecipesAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             fileChooser.setCurrentDirectory(executionDirectory);
@@ -86,7 +89,6 @@ public class BottomPanel {
         }
 
         private void exportRecipes(File f) {
-            //File f =
             String s = RecipeCollection.getInstance().toJson().toString(4);
 
             try {
@@ -98,7 +100,7 @@ public class BottomPanel {
         }
     }
 
-    class ImportRecipesAction implements ActionListener {
+    private class ImportRecipesAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             fileChooser.setCurrentDirectory(executionDirectory);

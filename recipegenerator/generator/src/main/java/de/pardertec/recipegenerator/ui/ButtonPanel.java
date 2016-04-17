@@ -15,9 +15,9 @@ public class ButtonPanel {
     public static final String BUTTON_MANAGE_ALLERGENS = "Allergene verwalten";
 
     private final JPanel panel;
-    private final GeneratorMainFrame owner;
+    private final RecipeGenerator owner;
 
-    public  ButtonPanel(GeneratorMainFrame owner, Dimension size){
+    public  ButtonPanel(RecipeGenerator owner, Dimension size){
         this.owner = owner;
 
         this.panel = UiUtil.createPanelWithCustomBoxLayout();
@@ -28,19 +28,19 @@ public class ButtonPanel {
     }
 
     private void addButtons() {
-        Button btnRecipes = new Button(BUTTON_MANAGE_RECIPES);
+        JButton btnRecipes = new JButton(BUTTON_MANAGE_RECIPES);
         btnRecipes.addActionListener(new ShowRecipesEditorAction());
         this.panel.add(btnRecipes);
 
         this.panel.add(new JPanel());
 
-        Button btnIngredients = new Button(BUTTON_MANAGE_INGREDIENTS);
+        JButton btnIngredients = new JButton(BUTTON_MANAGE_INGREDIENTS);
         btnIngredients.addActionListener(new ShowIngredientsEditorAction());
         this.panel.add(btnIngredients);
 
         this.panel.add(new JPanel());
 
-        Button btnAllergens = new Button(BUTTON_MANAGE_ALLERGENS);
+        JButton btnAllergens = new JButton(BUTTON_MANAGE_ALLERGENS);
         btnAllergens.addActionListener(new ShowAllergensEditorAction());
         this.panel.add(btnAllergens);
     }

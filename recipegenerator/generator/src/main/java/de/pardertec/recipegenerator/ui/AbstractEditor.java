@@ -1,6 +1,7 @@
 package de.pardertec.recipegenerator.ui;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Thiemo on 12.04.2016.
@@ -8,6 +9,8 @@ import javax.swing.*;
 public abstract class AbstractEditor {
     public static final String BTN_NEW = "Neu";
     public static final String BTN_DELETE = "Löschen";
+
+    protected JPanel editorPanel = new JPanel();
 
     protected void selectFirstEntry(JList<?> list) {
         try {
@@ -17,4 +20,9 @@ public abstract class AbstractEditor {
 
         }
     }
+
+    public Container getEditorPanel() {
+        return editorPanel;
+    }
+
 }

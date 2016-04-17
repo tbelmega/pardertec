@@ -12,7 +12,7 @@ import java.awt.event.*;
 import java.util.Map;
 import java.util.Set;
 
-import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.*;
+import static de.pardertec.recipegenerator.ui.RecipeGenerator.*;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorderLayout;
 
 /**
@@ -143,7 +143,7 @@ public class RecipesEditor extends AbstractEditor {
 
 
 
-    public Component getEditorPanel() {
+    public Container getEditorPanel() {
         return editorPanel;
     }
 

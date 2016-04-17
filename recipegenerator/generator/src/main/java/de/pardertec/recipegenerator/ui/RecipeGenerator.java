@@ -9,7 +9,7 @@ import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorder
 /**
  * Created by Thiemo on 27.01.2016.
  */
-public class GeneratorMainFrame {
+public class RecipeGenerator {
 
 
     public static final String HEADLINE_RECIPE_GENERATOR = "PARDERTEC™ RecipeGenerator";
@@ -39,14 +39,15 @@ public class GeneratorMainFrame {
     private IngredientsEditor ingredientsEditor;
     private RecipesEditor recipesEditor;
     private BottomPanel bottomPanel;
+    private AbstractEditor activeEditor;
 
     public static void main(String[] args) {
-        GeneratorMainFrame main = new GeneratorMainFrame();
+        RecipeGenerator main = new RecipeGenerator();
         main.initializeFrame();
         main.bottomPanel.showImportDialog();
     }
 
-    public GeneratorMainFrame(){
+    public RecipeGenerator(){
         this.allergensEditor = new AllergensEditor();
         this.ingredientsEditor = new IngredientsEditor();
         this.recipesEditor = new RecipesEditor();
@@ -81,27 +82,33 @@ public class GeneratorMainFrame {
         mainFrame.setVisible(true);
     }
 
-    public void showAllergensEditor() {
-        replaceCenterComponent(allergensEditor.getEditorPanel());
+    void showAllergensEditor() {
+        replaceCenterComponent(allergensEditor);
         allergensEditor.updateAllergensList();
     }
 
-    public void showIngredientsEditor() {
-        replaceCenterComponent(ingredientsEditor.getEditorPanel());
+    void showIngredientsEditor() {
+        replaceCenterComponent(ingredientsEditor);
         ingredientsEditor.updateIngredientsList();
     }
 
-    public void showRecipesEditor() {
-        replaceCenterComponent(recipesEditor.getEditorPanel());
+    void showRecipesEditor() {
+        replaceCenterComponent(recipesEditor);
         recipesEditor.updateRecipeList();
     }
 
-    private void replaceCenterComponent(Component newComponent) {
+    private void replaceCenterComponent(AbstractEditor editor) {
+        activeEditor = editor;
+
         Component centerComponent = contentPaneLayout.getLayoutComponent(BorderLayout.CENTER);
         if (centerComponent != null)
             contentPane.remove(centerComponent);
-        contentPane.add(newComponent, BorderLayout.CENTER);
+        contentPane.add(activeEditor.getEditorPanel(), BorderLayout.CENTER);
         mainFrame.pack();
         mainFrame.repaint();
+    }
+
+    public Class<? extends AbstractEditor>  getActiveEditorClass() {
+        return activeEditor.getClass();
     }
 }

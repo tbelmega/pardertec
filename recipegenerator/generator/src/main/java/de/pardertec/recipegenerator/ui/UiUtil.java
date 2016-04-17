@@ -13,8 +13,8 @@ public class UiUtil {
     public static JPanel createPanelWithCustomGridLayout(int rows, int columns) {
         JPanel buttonPanel = new JPanel();
         GridLayout gridLayout = new GridLayout(rows, columns);
-        gridLayout.setHgap(GeneratorMainFrame.GAP_BETWEEN_COMPONENTS);
-        gridLayout.setVgap(GeneratorMainFrame.GAP_BETWEEN_COMPONENTS);
+        gridLayout.setHgap(RecipeGenerator.GAP_BETWEEN_COMPONENTS);
+        gridLayout.setVgap(RecipeGenerator.GAP_BETWEEN_COMPONENTS);
         buttonPanel.setLayout(gridLayout);
         buttonPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
         return buttonPanel;
@@ -22,8 +22,8 @@ public class UiUtil {
 
     public static JPanel createPanelWithCustomBorderLayout() {
         BorderLayout layout = new BorderLayout();
-        layout.setHgap(GeneratorMainFrame.GAP_BETWEEN_COMPONENTS);
-        layout.setVgap(GeneratorMainFrame.GAP_BETWEEN_COMPONENTS);
+        layout.setHgap(RecipeGenerator.GAP_BETWEEN_COMPONENTS);
+        layout.setVgap(RecipeGenerator.GAP_BETWEEN_COMPONENTS);
         JPanel panel = new JPanel(layout);
         panel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
         return panel;

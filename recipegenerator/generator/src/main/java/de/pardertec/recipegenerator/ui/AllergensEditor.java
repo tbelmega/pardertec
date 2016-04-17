@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static de.pardertec.recipegenerator.ui.GeneratorMainFrame.*;
+import static de.pardertec.recipegenerator.ui.RecipeGenerator.*;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorderLayout;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBoxLayout;
 
@@ -22,7 +22,6 @@ public class AllergensEditor extends AbstractEditor {
     private Button btnNew = new Button(BTN_NEW);
     private Button btnDelete = new Button(BTN_DELETE);
     private JPanel btnPanel = new JPanel();
-    private JPanel editorPanel;
 
     public AllergensEditor() {
         createEditorPanel();
@@ -67,10 +66,6 @@ public class AllergensEditor extends AbstractEditor {
 
     private ActionListener createListenerForNewButton() {
         return new AddAllergenAction();
-    }
-
-    public Component getEditorPanel() {
-        return editorPanel;
     }
 
     private void createScrollbar(JList list) {
