@@ -148,8 +148,26 @@ public class IngredientsEditor extends AbstractEditor {
                     null,
                     "");
 
+            Measure m = (Measure) JOptionPane.showInputDialog(
+                    IngredientsEditor.this.editorPanel,
+                    "Maßeinheit auswählen",
+                    "Neue Zutat",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    Measure.values(),
+                    "");
+
+            VeganismStatus v = (VeganismStatus) JOptionPane.showInputDialog(
+                    IngredientsEditor.this.editorPanel,
+                    "Status auswählen",
+                    "Neue Zutat",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    VeganismStatus.values(),
+                    "");
+
             if ((s != null) && (s.length() > 0)) {
-                RecipeCollection.getInstance().add(new Ingredient(s, Measure.GRAMS, VeganismStatus.CONTAINS_MEAT));
+                RecipeCollection.getInstance().add(new Ingredient(s, m, v));
             }
 
             IngredientsEditor.this.updateIngredientsList();

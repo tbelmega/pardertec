@@ -131,4 +131,9 @@ public class Recipe extends BusinessObject  {
 
         return r;
     }
+
+    @Override
+    protected int compareInstancesWithSameName(BusinessObject o) {
+        return id.compareTo(o.id);
+    }
 }

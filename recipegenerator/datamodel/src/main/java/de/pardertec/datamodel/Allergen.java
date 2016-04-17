@@ -19,6 +19,8 @@ public class Allergen extends BusinessObject {
         super(uuid, name);
     }
 
+
+
     public boolean equals(Object obj) {
         if (obj == null) { return false; }
         if (obj == this) { return true; }
@@ -42,4 +44,11 @@ public class Allergen extends BusinessObject {
         String id = jsonObject.getString(JSON_KEY_ID);
         return new Allergen(UUID.fromString(id), name);
     }
+
+    @Override
+    protected int compareInstancesWithSameName(BusinessObject o) {
+        return id.compareTo(o.id);
+    }
+
+
 }

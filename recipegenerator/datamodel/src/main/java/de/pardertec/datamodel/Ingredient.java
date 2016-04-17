@@ -129,4 +129,18 @@ public class Ingredient extends BusinessObject {
     public String toString() {
         return this.name + ", " + this.measure + " ";
     }
+
+
+
+    @Override
+    protected int compareInstancesWithSameName(BusinessObject o) {
+        Ingredient i = (Ingredient) o;
+        int compareMeasure = measure.compareTo(i.getMeasure());
+        if (compareMeasure == 0) {
+            int compareStatus = status.compareTo(i.getStatus());
+            if ( compareStatus == 0 ) {
+                return id.compareTo(o.id);
+            } else return compareStatus;
+        } else return compareMeasure;
+    }
 }

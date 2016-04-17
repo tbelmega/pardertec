@@ -46,8 +46,13 @@ public abstract class BusinessObject implements Comparable<BusinessObject> {
         return name;
     }
 
-    @Override
     public int compareTo(BusinessObject o) {
-        return this.name.compareTo(o.name);
+        int compareNames = name.compareTo(o.name);
+        if (compareNames == 0 && this.getClass() == o.getClass()) {
+            return compareInstancesWithSameName(o);
+        } else return  compareNames;
     }
+
+    protected abstract int compareInstancesWithSameName(BusinessObject o);
+
 }
