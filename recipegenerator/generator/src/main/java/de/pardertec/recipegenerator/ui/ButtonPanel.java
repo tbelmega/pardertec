@@ -1,9 +1,12 @@
 package de.pardertec.recipegenerator.ui;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static de.pardertec.recipegenerator.ui.RecipeGenerator.RESOLUTION_BASE;
 
 /**
  * Created by Thiemo on 31.01.2016.
@@ -14,13 +17,16 @@ public class ButtonPanel {
     public static final String BUTTON_MANAGE_INGREDIENTS = "Zutaten verwalten";
     public static final String BUTTON_MANAGE_ALLERGENS = "Allergene verwalten";
 
-    private final JPanel panel;
+    public static final Dimension BUTTON_DIMENSION = new Dimension(RESOLUTION_BASE * 3, RESOLUTION_BASE);
+
+    private final JPanel panel = new JPanel();
     private final RecipeGenerator owner;
 
     public  ButtonPanel(RecipeGenerator owner, Dimension size){
         this.owner = owner;
 
-        this.panel = UiUtil.createPanelWithCustomBoxLayout();
+        BoxLayout layout = new BoxLayout(this.panel, BoxLayout.LINE_AXIS);
+        this.panel.setLayout(layout);
         this.panel.setBorder(BorderFactory.createEmptyBorder());
         this.panel.setPreferredSize(size);
         this.panel.setMaximumSize(size);
@@ -30,18 +36,21 @@ public class ButtonPanel {
     private void addButtons() {
         JButton btnRecipes = new JButton(BUTTON_MANAGE_RECIPES);
         btnRecipes.addActionListener(new ShowRecipesEditorAction());
+        btnRecipes.setPreferredSize(BUTTON_DIMENSION);
         this.panel.add(btnRecipes);
 
         this.panel.add(new JPanel());
 
         JButton btnIngredients = new JButton(BUTTON_MANAGE_INGREDIENTS);
         btnIngredients.addActionListener(new ShowIngredientsEditorAction());
+        btnIngredients.setPreferredSize(BUTTON_DIMENSION);
         this.panel.add(btnIngredients);
 
         this.panel.add(new JPanel());
 
         JButton btnAllergens = new JButton(BUTTON_MANAGE_ALLERGENS);
         btnAllergens.addActionListener(new ShowAllergensEditorAction());
+        btnAllergens.setPreferredSize(BUTTON_DIMENSION);
         this.panel.add(btnAllergens);
     }
 

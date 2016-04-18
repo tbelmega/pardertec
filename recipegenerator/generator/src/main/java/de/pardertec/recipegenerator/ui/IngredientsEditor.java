@@ -23,8 +23,6 @@ public class IngredientsEditor extends AbstractEditor {
     //Main panel (ingredient list)
     private JPanel ingredientsListPanel;
     private JList<Ingredient> ingredientsList = new JList(new DefaultListModel<>());
-    private Button btnNew = new Button(BTN_NEW);
-    private Button btnDelete = new Button(BTN_DELETE);
     private JPanel btnPanel = new JPanel();
 
     //Right panel (ingredient details)
@@ -47,12 +45,12 @@ public class IngredientsEditor extends AbstractEditor {
         ingredientsListPanel.add(ingredientsList, BorderLayout.CENTER);
 
         //Button "New"
-        btnNew.setMaximumSize(BUTTON_DIMENSION);
+        //btnNew.setMaximumSize(BUTTON_DIMENSION);
         btnNew.addActionListener(new AddIngredientAction());
         btnPanel.add(btnNew);
 
         //Button "Delete"
-        btnDelete.setMaximumSize(BUTTON_DIMENSION);
+        //btnDelete.setMaximumSize(BUTTON_DIMENSION);
         btnDelete.addActionListener(new DeleteIngredientAction());
         btnPanel.add(btnDelete);
 

@@ -4,13 +4,13 @@ import de.pardertec.datamodel.*;
 
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static de.pardertec.recipegenerator.ui.RecipeGenerator.*;
 import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorderLayout;
-import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBoxLayout;
 
 /**
  * Created by Thiemo on 31.01.2016.
@@ -19,8 +19,6 @@ public class AllergensEditor extends AbstractEditor {
 
     private JList<Allergen> mainList = new JList<>(new DefaultListModel<>());
     private JPanel allergensListPanel;
-    private Button btnNew = new Button(BTN_NEW);
-    private Button btnDelete = new Button(BTN_DELETE);
     private JPanel btnPanel = new JPanel();
 
     public AllergensEditor() {
@@ -74,7 +72,9 @@ public class AllergensEditor extends AbstractEditor {
     }
 
     private JPanel createEmptySidePanel() {
-        JPanel emptyPanel = createPanelWithCustomBoxLayout();
+        JPanel emptyPanel = new JPanel();
+        BoxLayout layout = new BoxLayout(emptyPanel, BoxLayout.PAGE_AXIS);
+        emptyPanel.setLayout(layout);
         emptyPanel.setPreferredSize(new Dimension(COLUMN_WIDTH, RESOLUTION_BASE * 6));
         emptyPanel.setBorder(BorderFactory.createEmptyBorder());
         return emptyPanel;

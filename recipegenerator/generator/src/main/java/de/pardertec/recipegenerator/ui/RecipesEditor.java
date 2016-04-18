@@ -25,9 +25,7 @@ public class RecipesEditor extends AbstractEditor {
     //Main panel (reciepe list)
     private JPanel recipesListPanel;
     private JList<Recipe> recipeList = new JList<>(new DefaultListModel<>());
-    private Button btnNew = new Button(BTN_NEW);
-    private Button btnDelete = new Button(BTN_DELETE);
-    private Button btnAddIngredient = new Button(BTN_ADD_INGREDIENT);
+    private JButton btnAddIngredient = new JButton(BTN_ADD_INGREDIENT);
     private JPanel btnPanel = new JPanel();
 
     protected JPanel editorPanel = new JPanel();

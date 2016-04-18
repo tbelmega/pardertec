@@ -1,7 +1,6 @@
 package de.pardertec.recipegenerator.ui;
 
-import de.pardertec.datamodel.*;
-
+import de.pardertec.datamodel.RecipeCollection;
 import de.pardertec.util.FileUtil;
 
 import javax.swing.*;
@@ -22,7 +21,7 @@ public class BottomPanel {
     public static final String CLOSE_DIALOG_TITLE = "Warnung";
     public static final String CLOSE_DIALOG_MESSAGE = "Programm schließen?";
 
-    private final JPanel panel;
+    private final JPanel panel = new JPanel();
     private final JFrame owner;
 
     private JFileChooser fileChooser = new JFileChooser();
@@ -33,8 +32,12 @@ public class BottomPanel {
 
     public BottomPanel(JFrame owner, Dimension size){
         this.owner = owner;
-        this.panel = UiUtil.createPanelWithCustomGridLayout(1, 0);
 
+        GridLayout gridLayout = new GridLayout(1, 0);
+        gridLayout.setHgap(RecipeGenerator.GAP_BETWEEN_COMPONENTS);
+        gridLayout.setVgap(RecipeGenerator.GAP_BETWEEN_COMPONENTS);
+        this.panel.setLayout(gridLayout);
+        this.panel.setBorder(BorderFactory.createEmptyBorder());
         this.panel.setPreferredSize(size);
         this.panel.setMaximumSize(size);
 
