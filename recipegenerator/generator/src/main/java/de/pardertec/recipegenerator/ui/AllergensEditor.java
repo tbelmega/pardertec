@@ -4,7 +4,6 @@ import de.pardertec.datamodel.*;
 
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +15,8 @@ import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorder
  * Created by Thiemo on 31.01.2016.
  */
 public class AllergensEditor extends AbstractEditor {
+
+    public static final String ALLERGENS_LIST_NAME = "AllergensList";
 
     private JList<Allergen> mainList = new JList<>(new DefaultListModel<>());
     private JPanel allergensListPanel;
@@ -33,7 +34,9 @@ public class AllergensEditor extends AbstractEditor {
 
         //Center list for allergens
         createScrollbar(mainList);
+        mainList.setName(ALLERGENS_LIST_NAME);
         allergensListPanel.add(mainList, BorderLayout.CENTER);
+
 
         //Button "New"
         btnNew.addActionListener(createListenerForNewButton());
@@ -85,14 +88,11 @@ public class AllergensEditor extends AbstractEditor {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            String s = (String) JOptionPane.showInputDialog(
+            String s = JOptionPane.showInputDialog(
                     AllergensEditor.this.editorPanel,
                     "Bezeichnung eingeben",
                     "Neues Allergen",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    null,
-                    "");
+                    JOptionPane.PLAIN_MESSAGE);
 
             if ((s != null) && (s.length() > 0)) {
                 RecipeCollection.getInstance().add(new Allergen(s));

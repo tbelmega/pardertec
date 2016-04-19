@@ -20,7 +20,7 @@ public class NavigationTest {
 
 
     @BeforeMethod
-    public void setUp() throws AWTException {
+    public void setUp() {
         recipeGenerator = new RecipeGenerator();
         recipeGenerator.initializeFrame();
         mainFrame = recipeGenerator.mainFrame;
