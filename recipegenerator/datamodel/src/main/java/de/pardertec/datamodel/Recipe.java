@@ -5,24 +5,28 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by Thiemo on 27.01.2016.
  */
 public class Recipe extends BusinessObject  {
 
+    public static final String JSON_KEY_DIFFICULTY = "difficulty";
+    public static final String JSON_KEY_DURATION = "duration";
     public static final String JSON_KEY_SERVINGS = "servings";
     public static final String JSON_KEY_TEXT = "text";
     public static final String JSON_KEY_INGREDIENTS = "ingredients";
+    public static final String JSON_KEY_STEPS = "steps";
     public static final String JSON_KEY_INGREDIENT = "ingredient";
     public static final String JSON_KEY_AMOUNT = "amount";
 
     private Map<Ingredient, Integer> ingredients = new HashMap<>();
     private int servings;
     private String text;
+    private List<RecipeStep> steps = new LinkedList<>();
+    private int duration = 0;
+    private Difficulty difficulty = Difficulty.UNKNOWN;
 
     public Recipe(String name) {
         super(name);
@@ -62,12 +66,70 @@ public class Recipe extends BusinessObject  {
         return text;
     }
 
+
+    public RecipeStep getStep(int numberOfStep) {
+        return this.steps.get(numberOfStep);
+    }
+
+    public void insertStep(int position, String stepText) {
+        this.steps.add(position, new RecipeStep(stepText));
+    }
+
+    public int getStepCount() {
+        return this.steps.size();
+    }
+
+    public void removeStep(int i) {
+        this.steps.remove(i);
+    }
+
+    public void addStep(RecipeStep step) {
+        this.steps.add(step);
+    }
+
+    public void addStep(int position, RecipeStep step) {
+        this.steps.add(position, step);
+    }
+
+    public List<RecipeStep> getStepsCopy() {
+        return new LinkedList(this.steps);
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public int getDuration() {
+        return this.duration;
+    }
+
+    public Difficulty getDifficulty() {
+        return this.difficulty;
+    }
+
+
     public JSONObject toJson(){
         JSONObject jsonRepresentation = super.toJson();
         jsonRepresentation.put(JSON_KEY_TEXT, this.text);
         jsonRepresentation.put(JSON_KEY_SERVINGS, this.servings);
+        jsonRepresentation.put(JSON_KEY_DURATION, this.duration);
+        jsonRepresentation.put(JSON_KEY_DIFFICULTY, this.difficulty);
         jsonRepresentation.put(JSON_KEY_INGREDIENTS, createIngredientsRepresentation());
+        jsonRepresentation.put(JSON_KEY_STEPS, createStepsRepresentation());
         return jsonRepresentation;
+    }
+
+    private JSONArray createStepsRepresentation() {
+        JSONArray steps = new JSONArray();
+        for (int i = 0; i < this.steps.size(); i++) {
+            RecipeStep s = this.steps.get(i);
+            steps.put(i, s.toJson());
+        }
+        return steps;
     }
 
     private JSONArray createIngredientsRepresentation() {
@@ -106,18 +168,23 @@ public class Recipe extends BusinessObject  {
                 toHashCode();
     }
 
-    public static Recipe fromJSON(JSONObject jsonObject) {
-        String name = jsonObject.getString(JSON_KEY_NAME);
-        String id = jsonObject.getString(JSON_KEY_ID);
-        String text = jsonObject.getString(JSON_KEY_TEXT);
-        int servings = jsonObject.getInt(JSON_KEY_SERVINGS);
-        JSONArray ingredients = jsonObject.getJSONArray(JSON_KEY_INGREDIENTS);
+    public static Recipe fromJSON(JSONObject recipeRepresentation) {
+        Recipe r = createRecipeFromRequiredValues(recipeRepresentation);
+        setOptionalValues(recipeRepresentation, r);
+        setIngredients(recipeRepresentation, r);
+        setSteps(recipeRepresentation, r);
+        return r;
+    }
 
-        Recipe r = new Recipe(UUID.fromString(id),
-                name,
-                text,
-                servings);
+    private static void setSteps(JSONObject recipe, Recipe r) {
+        JSONArray steps = recipe.getJSONArray(JSON_KEY_STEPS);
+        for (int i = 0; i < steps.length(); i++) {
+            r.addStep(i, RecipeStep.fromJson(steps.getJSONObject(i)));
+        }
+    }
 
+    private static void setIngredients(JSONObject recipe, Recipe r) {
+        JSONArray ingredients = recipe.getJSONArray(JSON_KEY_INGREDIENTS);
         for (int j = 0; j < ingredients.length(); j++) {
             JSONObject ingredient = ingredients.getJSONObject(j);
 
@@ -128,12 +195,37 @@ public class Recipe extends BusinessObject  {
             Ingredient i = RecipeCollection.getIngredient(UUID.fromString(ingredientId));
             r.setIngredientWithAmount(i, amount);
         }
+    }
 
-        return r;
+    private static void setOptionalValues(JSONObject recipe, Recipe r) {
+        int duration = recipe.getInt(JSON_KEY_DURATION);
+        r.setDuration(duration);
+        Difficulty difficulty = recipe.getEnum(Difficulty.class, JSON_KEY_DIFFICULTY);
+        r.setDifficulty(difficulty);
+    }
+
+    private static Recipe createRecipeFromRequiredValues(JSONObject recipe) {
+        String name = recipe.getString(JSON_KEY_NAME);
+        String id = recipe.getString(JSON_KEY_ID);
+        String text = recipe.getString(JSON_KEY_TEXT);
+        int servings = recipe.getInt(JSON_KEY_SERVINGS);
+
+        return new Recipe(UUID.fromString(id),
+                name,
+                text,
+                servings);
     }
 
     @Override
     protected int compareInstancesWithSameName(BusinessObject o) {
         return id.compareTo(o.id);
     }
+
+    public void addStep(String stepText) {
+        this.steps.add(new RecipeStep(stepText));
+    }
+    public void addStep(int position, String stepText) {
+        this.steps.add(position, new RecipeStep(stepText));
+    }
+
 }

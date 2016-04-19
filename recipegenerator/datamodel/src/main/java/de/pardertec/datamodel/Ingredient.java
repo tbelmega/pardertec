@@ -90,8 +90,8 @@ public class Ingredient extends BusinessObject {
 
     public JSONObject toJson() {
         JSONObject jsonRepresentation = super.toJson();
-        jsonRepresentation.put(JSON_KEY_MEASURE, this.measure.toString());
-        jsonRepresentation.put(JSON_KEY_STATUS, this.status.toString());
+        jsonRepresentation.put(JSON_KEY_MEASURE, this.measure);
+        jsonRepresentation.put(JSON_KEY_STATUS, this.status);
         jsonRepresentation.put(JSON_KEY_ALLERGENS, createAllergensRepresentation());
 
         return jsonRepresentation;
@@ -108,14 +108,12 @@ public class Ingredient extends BusinessObject {
     public static Ingredient fromJSON(JSONObject jsonObject) {
         String name = jsonObject.getString(JSON_KEY_NAME);
         String id = jsonObject.getString(JSON_KEY_ID);
-        String measure = jsonObject.getString(JSON_KEY_MEASURE);
-        String status = jsonObject.getString(JSON_KEY_STATUS);
+        Measure measure = jsonObject.getEnum(Measure.class, JSON_KEY_MEASURE);
+        VeganismStatus status = jsonObject.getEnum(VeganismStatus.class, JSON_KEY_STATUS);
         JSONArray allergens = jsonObject.getJSONArray(JSON_KEY_ALLERGENS);
 
         Ingredient i = new Ingredient(UUID.fromString(id),
-                name,
-                Measure.getEnum(measure),
-                VeganismStatus.getEnum(status));
+                name, measure, status);
 
         for (int j = 0; j < allergens.length(); j++) {
             String allergenId = allergens.getString(j);
