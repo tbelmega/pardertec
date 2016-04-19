@@ -53,6 +53,14 @@ public class RecipeCollection {
         return getInstance().recipes.values().contains(myRecipe);
     }
 
+    public static boolean contains(Ingredient myIngredient) {
+        return getInstance().ingredients.values().contains(myIngredient);
+    }
+
+    public static boolean contains(Allergen myAllergen) {
+        return getInstance().allergens.values().contains(myAllergen);
+    }
+
     /**
      * This method creates a JSON representation of the RecipeCollection, including all recipes/ingredients/allergens
      */
@@ -105,8 +113,8 @@ public class RecipeCollection {
     /**
      * @return a new copy of the recipes set
      */
-    public SortedSet<Recipe> getRecipesCopy() {
-        return new TreeSet<>(recipes.values());
+    public static SortedSet<Recipe> getRecipesCopy() {
+        return new TreeSet<>(getInstance().recipes.values());
     }
 
     public static void remove(Allergen a) {

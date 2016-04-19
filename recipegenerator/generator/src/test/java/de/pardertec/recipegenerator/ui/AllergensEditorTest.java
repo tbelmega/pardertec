@@ -33,7 +33,7 @@ public class AllergensEditorTest extends AbstractRecipeGeneratorTest {
 
         //assert
         Allergen a = list.getModel().getElementAt(0);
-        RecipeCollection.getInstance().remove(a);
+        RecipeCollection.remove(a);
         assertEquals("First list entry should be the added allergen now.",
                 "Lactose", a.getName());
     }

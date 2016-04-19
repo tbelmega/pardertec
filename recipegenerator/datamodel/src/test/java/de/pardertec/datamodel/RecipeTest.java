@@ -49,7 +49,7 @@ public class RecipeTest {
         assertEquals(RECIPE_TEXT, recipeAsJson.getString(Recipe.JSON_KEY_TEXT));
         assertEquals(NUMBER_OF_SERVINGS, recipeAsJson.getInt(Recipe.JSON_KEY_SERVINGS));
         assertEquals(DURATION_IN_MINUTES, recipeAsJson.getInt(Recipe.JSON_KEY_DURATION));
-        assertEquals(Difficulty.EASY, recipeAsJson.getEnum(Difficulty.class, Recipe.JSON_KEY_DIFFICULTY));
+        assertEquals(Difficulty.EASY.toString(), recipeAsJson.getString(Recipe.JSON_KEY_DIFFICULTY));
     }
 
     @Test

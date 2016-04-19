@@ -22,8 +22,8 @@ public class Recipe extends BusinessObject  {
     public static final String JSON_KEY_AMOUNT = "amount";
 
     private Map<Ingredient, Integer> ingredients = new HashMap<>();
-    private int servings;
-    private String text;
+    private int servings = 0;
+    private String text = "";
     private List<RecipeStep> steps = new LinkedList<>();
     private int duration = 0;
     private Difficulty difficulty = Difficulty.UNKNOWN;

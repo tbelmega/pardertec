@@ -26,7 +26,6 @@ public class RecipeGenerator {
 
     public static final Dimension NORTHERN_PANEL_SIZE = new Dimension(MAIN_WINDOW_WIDTH, RESOLUTION_BASE / 2);
     public static final Dimension SOUTHERN_PANEL_SIZE = new Dimension(MAIN_WINDOW_WIDTH, RESOLUTION_BASE / 2);
-    public static final Dimension WESTERN_PANEL_SIZE = new Dimension((int) (RESOLUTION_BASE * 1.5), RESOLUTION_BASE * 6);
     public static final Dimension SCROLLER_SIZE = new Dimension(RESOLUTION_BASE / 2, RESOLUTION_BASE * 5);
 
 
@@ -60,9 +59,6 @@ public class RecipeGenerator {
     }
 
     private void initializeContent() {
-//        JPanel topPanel = new JPanel();
-//        topPanel.setPreferredSize(NORTHERN_PANEL_SIZE);
-//        contentPane.add(topPanel, BorderLayout.NORTH);
         contentPane.add(new ButtonPanel(this, NORTHERN_PANEL_SIZE).getPanel(), BorderLayout.NORTH);
         bottomPanel = new BottomPanel(mainFrame, SOUTHERN_PANEL_SIZE);
         contentPane.add(bottomPanel.getPanel(), BorderLayout.SOUTH);

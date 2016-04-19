@@ -100,7 +100,7 @@ public class IngredientsEditor extends AbstractEditor {
     void updateIngredientsList() {
         DefaultListModel<Ingredient> ingredientListModel = new DefaultListModel<>();
 
-        for (Ingredient i : RecipeCollection.getInstance().getIngredientsCopy()) {
+        for (Ingredient i : RecipeCollection.getIngredientsCopy()) {
             ingredientListModel.addElement(i);
         }
         ingredientsList.setModel(ingredientListModel);
@@ -123,7 +123,7 @@ public class IngredientsEditor extends AbstractEditor {
         @Override
         public void actionPerformed(ActionEvent e) {
             Ingredient i = ingredientsList.getSelectedValue();
-            RecipeCollection.getInstance().remove(i);
+            RecipeCollection.remove(i);
             IngredientsEditor.this.updateIngredientsList();
         }
     }
@@ -160,7 +160,7 @@ public class IngredientsEditor extends AbstractEditor {
                     "");
 
             if ((s != null) && (s.length() > 0)) {
-                RecipeCollection.getInstance().add(new Ingredient(s, m, v));
+                RecipeCollection.add(new Ingredient(s, m, v));
             }
 
             IngredientsEditor.this.updateIngredientsList();
@@ -228,7 +228,7 @@ public class IngredientsEditor extends AbstractEditor {
         }
 
         private void addAllergenByDialog(Ingredient i) {
-            SortedSet<Allergen> allAllergens = RecipeCollection.getInstance().getAllergensCopy();
+            SortedSet<Allergen> allAllergens = RecipeCollection.getAllergensCopy();
             Allergen[] possibilities = allAllergens.toArray(new Allergen[allAllergens.size()]);
 
             Allergen a = (Allergen) JOptionPane.showInputDialog(

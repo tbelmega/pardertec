@@ -58,7 +58,7 @@ public class AllergensEditor extends AbstractEditor {
 
     void updateAllergensList() {
         DefaultListModel<Allergen> editorListModel = new DefaultListModel<>();
-        for (Allergen a : RecipeCollection.getInstance().getAllergensCopy()) {
+        for (Allergen a : RecipeCollection.getAllergensCopy()) {
             editorListModel.addElement(a);
         }
         mainList.setModel(editorListModel);
@@ -95,7 +95,7 @@ public class AllergensEditor extends AbstractEditor {
                     JOptionPane.PLAIN_MESSAGE);
 
             if ((s != null) && (s.length() > 0)) {
-                RecipeCollection.getInstance().add(new Allergen(s));
+                RecipeCollection.add(new Allergen(s));
             }
 
             AllergensEditor.this.updateAllergensList();
@@ -110,7 +110,7 @@ public class AllergensEditor extends AbstractEditor {
         @Override
         public void actionPerformed(ActionEvent e) {
             Allergen a = mainList.getSelectedValue();
-            RecipeCollection.getInstance().remove(a);
+            RecipeCollection.remove(a);
             AllergensEditor.this.updateAllergensList();
         }
     }

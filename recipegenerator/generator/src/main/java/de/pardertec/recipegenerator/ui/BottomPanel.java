@@ -92,7 +92,7 @@ public class BottomPanel {
         }
 
         private void exportRecipes(File f) {
-            String s = RecipeCollection.getInstance().toJson().toString(4);
+            String s = RecipeCollection.toJson().toString(4);
 
             try {
                 FileUtil.writeTextFile(f, s);
