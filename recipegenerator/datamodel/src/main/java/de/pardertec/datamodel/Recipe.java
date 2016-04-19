@@ -168,22 +168,22 @@ public class Recipe extends BusinessObject  {
                 toHashCode();
     }
 
-    public static Recipe fromJSON(JSONObject recipeRepresentation) {
+    public static Recipe fromJSON(JSONObject recipeRepresentation, RecipeCollection collection) {
         Recipe r = createRecipeFromRequiredValues(recipeRepresentation);
-        setOptionalValues(recipeRepresentation, r);
-        setIngredients(recipeRepresentation, r);
-        setSteps(recipeRepresentation, r);
+        r.readOptionalValuesFromJson(recipeRepresentation);
+        r.readIngredientsFromJson(recipeRepresentation, collection);
+        r.readStepsFromJson(recipeRepresentation);
         return r;
     }
 
-    private static void setSteps(JSONObject recipe, Recipe r) {
+    private void readStepsFromJson(JSONObject recipe) {
         JSONArray steps = recipe.getJSONArray(JSON_KEY_STEPS);
         for (int i = 0; i < steps.length(); i++) {
-            r.addStep(i, RecipeStep.fromJson(steps.getJSONObject(i)));
+            this.addStep(i, RecipeStep.fromJson(steps.getJSONObject(i)));
         }
     }
 
-    private static void setIngredients(JSONObject recipe, Recipe r) {
+    private void readIngredientsFromJson(JSONObject recipe, RecipeCollection collection) {
         JSONArray ingredients = recipe.getJSONArray(JSON_KEY_INGREDIENTS);
         for (int j = 0; j < ingredients.length(); j++) {
             JSONObject ingredient = ingredients.getJSONObject(j);
@@ -192,16 +192,16 @@ public class Recipe extends BusinessObject  {
             int amount = 0;
             if (ingredient.has(JSON_KEY_AMOUNT)) amount = ingredient.getInt(JSON_KEY_AMOUNT);
 
-            Ingredient i = RecipeCollection.getIngredient(UUID.fromString(ingredientId));
-            r.setIngredientWithAmount(i, amount);
+            Ingredient i = collection.getIngredient(UUID.fromString(ingredientId));
+            this.setIngredientWithAmount(i, amount);
         }
     }
 
-    private static void setOptionalValues(JSONObject recipe, Recipe r) {
+    private void readOptionalValuesFromJson(JSONObject recipe) {
         int duration = recipe.getInt(JSON_KEY_DURATION);
-        r.setDuration(duration);
+        this.setDuration(duration);
         Difficulty difficulty = Difficulty.getEnum(recipe.getString(JSON_KEY_DIFFICULTY));
-        r.setDifficulty(difficulty);
+        this.setDifficulty(difficulty);
     }
 
     private static Recipe createRecipeFromRequiredValues(JSONObject recipe) {

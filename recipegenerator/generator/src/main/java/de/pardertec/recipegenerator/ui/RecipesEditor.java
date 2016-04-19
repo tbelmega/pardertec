@@ -23,15 +23,14 @@ public class RecipesEditor extends AbstractEditor {
 
     //Main panel (recipe list)
     private JPanel recipesListPanel;
-    private JList<Recipe> recipeList = new JList<>(new DefaultListModel<>());
-    private JPanel btnPanel = new JPanel();
+    private JList<Recipe> recipeList;
+    private JPanel btnPanel;
 
     //Right panel (recipe details)
-    private RecipeDetailsPanel detailsPanel = new RecipeDetailsPanel();
+    private RecipeDetailsPanel detailsPanel;
 
-
-    public RecipesEditor() {
-        createEditorPanel();
+    public RecipesEditor(RecipeGenerator owner) {
+        super(owner);
     }
 
     protected void createEditorPanel() {
@@ -40,10 +39,12 @@ public class RecipesEditor extends AbstractEditor {
         recipesListPanel = createPanelWithCustomBorderLayout();
 
         //Center list for recipes
+        recipeList = new JList<>(new DefaultListModel<>());
         recipeList.getSelectionModel().addListSelectionListener(new SelectedRecipeChangeListener());
         recipesListPanel.add(new JScrollPane(recipeList), BorderLayout.CENTER);
 
         //Button "New"
+        btnPanel = new JPanel();
         btnNew.addActionListener(new AddRecipeAction());
         btnPanel.add(btnNew);
 
@@ -52,6 +53,8 @@ public class RecipesEditor extends AbstractEditor {
         btnPanel.add(btnDelete);
 
         recipesListPanel.add(btnPanel, BorderLayout.SOUTH);
+
+        detailsPanel = new RecipeDetailsPanel();
         updateRecipeList();
 
         //Add created elements to editor
@@ -69,7 +72,7 @@ public class RecipesEditor extends AbstractEditor {
     void updateRecipeList(Recipe selectedRecipe) {
         DefaultListModel<Recipe> recipeListModel = new DefaultListModel<>();
 
-        for (Recipe r : RecipeCollection.getRecipesCopy()) {
+        for (Recipe r : recipesCollection().getRecipesCopy()) {
             recipeListModel.addElement(r);
         }
 
@@ -91,7 +94,7 @@ public class RecipesEditor extends AbstractEditor {
         @Override
         public void actionPerformed(ActionEvent e) {
             Recipe r = recipeList.getSelectedValue();
-            RecipeCollection.remove(r);
+            recipesCollection().remove(r);
             RecipesEditor.this.updateRecipeList();
         }
     }
@@ -110,7 +113,7 @@ public class RecipesEditor extends AbstractEditor {
 
             if ((s != null) && (s.length() > 0)) {
                 Recipe recipe = new Recipe(s);
-                RecipeCollection.add(recipe);
+                recipesCollection().add(recipe);
                 RecipesEditor.this.updateRecipeList(recipe);
             }
 

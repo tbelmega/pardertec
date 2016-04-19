@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestAll" parallel="false">
+<suite name="TestAll" parallel="methods">
 
     <test name="LocalTests">
         <packages>

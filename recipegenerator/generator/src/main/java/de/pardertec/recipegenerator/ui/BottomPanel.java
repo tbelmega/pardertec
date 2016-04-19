@@ -22,7 +22,7 @@ public class BottomPanel {
     public static final String CLOSE_DIALOG_MESSAGE = "Programm schließen?";
 
     private final JPanel panel = new JPanel();
-    private final JFrame owner;
+    private final RecipeGenerator owner;
 
     private JFileChooser fileChooser = new JFileChooser();
     private File executionDirectory = new File("").getAbsoluteFile();
@@ -30,7 +30,7 @@ public class BottomPanel {
     private JButton btnExport;
     private JButton btnClose;
 
-    public BottomPanel(JFrame owner, Dimension size){
+    public BottomPanel(RecipeGenerator owner, Dimension size){
         this.owner = owner;
 
         GridLayout gridLayout = new GridLayout(1, 0);
@@ -70,11 +70,11 @@ public class BottomPanel {
     private class CloseAction implements ActionListener {
         public void actionPerformed(ActionEvent e)
         {
-            int dialogResult = JOptionPane.showConfirmDialog(BottomPanel.this.owner,
+            int dialogResult = JOptionPane.showConfirmDialog(null,
                     CLOSE_DIALOG_MESSAGE,
                     CLOSE_DIALOG_TITLE,
                     JOptionPane.YES_NO_OPTION);
-            if (dialogResult == JOptionPane.YES_OPTION) BottomPanel.this.owner.dispose();
+            if (dialogResult == JOptionPane.YES_OPTION) owner.close();
         }
     }
 
@@ -92,7 +92,7 @@ public class BottomPanel {
         }
 
         private void exportRecipes(File f) {
-            String s = RecipeCollection.toJson().toString(4);
+            String s = owner.getCollection().toJson().toString(4);
 
             try {
                 FileUtil.writeTextFile(f, s);
@@ -118,7 +118,7 @@ public class BottomPanel {
             File f = fc.getSelectedFile();
             try {
                 String s = FileUtil.readFile(f);
-                RecipeCollection.importJSON(s);
+                owner.getCollection().importJSON(s);
                 JOptionPane.showMessageDialog(panel, "Import successful.");
             } catch (Exception e) {
                 e.printStackTrace();

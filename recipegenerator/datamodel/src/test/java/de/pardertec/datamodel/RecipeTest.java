@@ -15,6 +15,8 @@ import static org.testng.AssertJUnit.assertTrue;
  */
 public class RecipeTest {
 
+    RecipeCollection collection = RecipeCollection.create();
+
     public static final Allergen LACTOSE = new Allergen("Laktose");
     public static final String RECIPE_NAME = "Purer Käse";
     public static final String RECIPE_TEXT = "Heute gibt es Käse. Für 2 Personen.";
@@ -93,7 +95,7 @@ public class RecipeTest {
         JSONObject jsonRepresentation = recipe.toJson();
 
         //act
-        Recipe recipe = Recipe.fromJSON(jsonRepresentation);
+        Recipe recipe = Recipe.fromJSON(jsonRepresentation, collection);
 
         //assert
         assertEquals(RECIPE_NAME, recipe.getName());

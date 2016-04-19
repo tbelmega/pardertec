@@ -22,35 +22,35 @@ public class IngredientsEditor extends AbstractEditor {
 
     //Main panel (ingredient list)
     private JPanel ingredientsListPanel;
-    private JList<Ingredient> ingredientsList = new JList(new DefaultListModel<>());
-    private JPanel btnPanel = new JPanel();
+    private JList<Ingredient> ingredientsList;
+    private JPanel btnPanel;
 
     //Right panel (ingredient details)
     private JPanel ingredientDetailPanel;
-    private JComboBox<VeganismStatus> veganismBox = new JComboBox<>(VeganismStatus.values());
-    private JComboBox<Measure> measureBox = new JComboBox<>(Measure.values());
-    private JList<Allergen> allergensList = new JList(new DefaultListModel<>());
+    private JComboBox<VeganismStatus> veganismBox;
+    private JComboBox<Measure> measureBox;
+    private JList<Allergen> allergensList;
 
-    public IngredientsEditor() {
-        createEditorPanel();
+    public IngredientsEditor(RecipeGenerator owner) {
+        super(owner);
     }
 
-    private void createEditorPanel() {
+    protected void createEditorPanel() {
         //Main panel (ingredient list)
         ingredientsListPanel = createPanelWithCustomBorderLayout();
 
         //Center list for ingredients
+        ingredientsList = new JList(new DefaultListModel<>());
         ingredientsList.addMouseListener(new IngredientListClickListener());
         createScrollbar(ingredientsList);
         ingredientsListPanel.add(ingredientsList, BorderLayout.CENTER);
 
         //Button "New"
-        //btnNew.setMaximumSize(BUTTON_DIMENSION);
+        btnPanel = new JPanel();
         btnNew.addActionListener(new AddIngredientAction());
         btnPanel.add(btnNew);
 
         //Button "Delete"
-        //btnDelete.setMaximumSize(BUTTON_DIMENSION);
         btnDelete.addActionListener(new DeleteIngredientAction());
         btnPanel.add(btnDelete);
 
@@ -63,6 +63,7 @@ public class IngredientsEditor extends AbstractEditor {
 
 
         //Selection drop down vegan
+        veganismBox = new JComboBox<>(VeganismStatus.values());
         veganismBox.addActionListener(new VeganModifiedListener());
         GridBagConstraints veganBoxConstraints = new GridBagConstraints();
         veganBoxConstraints.anchor = GridBagConstraints.WEST;
@@ -72,6 +73,7 @@ public class IngredientsEditor extends AbstractEditor {
         ingredientDetailPanel.add(veganismBox, veganBoxConstraints);
 
         //Selection drop down measure
+        measureBox = new JComboBox<>(Measure.values());
         measureBox.addActionListener(new MeasureModifiedListener());
         GridBagConstraints measureBoxConstraints = new GridBagConstraints();
         measureBoxConstraints.gridx = 0;
@@ -80,6 +82,7 @@ public class IngredientsEditor extends AbstractEditor {
         ingredientDetailPanel.add(measureBox, measureBoxConstraints);
 
         //Allergens list
+        allergensList = new JList(new DefaultListModel<>());
         allergensList.addMouseListener(new AllergensListClickedListener());
         allergensList.setPreferredSize(new Dimension(COLUMN_WIDTH, 4 * RESOLUTION_BASE));
         GridBagConstraints allergensListConstraints = new GridBagConstraints();
@@ -100,7 +103,7 @@ public class IngredientsEditor extends AbstractEditor {
     void updateIngredientsList() {
         DefaultListModel<Ingredient> ingredientListModel = new DefaultListModel<>();
 
-        for (Ingredient i : RecipeCollection.getIngredientsCopy()) {
+        for (Ingredient i : recipesCollection().getIngredientsCopy()) {
             ingredientListModel.addElement(i);
         }
         ingredientsList.setModel(ingredientListModel);
@@ -123,7 +126,7 @@ public class IngredientsEditor extends AbstractEditor {
         @Override
         public void actionPerformed(ActionEvent e) {
             Ingredient i = ingredientsList.getSelectedValue();
-            RecipeCollection.remove(i);
+            recipesCollection().remove(i);
             IngredientsEditor.this.updateIngredientsList();
         }
     }
@@ -160,7 +163,7 @@ public class IngredientsEditor extends AbstractEditor {
                     "");
 
             if ((s != null) && (s.length() > 0)) {
-                RecipeCollection.add(new Ingredient(s, m, v));
+                recipesCollection().add(new Ingredient(s, m, v));
             }
 
             IngredientsEditor.this.updateIngredientsList();
@@ -170,7 +173,7 @@ public class IngredientsEditor extends AbstractEditor {
     private class IngredientListClickListener extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent evt) {
-            JList<Ingredient> list = (JList) evt.getSource();
+            JList<Ingredient> list = (JList<Ingredient>) evt.getSource();
 
             Ingredient ingredient = list.getSelectedValue();
             if (ingredient == null) return;
@@ -216,19 +219,17 @@ public class IngredientsEditor extends AbstractEditor {
             Ingredient i = ingredientsList.getSelectedValue();
             if (i == null) return;
 
-
             if (clickedBelowTheListItems(e)) {
                 addAllergenByDialog(i);
             } else {
                 i.removeAllergen(allergensList.getSelectedValue());
             }
-            if (i == null) return;
 
             updateAllergensList(i);
         }
 
         private void addAllergenByDialog(Ingredient i) {
-            SortedSet<Allergen> allAllergens = RecipeCollection.getAllergensCopy();
+            SortedSet<Allergen> allAllergens = recipesCollection().getAllergensCopy();
             Allergen[] possibilities = allAllergens.toArray(new Allergen[allAllergens.size()]);
 
             Allergen a = (Allergen) JOptionPane.showInputDialog(

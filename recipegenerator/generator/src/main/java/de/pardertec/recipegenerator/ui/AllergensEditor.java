@@ -18,27 +18,29 @@ public class AllergensEditor extends AbstractEditor {
 
     public static final String ALLERGENS_LIST_NAME = "AllergensList";
 
-    private JList<Allergen> mainList = new JList<>(new DefaultListModel<>());
+    private JList<Allergen> mainList;
     private JPanel allergensListPanel;
-    private JPanel btnPanel = new JPanel();
+    private JPanel btnPanel;
 
-    public AllergensEditor() {
-        createEditorPanel();
+    public AllergensEditor(RecipeGenerator owner) {
+        super(owner);
     }
 
 
-    private void createEditorPanel() {
+    protected void createEditorPanel() {
 
         //Main panel (allergen list)
         allergensListPanel = createPanelWithCustomBorderLayout();
 
         //Center list for allergens
         createScrollbar(mainList);
+        mainList = new JList<>(new DefaultListModel<>());
         mainList.setName(ALLERGENS_LIST_NAME);
         allergensListPanel.add(mainList, BorderLayout.CENTER);
 
 
         //Button "New"
+        btnPanel = new JPanel();
         btnNew.addActionListener(createListenerForNewButton());
         btnPanel.add(btnNew);
 
@@ -58,7 +60,7 @@ public class AllergensEditor extends AbstractEditor {
 
     void updateAllergensList() {
         DefaultListModel<Allergen> editorListModel = new DefaultListModel<>();
-        for (Allergen a : RecipeCollection.getAllergensCopy()) {
+        for (Allergen a : recipesCollection().getAllergensCopy()) {
             editorListModel.addElement(a);
         }
         mainList.setModel(editorListModel);
@@ -95,7 +97,7 @@ public class AllergensEditor extends AbstractEditor {
                     JOptionPane.PLAIN_MESSAGE);
 
             if ((s != null) && (s.length() > 0)) {
-                RecipeCollection.add(new Allergen(s));
+                recipesCollection().add(new Allergen(s));
             }
 
             AllergensEditor.this.updateAllergensList();
@@ -110,7 +112,7 @@ public class AllergensEditor extends AbstractEditor {
         @Override
         public void actionPerformed(ActionEvent e) {
             Allergen a = mainList.getSelectedValue();
-            RecipeCollection.remove(a);
+            recipesCollection().remove(a);
             AllergensEditor.this.updateAllergensList();
         }
     }

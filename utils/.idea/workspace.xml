@@ -2,28 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38470c82-78bb-4bfe-8c1c-5d327d546f40" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../recipegenerator/datamodel/.idea/libraries/Maven__de_pardertec_utils_1_0_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../recipegenerator/generator/.idea/libraries/Maven__de_pardertec_datamodel_1_0_SNAPSHOT.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../recipegenerator/datamodel/.idea/libraries/utils_1_0_SNAPSHOT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../recipegenerator/generator/.idea/libraries/datamodel_1_0_SNAPSHOT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../recipegenerator/generator/.idea/libraries/utils_1_0_SNAPSHOT.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../libs/datamodel-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/../libs/datamodel-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../libs/utils-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/../libs/utils-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/datamodel/.idea/compiler.xml" afterPath="$PROJECT_DIR$/../recipegenerator/datamodel/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../recipegenerator/generator/src/test/java/de/pardertec/recipegenerator/ui/MainFrameTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../libs/recipe_collection_export_1460815857494.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../recipe_collection_export_001.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/test/java/de/pardertec/datamodel/AllergenTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/test/java/de/pardertec/datamodel/IngredientTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/test/java/de/pardertec/datamodel/MeasureTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/test/java/de/pardertec/datamodel/RecipeCollectionTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/test/java/de/pardertec/datamodel/RecipeTest.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/GeneratorMainFrame.java" afterPath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/RecipeGenerator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/datamodel/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../recipegenerator/datamodel/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/datamodel/pom.xml" afterPath="$PROJECT_DIR$/../recipegenerator/datamodel/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/datamodel/src/main/java/de/pardertec/datamodel/Allergen.java" afterPath="$PROJECT_DIR$/../recipegenerator/datamodel/src/main/java/de/pardertec/datamodel/Allergen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/datamodel/src/main/java/de/pardertec/datamodel/BusinessObject.java" afterPath="$PROJECT_DIR$/../recipegenerator/datamodel/src/main/java/de/pardertec/datamodel/BusinessObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/datamodel/src/main/java/de/pardertec/datamodel/Ingredient.java" afterPath="$PROJECT_DIR$/../recipegenerator/datamodel/src/main/java/de/pardertec/datamodel/Ingredient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/datamodel/src/main/java/de/pardertec/datamodel/Recipe.java" afterPath="$PROJECT_DIR$/../recipegenerator/datamodel/src/main/java/de/pardertec/datamodel/Recipe.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/generator/.idea/compiler.xml" afterPath="$PROJECT_DIR$/../recipegenerator/generator/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/generator/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../recipegenerator/generator/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/generator/pom.xml" afterPath="$PROJECT_DIR$/../recipegenerator/generator/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/AllergensEditor.java" afterPath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/AllergensEditor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/BottomPanel.java" afterPath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/BottomPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/ButtonPanel.java" afterPath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/ButtonPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/IngredientsEditor.java" afterPath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/IngredientsEditor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/RecipesEditor.java" afterPath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/RecipesEditor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/UiUtil.java" afterPath="$PROJECT_DIR$/../recipegenerator/generator/src/main/java/de/pardertec/recipegenerator/ui/UiUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../recipegenerator/generator/src/test/java/allTests.xml" afterPath="$PROJECT_DIR$/../recipegenerator/generator/src/test/java/allTests.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
     <ignored path="utils.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -783,16 +781,16 @@
     <option name="totallyTimeSpent" value="4519000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47334754" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47334754" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49729145" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49729145" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />

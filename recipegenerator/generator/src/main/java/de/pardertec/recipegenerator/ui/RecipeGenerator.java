@@ -1,5 +1,7 @@
 package de.pardertec.recipegenerator.ui;
 
+import de.pardertec.datamodel.RecipeCollection;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -28,7 +30,7 @@ public class RecipeGenerator {
     public static final Dimension SOUTHERN_PANEL_SIZE = new Dimension(MAIN_WINDOW_WIDTH, RESOLUTION_BASE / 2);
     public static final Dimension SCROLLER_SIZE = new Dimension(RESOLUTION_BASE / 2, RESOLUTION_BASE * 5);
 
-
+    private RecipeCollection collection = RecipeCollection.create();
 
     public final JFrame mainFrame = new JFrame(HEADLINE_RECIPE_GENERATOR);
     private final JPanel contentPane;
@@ -47,9 +49,9 @@ public class RecipeGenerator {
     }
 
     public RecipeGenerator(){
-        this.allergensEditor = new AllergensEditor();
-        this.ingredientsEditor = new IngredientsEditor();
-        this.recipesEditor = new RecipesEditor();
+        this.allergensEditor = new AllergensEditor(this);
+        this.ingredientsEditor = new IngredientsEditor(this);
+        this.recipesEditor = new RecipesEditor(this);
 
         this.contentPane = createPanelWithCustomBorderLayout();
         this.mainFrame.setContentPane(this.contentPane);
@@ -60,7 +62,7 @@ public class RecipeGenerator {
 
     private void initializeContent() {
         contentPane.add(new ButtonPanel(this, NORTHERN_PANEL_SIZE).getPanel(), BorderLayout.NORTH);
-        bottomPanel = new BottomPanel(mainFrame, SOUTHERN_PANEL_SIZE);
+        bottomPanel = new BottomPanel(this, SOUTHERN_PANEL_SIZE);
         contentPane.add(bottomPanel.getPanel(), BorderLayout.SOUTH);
     }
 
@@ -102,5 +104,17 @@ public class RecipeGenerator {
 
     public Class<? extends AbstractEditor>  getActiveEditorClass() {
         return activeEditor.getClass();
+    }
+
+    public RecipeCollection getCollection() {
+        return collection;
+    }
+
+    public void close() {
+        this.mainFrame.dispose();
+    }
+
+    public void resetRecipes() {
+        this.collection = RecipeCollection.create();
     }
 }

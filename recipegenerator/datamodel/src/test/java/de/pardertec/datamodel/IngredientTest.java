@@ -15,6 +15,9 @@ import static org.testng.AssertJUnit.assertTrue;
  */
 public class IngredientTest {
 
+
+    RecipeCollection collection = RecipeCollection.create();
+
     @Test
     public void testThatIngredientIsRepresentedAsJson() throws Exception {
         //arrange
@@ -45,7 +48,7 @@ public class IngredientTest {
         JSONObject jsonRepresentation = cheese.toJson();
 
         //act
-        Ingredient ingredient = Ingredient.fromJSON(jsonRepresentation);
+        Ingredient ingredient = Ingredient.fromJSON(jsonRepresentation, collection);
 
         //assert
         assertEquals("Käse", ingredient.getName());

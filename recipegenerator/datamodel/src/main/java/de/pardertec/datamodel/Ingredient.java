@@ -105,7 +105,7 @@ public class Ingredient extends BusinessObject {
         return allergens;
     }
 
-    public static Ingredient fromJSON(JSONObject jsonObject) {
+    public static Ingredient fromJSON(JSONObject jsonObject, RecipeCollection collection) {
         String name = jsonObject.getString(JSON_KEY_NAME);
         String id = jsonObject.getString(JSON_KEY_ID);
         Measure measure = Measure.getEnum(jsonObject.getString(JSON_KEY_MEASURE));
@@ -117,7 +117,7 @@ public class Ingredient extends BusinessObject {
 
         for (int j = 0; j < allergens.length(); j++) {
             String allergenId = allergens.getString(j);
-            Allergen a = RecipeCollection.getAllergen(UUID.fromString(allergenId));
+            Allergen a = collection.getAllergen(UUID.fromString(allergenId));
             i.addAllergen(a);
         }
         return i;

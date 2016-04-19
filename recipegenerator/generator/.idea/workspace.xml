@@ -2,32 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53209462-b7a6-4614-a0c8-cab69b9771bc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../libs/receipegenerator-1.0-SNAPSHOT-jar-with-dependencies.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../libs/recipe_collection_export_1460815857494.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../datamodel/.idea/libraries/Maven__de_pardertec_utils_1_0_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../datamodel/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_pardertec_datamodel_1_0_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_pardertec_utils_1_0_SNAPSHOT.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../datamodel/.idea/libraries/utils_1_0_SNAPSHOT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/datamodel_1_0_SNAPSHOT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/utils_1_0_SNAPSHOT.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../libs/datamodel-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/../../libs/datamodel-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../libs/utils-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/../../libs/utils-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/.idea/compiler.xml" afterPath="$PROJECT_DIR$/../datamodel/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../datamodel/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/pom.xml" afterPath="$PROJECT_DIR$/../datamodel/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/Allergen.java" afterPath="$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/Allergen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/BusinessObject.java" afterPath="$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/BusinessObject.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/Ingredient.java" afterPath="$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/Ingredient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/Recipe.java" afterPath="$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/Recipe.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/RecipeCollection.java" afterPath="$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/RecipeCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/src/test/java/allTests.xml" afterPath="$PROJECT_DIR$/../datamodel/src/test/java/allTests.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/src/test/java/de/pardertec/datamodel/IngredientTest.java" afterPath="$PROJECT_DIR$/../datamodel/src/test/java/de/pardertec/datamodel/IngredientTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/src/test/java/de/pardertec/datamodel/RecipeCollectionTest.java" afterPath="$PROJECT_DIR$/../datamodel/src/test/java/de/pardertec/datamodel/RecipeCollectionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../datamodel/src/test/java/de/pardertec/datamodel/RecipeTest.java" afterPath="$PROJECT_DIR$/../datamodel/src/test/java/de/pardertec/datamodel/RecipeTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AbstractEditor.java" afterPath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AbstractEditor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AllergensEditor.java" afterPath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AllergensEditor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/BottomPanel.java" afterPath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/BottomPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/IngredientsEditor.java" afterPath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/IngredientsEditor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../utils/.idea/compiler.xml" afterPath="$PROJECT_DIR$/../../utils/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../utils/.idea/misc.xml" afterPath="$PROJECT_DIR$/../../utils/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipeGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipeGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipesEditor.java" afterPath="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipesEditor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/de/pardertec/ImportExportTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/pardertec/ImportExportTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/de/pardertec/recipegenerator/ui/AllergensEditorTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/pardertec/recipegenerator/ui/AllergensEditorTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../utils/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../utils/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../utils/pom.xml" afterPath="$PROJECT_DIR$/../../utils/pom.xml" />
     </list>
     <ignored path="receipegenerator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,25 +42,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IngredientsEditor.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IngredientsEditor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/IngredientsEditor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="110" column="67" selection-start-line="110" selection-start-column="67" selection-end-line="110" selection-end-column="67" />
+            <state vertical-scroll-proportion="1.7664975">
+              <caret line="84" column="60" selection-start-line="84" selection-start-column="60" selection-end-line="84" selection-end-column="60" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RecipeCollection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/RecipeCollection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
-              <folding>
-                <element signature="e#2941#2942#0" expanded="true" />
-                <element signature="e#2999#3000#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -77,7 +56,39 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipesEditor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="251" column="5" selection-start-line="251" selection-start-column="5" selection-end-line="251" selection-end-column="5" />
+              <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllergensEditorTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/recipegenerator/ui/AllergensEditorTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImportExportTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/ImportExportTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractRecipeGeneratorTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/recipegenerator/ui/AbstractRecipeGeneratorTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,25 +100,43 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AllergensEditor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#673#674#0" expanded="true" />
+                <element signature="e#701#702#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file leaf-file-name="BottomPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/BottomPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0921986">
-              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="94" column="44" selection-start-line="94" selection-start-column="44" selection-end-line="94" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractEditor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AbstractEditor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -120,19 +149,39 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/BottomPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipesEditor.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/AllergenTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/IngredientTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/RecipeCollectionTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/RecipeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AbstactEditor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AbstractEditor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AllergensEditor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/IngredientsEditor.java" />
         <option value="$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/BusinessObject.java" />
         <option value="C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/util/TreeSet.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/muh.form" />
+        <option value="C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/awt/Robot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/GeneratorMainFrame.java" />
+        <option value="C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/awt/Button.java" />
+        <option value="C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/util/Queue.java" />
+        <option value="$PROJECT_DIR$/src/test/java/de/pardertec/recipegenerator/ui/MainFrameTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/ButtonPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/UiUtil.java" />
+        <option value="$PROJECT_DIR$/src/test/java/de/pardertec/recipegenerator/ui/NavigationTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AbstractRecipeGeneratorTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/de/pardertec/recipegenerator/ui/AbstractRecipeGeneratorTest.java" />
+        <option value="$MAVEN_REPOSITORY$/org/json/json/20151123/json-20151123.jar!/org/json/JSONObject.class" />
+        <option value="$MAVEN_REPOSITORY$/de/pardertec/datamodel/1.0-SNAPSHOT/datamodel-1.0-SNAPSHOT.jar!/de/pardertec/datamodel/Ingredient.class" />
+        <option value="$PROJECT_DIR$/recipe_collection_export_001.json" />
+        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipeDetailsPanel.java" />
+        <option value="$PROJECT_DIR$/src/test/java/de/pardertec/testing/swing/SwingTestUtil.java" />
+        <option value="$PROJECT_DIR$/src/test/java/allTests.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AbstractEditor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/BottomPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AllergensEditor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/IngredientsEditor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipesEditor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipeGenerator.java" />
+        <option value="$PROJECT_DIR$/src/test/java/de/pardertec/recipegenerator/ui/AllergensEditorTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/de/pardertec/ImportExportTest.java" />
       </list>
     </option>
   </component>
@@ -246,24 +295,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: de.pardertec:datamodel:1.0-SNAPSHOT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="datamodel-1.0-SNAPSHOT.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="receipegenerator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="generator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -279,70 +310,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="receipegenerator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pardertec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="receipegenerator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pardertec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="datamodel" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -401,12 +368,74 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3275862" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="extract.method.default.visibility" value="public" />
   </component>
-  <component name="RunManager" selected="Application.GeneratorMainFrame">
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="de.pardertec.recipegenerator.ui" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="de.pardertec.recipegenerator.ui" />
+    </key>
+  </component>
+  <component name="RunManager" selected="TestNG.C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml">
+    <configuration default="false" name="RecipeGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="de.pardertec.recipegenerator.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="de.pardertec.recipegenerator.ui.RecipeGenerator" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="receipegenerator" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="AllergensEditorTest.testDeletingAnAllergen" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="de.pardertec.recipegenerator.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="receipegenerator" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="de.pardertec.recipegenerator.ui" />
+      <option name="MAIN_CLASS_NAME" value="de.pardertec.recipegenerator.ui.AllergensEditorTest" />
+      <option name="METHOD_NAME" value="testDeletingAnAllergen" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
     <configuration default="false" name="C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="receipegenerator" />
@@ -435,24 +464,70 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="false" name="GeneratorMainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="ImportExportTest.testThatExportSucceeds" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="de.pardertec.recipegenerator.ui.*" />
+          <option name="PATTERN" value="de.pardertec.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="de.pardertec.recipegenerator.ui.GeneratorMainFrame" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="receipegenerator" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="de.pardertec" />
+      <option name="MAIN_CLASS_NAME" value="de.pardertec.ImportExportTest" />
+      <option name="METHOD_NAME" value="testThatExportSucceeds" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="receipegenerator" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
       <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="ImportExportTest.testThatImportSucceeds" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="de.pardertec.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="receipegenerator" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/java/allTests.xml" />
+      <option name="PACKAGE_NAME" value="de.pardertec" />
+      <option name="MAIN_CLASS_NAME" value="de.pardertec.ImportExportTest" />
+      <option name="METHOD_NAME" value="testThatImportSucceeds" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="0" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -887,14 +962,20 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="TestNG.C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" />
-      <item index="1" class="java.lang.String" itemvalue="Application.GeneratorMainFrame" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Application.RecipeGenerator" />
+      <item index="1" class="java.lang.String" itemvalue="TestNG.AllergensEditorTest.testDeletingAnAllergen" />
+      <item index="2" class="java.lang.String" itemvalue="TestNG.C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" />
+      <item index="3" class="java.lang.String" itemvalue="TestNG.ImportExportTest.testThatExportSucceeds" />
+      <item index="4" class="java.lang.String" itemvalue="TestNG.ImportExportTest.testThatImportSucceeds" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.GeneratorMainFrame" />
-        <item index="1" class="java.lang.String" itemvalue="TestNG.C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="TestNG.C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" />
+        <item index="1" class="java.lang.String" itemvalue="TestNG.ImportExportTest.testThatExportSucceeds" />
+        <item index="2" class="java.lang.String" itemvalue="TestNG.AllergensEditorTest.testDeletingAnAllergen" />
+        <item index="3" class="java.lang.String" itemvalue="TestNG.ImportExportTest.testThatImportSucceeds" />
+        <item index="4" class="java.lang.String" itemvalue="Application.RecipeGenerator" />
       </list>
     </recent_temporary>
   </component>
@@ -911,7 +992,8 @@
       <workItem from="1460808626250" duration="2264000" />
       <workItem from="1460811447631" duration="2391000" />
       <workItem from="1460902177630" duration="3412000" />
-      <workItem from="1460905679615" duration="2272000" />
+      <workItem from="1460905679615" duration="18922000" />
+      <workItem from="1461064313530" duration="11717000" />
     </task>
     <task id="LOCAL-00001" summary="Restructure files">
       <created>1460810691421</created>
@@ -919,19 +1001,76 @@
       <option name="project" value="LOCAL" />
       <updated>1460810691421</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Allow multiple ingrdients with same name">
+      <created>1460908047620</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1460908047620</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add ui tests">
+      <created>1460920063242</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1460920063242</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Move button panel to the top&#10;Use JButtons instead of Buttons">
+      <created>1461023365920</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1461023365920</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add ui tests">
+      <created>1461026890036</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1461026890036</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add import / export tests">
+      <created>1461085059774</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1461085059774</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="C__Users_Thiemo_Programming_pardertec_recipegenerator_generator_src_test_java_allTests_xml - 2016.04.16 at 13h 27m 37s.xml">
+    <history-entry file="C__Users_Thiemo_Programming_pardertec_recipegenerator_generator_src_test_java_allTests_xml - 2016.04.19 at 19h 03m 00s.xml">
       <configuration name="C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="C__Users_Thiemo_Programming_pardertec_recipegenerator_generator_src_test_java_allTests_xml - 2016.04.19 at 19h 06m 09s.xml">
+      <configuration name="C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="C__Users_Thiemo_Programming_pardertec_recipegenerator_generator_src_test_java_allTests_xml - 2016.04.19 at 19h 06m 45s.xml">
+      <configuration name="C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="C__Users_Thiemo_Programming_pardertec_recipegenerator_generator_src_test_java_allTests_xml - 2016.04.19 at 19h 08m 29s.xml">
+      <configuration name="C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="C__Users_Thiemo_Programming_pardertec_recipegenerator_generator_src_test_java_allTests_xml - 2016.04.19 at 19h 08m 49s.xml">
+      <configuration name="C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="C__Users_Thiemo_Programming_pardertec_recipegenerator_generator_src_test_java_allTests_xml - 2016.04.19 at 19h 09m 43s.xml">
+      <configuration name="C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="C__Users_Thiemo_Programming_pardertec_recipegenerator_generator_src_test_java_allTests_xml - 2016.04.19 at 19h 09m 59s.xml">
+      <configuration name="C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="C__Users_Thiemo_Programming_pardertec_recipegenerator_generator_src_test_java_allTests_xml - 2016.04.19 at 19h 10m 21s.xml">
+      <configuration name="C:/Users/Thiemo/Programming/pardertec/recipegenerator/generator/src/test/java/allTests.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ImportExportTest_testThatExportSucceeds - 2016.04.19 at 19h 05m 10s.xml">
+      <configuration name="ImportExportTest.testThatExportSucceeds" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ImportExportTest_testThatExportSucceeds - 2016.04.19 at 19h 05m 43s.xml">
+      <configuration name="ImportExportTest.testThatExportSucceeds" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10339000" />
+    <option name="totallyTimeSpent" value="38706000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -940,12 +1079,13 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19029851" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30877572" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24413647" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24413647" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -956,7 +1096,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -984,46 +1123,57 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Restructure files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Restructure files" />
+    <MESSAGE value="Allow multiple ingrdients with same name" />
+    <MESSAGE value="Move button panel to the top&#10;Use JButtons instead of Buttons" />
+    <MESSAGE value="Add ui tests" />
+    <MESSAGE value="Add import / export tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add import / export tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/RecipeCollection.java</url>
-          <line>103</line>
+          <line>105</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/de/pardertec/datamodel/1.0-SNAPSHOT/datamodel-1.0-SNAPSHOT.jar!/de/pardertec/datamodel/RecipeCollection.class</url>
           <line>112</line>
           <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="14" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="30" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="TestNG">
+        <watch expression="list.getSelectedValue()" language="JAVA" custom="" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/IngredientsEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/Ingredient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1044,10 +1194,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
-          <folding>
-            <element signature="e#2941#2942#0" expanded="true" />
-            <element signature="e#2999#3000#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1071,9 +1218,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="251" column="5" selection-start-line="251" selection-start-column="5" selection-end-line="251" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1082,7 +1227,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2050#2051#0" expanded="false" />
+            <element signature="e#2096#2097#0" expanded="false" />
+            <element signature="e#3280#3281#0" expanded="false" />
+            <element signature="e#3329#3330#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1091,7 +1240,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1100,7 +1251,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2050#2051#0" expanded="false" />
+            <element signature="e#2096#2097#0" expanded="false" />
+            <element signature="e#3280#3281#0" expanded="false" />
+            <element signature="e#3329#3330#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1109,9 +1264,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,46 +1276,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/AllergenTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/IngredientTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/MeasureTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/RecipeCollectionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/RecipeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/GeneratorMainFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#3784#3785#0" expanded="false" />
+            <element signature="e#3830#3831#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1170,7 +1291,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1178,9 +1301,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1192,46 +1313,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/AllergenTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/IngredientTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/MeasureTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/RecipeCollectionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/RecipeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/GeneratorMainFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#3784#3785#0" expanded="false" />
+            <element signature="e#3830#3831#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1239,89 +1328,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/BottomPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/ButtonPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/RecipeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/RecipeCollectionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/MeasureTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/IngredientTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/datamodel/AllergenTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/UiUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/GeneratorMainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipesEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="251" column="5" selection-start-line="251" selection-start-column="5" selection-end-line="251" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AbstractEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23954372">
-          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1342,14 +1348,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/IngredientsEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="110" column="67" selection-start-line="110" selection-start-column="67" selection-end-line="110" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/BusinessObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.65779465">
@@ -1358,32 +1356,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/RecipeCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
-          <folding>
-            <element signature="e#2941#2942#0" expanded="true" />
-            <element signature="e#2999#3000#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AllergensEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../datamodel/.idea/vcs.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1391,6 +1367,256 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0921986">
           <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../datamodel/src/main/java/de/pardertec/datamodel/RecipeCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2436548">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.9.10/testng-6.9.10-sources.jar!/org/testng/annotations/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68688524">
+          <caret line="62" column="14" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/awt/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33269963">
+          <caret line="150" column="11" selection-start-line="150" selection-start-column="11" selection-end-line="150" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/util/Queue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33269963">
+          <caret line="198" column="6" selection-start-line="198" selection-start-column="6" selection-end-line="198" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/awt/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9486692">
+          <caret line="150" column="11" selection-start-line="150" selection-start-column="11" selection-end-line="150" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/javax/swing/JList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3327869">
+          <caret line="2205" column="16" selection-start-line="2205" selection-start-column="16" selection-end-line="2205" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/awt/Robot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3327869">
+          <caret line="351" column="29" selection-start-line="351" selection-start-column="29" selection-end-line="351" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/recipegenerator/ui/NavigationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/json/json/20151123/json-20151123.jar!/org/json/JSONObject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.4814816">
+          <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+          <folding>
+            <element signature="e#13741#13742#0" expanded="true" />
+            <element signature="e#13800#13801#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/javax/swing/JOptionPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3327869">
+          <caret line="563" column="54" selection-start-line="563" selection-start-column="54" selection-end-line="563" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.9.10/testng-6.9.10-sources.jar!/org/testng/internal/MethodInvocationHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.74334604">
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/ButtonPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="63" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipeDetailsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="158" column="58" selection-start-line="158" selection-start-column="58" selection-end-line="158" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4376#4377#0" expanded="true" />
+            <element signature="e#4466#4467#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/UiUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/testing/swing/SwingTestUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="81" column="13" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/de/pardertec/datamodel/1.0-SNAPSHOT/datamodel-1.0-SNAPSHOT.jar!/de/pardertec/datamodel/Ingredient.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.481482">
+          <caret line="115" column="82" selection-start-line="115" selection-start-column="82" selection-end-line="115" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/de/pardertec/datamodel/1.0-SNAPSHOT/datamodel-1.0-SNAPSHOT.jar!/de/pardertec/datamodel/RecipeCollection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34819898">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding>
+            <element signature="e#3982#3983#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/allTests.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3333334">
+          <caret line="2" column="65" selection-start-line="2" selection-start-column="65" selection-end-line="2" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recipe_collection_export_001.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="65.333336">
+          <caret line="149" column="9" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/BottomPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="94" column="44" selection-start-line="94" selection-start-column="44" selection-end-line="94" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AllergensEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#701#702#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipesEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/recipegenerator/ui/AbstractRecipeGeneratorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/RecipeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8631179">
+          <caret line="117" column="51" selection-start-line="117" selection-start-column="51" selection-end-line="117" selection-end-column="51" />
+          <folding>
+            <element signature="e#3937#3938#0" expanded="true" />
+            <element signature="e#3977#3978#0" expanded="true" />
+            <element signature="e#4011#4012#0" expanded="true" />
+            <element signature="e#4070#4071#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/AbstractEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/recipegenerator/ui/AllergensEditorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/de/pardertec/ImportExportTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../datamodel/src/test/java/allTests.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06382979">
+          <caret line="2" column="39" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/pardertec/recipegenerator/ui/IngredientsEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7664975">
+          <caret line="84" column="60" selection-start-line="84" selection-start-column="60" selection-end-line="84" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -1451,7 +1677,8 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.3275862" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

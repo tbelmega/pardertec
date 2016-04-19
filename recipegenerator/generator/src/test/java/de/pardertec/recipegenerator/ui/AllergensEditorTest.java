@@ -29,11 +29,11 @@ public class AllergensEditorTest extends AbstractRecipeGeneratorTest {
         clickButton(mainFrame, AbstractEditor.BTN_NEW);
         type("Lactose");
         robot.keyPress(KeyEvent.VK_ENTER);
-        robot.waitForIdle();
+        robot.delay(50);
 
         //assert
         Allergen a = list.getModel().getElementAt(0);
-        RecipeCollection.remove(a);
+        recipeGenerator.getCollection().remove(a);
         assertEquals("First list entry should be the added allergen now.",
                 "Lactose", a.getName());
     }
@@ -47,10 +47,11 @@ public class AllergensEditorTest extends AbstractRecipeGeneratorTest {
         clickButton(mainFrame, AbstractEditor.BTN_NEW);
         type("Lactose");
         robot.keyPress(KeyEvent.VK_ENTER);
-        robot.waitForIdle();
+        robot.delay(50);
 
         //act
         list.setSelectedIndex(0);
+        robot.waitForIdle();
         clickButton(mainFrame, AbstractEditor.BTN_DELETE);
 
         //assert
