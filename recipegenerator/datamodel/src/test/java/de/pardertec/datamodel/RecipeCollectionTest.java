@@ -24,13 +24,23 @@ public class RecipeCollectionTest {
     public static final Allergen LAKTOSE = new Allergen("Laktose");
     public static final Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
     public static Recipe spaghettiBolognese;
-    static RecipeCollection allRecipes;
 
     @BeforeTest
     public void getRecipeCollection(){
         spaghettiBolognese = createSpaghettiBologneseRecipe();
-        allRecipes =  RecipeCollection.getInstance();
-        allRecipes.add(spaghettiBolognese);
+        RecipeCollection.add(spaghettiBolognese);
+    }
+
+    @Test
+    public void testThatRecipeCollectionIsCleared() throws Exception {
+        //arrange
+        assertFalse(RecipeCollection.isEmpty());
+
+        //act
+        RecipeCollection.clear();
+
+        //assert
+        assertTrue(RecipeCollection.isEmpty());
     }
 
     @Test
@@ -40,7 +50,7 @@ public class RecipeCollectionTest {
         //act
 
         //assert
-        assertTrue(allRecipes.contains(spaghettiBolognese));
+        assertTrue(RecipeCollection.contains(spaghettiBolognese));
     }
 
     @Test
@@ -49,7 +59,7 @@ public class RecipeCollectionTest {
         Recipe newRecipe = new Recipe("foo");
 
         //assert
-        assertFalse(allRecipes.contains(newRecipe));
+        assertFalse(RecipeCollection.contains(newRecipe));
     }
 
     @Test
@@ -60,7 +70,7 @@ public class RecipeCollectionTest {
         Recipe equalRecipe = createSpaghettiBologneseRecipe();
 
         //assert
-        assertTrue(allRecipes.contains(equalRecipe));
+        assertTrue(RecipeCollection.contains(equalRecipe));
     }
 
     @Test
@@ -68,7 +78,7 @@ public class RecipeCollectionTest {
         //arrange
 
         //act
-        JSONObject recipeCollection = allRecipes.toJson();
+        JSONObject recipeCollection = RecipeCollection.toJson();
 
         //assert
         assertTrue(recipeCollection.has(JSON_KEY_RECIPES));
@@ -81,7 +91,7 @@ public class RecipeCollectionTest {
     @Test
     public void testThatRecipeCollectionContainsSpaghettiRecipe() throws Exception {
         //arrange
-        JSONObject recipeCollection = allRecipes.toJson();
+        JSONObject recipeCollection = RecipeCollection.toJson();
 
         //act
         JSONArray recipes = recipeCollection.getJSONArray(JSON_KEY_RECIPES);
@@ -93,7 +103,7 @@ public class RecipeCollectionTest {
     @Test
     public void testThatRecipeCollectionContainsMeat() throws Exception {
         //arrange
-        JSONObject recipeCollection = allRecipes.toJson();
+        JSONObject recipeCollection = RecipeCollection.toJson();
 
         //act
         JSONArray ingredients = recipeCollection.getJSONArray(Recipe.JSON_KEY_INGREDIENTS);
@@ -105,7 +115,7 @@ public class RecipeCollectionTest {
     @Test
     public void testThatRecipeCollectionContainsLactose() throws Exception {
         //arrange
-        JSONObject recipeCollection = allRecipes.toJson();
+        JSONObject recipeCollection = RecipeCollection.toJson();
 
         //act
         JSONArray allergens = recipeCollection.getJSONArray(JSON_KEY_ALLERGENS);

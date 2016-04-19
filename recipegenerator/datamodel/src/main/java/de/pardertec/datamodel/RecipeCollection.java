@@ -26,39 +26,37 @@ public class RecipeCollection {
     private RecipeCollection() {
     }
 
-    public static RecipeCollection getInstance() {
+    private static RecipeCollection getInstance() {
         return instance;
     }
 
-    public void add(Recipe recipe) {
+    public static void add(Recipe recipe) {
         for (Ingredient ingredient : recipe.getIngredients().keySet()) {
             add(ingredient);
         }
-        this.recipes.put(recipe.id, recipe);
+        getInstance().recipes.put(recipe.id, recipe);
     }
 
-    public void add(Ingredient ingredient) {
+    public static void add(Ingredient ingredient) {
         for (Allergen allergen : ingredient.getAllergens()) {
             add(allergen);
         }
-        this.ingredients.put(ingredient.id, ingredient);
+        getInstance().ingredients.put(ingredient.id, ingredient);
     }
 
-    public void add(Allergen allergen) {
-        this.allergens.put(allergen.id, allergen);
+    public static void add(Allergen allergen) {
+        getInstance().allergens.put(allergen.id, allergen);
     }
 
 
-    public boolean contains(Recipe myRecipe) {
-        return this.recipes.values().contains(myRecipe);
+    public static boolean contains(Recipe myRecipe) {
+        return getInstance().recipes.values().contains(myRecipe);
     }
 
     /**
      * This method creates a JSON representation of the RecipeCollection, including all recipes/ingredients/allergens
-     *
-     * @return
      */
-    public JSONObject toJson() {
+    public static JSONObject toJson() {
         JSONObject jsonRepresentation = new JSONObject();
         jsonRepresentation.put(JSON_KEY_RECIPES, createRecipesRepresentation());
         jsonRepresentation.put(Recipe.JSON_KEY_INGREDIENTS, createIngredientsRepresentation());
@@ -66,25 +64,25 @@ public class RecipeCollection {
         return jsonRepresentation;
     }
 
-    private JSONArray createAllergensRepresentation() {
+    private static JSONArray createAllergensRepresentation() {
         JSONArray allAllergens = new JSONArray();
-        for (Allergen a : this.allergens.values()) {
+        for (Allergen a : getInstance().allergens.values()) {
             allAllergens.put(a.toJson());
         }
         return allAllergens;
     }
 
-    private JSONArray createIngredientsRepresentation() {
+    private static JSONArray createIngredientsRepresentation() {
         JSONArray allIngredients = new JSONArray();
-        for (Ingredient i : this.ingredients.values()) {
+        for (Ingredient i : getInstance().ingredients.values()) {
             allIngredients.put(i.toJson());
         }
         return allIngredients;
     }
 
-    private JSONArray createRecipesRepresentation() {
+    private static JSONArray createRecipesRepresentation() {
         JSONArray allRecipes = new JSONArray();
-        for (Recipe r : this.recipes.values()) {
+        for (Recipe r : getInstance().recipes.values()) {
             allRecipes.put(r.toJson());
         }
         return allRecipes;
@@ -93,15 +91,15 @@ public class RecipeCollection {
     /**
      * @return a new copy of the allergens set
      */
-    public SortedSet<Allergen> getAllergensCopy() {
-        return new TreeSet<>(this.allergens.values());
+    public static SortedSet<Allergen> getAllergensCopy() {
+        return new TreeSet<>(getInstance().allergens.values());
     }
 
     /**
      * @return a new copy of the ingredients set
      */
-    public SortedSet<Ingredient> getIngredientsCopy() {
-        return new TreeSet<>(ingredients.values());
+    public static SortedSet<Ingredient> getIngredientsCopy() {
+        return new TreeSet<>(getInstance().ingredients.values());
     }
 
     /**
@@ -111,16 +109,16 @@ public class RecipeCollection {
         return new TreeSet<>(recipes.values());
     }
 
-    public void remove(Allergen a) {
-        this.allergens.remove(a.id);
+    public static void remove(Allergen a) {
+        getInstance().allergens.remove(a.id);
     }
 
-    public void remove(Ingredient i) {
-        this.ingredients.remove(i.id);
+    public static void remove(Ingredient i) {
+        getInstance().ingredients.remove(i.id);
     }
 
-    public void remove(Recipe r) {
-        this.recipes.remove(r.id);
+    public static void remove(Recipe r) {
+        getInstance().recipes.remove(r.id);
     }
 
     public static void importJSON(String s) {
@@ -161,5 +159,15 @@ public class RecipeCollection {
 
     public static Ingredient getIngredient(UUID uuid) {
         return getInstance().ingredients.get(uuid);
+    }
+
+    public static boolean isEmpty() {
+        return getInstance().allergens.isEmpty() &&
+                getInstance().ingredients.isEmpty() &&
+                getInstance().recipes.isEmpty();
+    }
+
+    public static void clear() {
+        instance = new RecipeCollection();
     }
 }

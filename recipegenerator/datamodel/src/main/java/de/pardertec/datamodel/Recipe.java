@@ -92,7 +92,7 @@ public class Recipe extends BusinessObject  {
     }
 
     public List<RecipeStep> getStepsCopy() {
-        return new LinkedList(this.steps);
+        return new LinkedList<>(this.steps);
     }
 
     public void setDuration(int duration) {
@@ -117,7 +117,7 @@ public class Recipe extends BusinessObject  {
         jsonRepresentation.put(JSON_KEY_TEXT, this.text);
         jsonRepresentation.put(JSON_KEY_SERVINGS, this.servings);
         jsonRepresentation.put(JSON_KEY_DURATION, this.duration);
-        jsonRepresentation.put(JSON_KEY_DIFFICULTY, this.difficulty);
+        jsonRepresentation.put(JSON_KEY_DIFFICULTY, this.difficulty.toString());
         jsonRepresentation.put(JSON_KEY_INGREDIENTS, createIngredientsRepresentation());
         jsonRepresentation.put(JSON_KEY_STEPS, createStepsRepresentation());
         return jsonRepresentation;
@@ -200,7 +200,7 @@ public class Recipe extends BusinessObject  {
     private static void setOptionalValues(JSONObject recipe, Recipe r) {
         int duration = recipe.getInt(JSON_KEY_DURATION);
         r.setDuration(duration);
-        Difficulty difficulty = recipe.getEnum(Difficulty.class, JSON_KEY_DIFFICULTY);
+        Difficulty difficulty = Difficulty.getEnum(recipe.getString(JSON_KEY_DIFFICULTY));
         r.setDifficulty(difficulty);
     }
 
