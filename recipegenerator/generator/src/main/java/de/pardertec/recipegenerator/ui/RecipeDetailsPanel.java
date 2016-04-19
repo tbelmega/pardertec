@@ -1,28 +1,27 @@
 package de.pardertec.recipegenerator.ui;
 
+import de.pardertec.datamodel.BusinessObject;
 import de.pardertec.datamodel.Ingredient;
 import de.pardertec.datamodel.Recipe;
-import de.pardertec.datamodel.RecipeCollection;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Map;
-import java.util.Set;
+import java.util.SortedSet;
 
-import static de.pardertec.recipegenerator.ui.RecipeGenerator.COLUMN_WIDTH;
-import static de.pardertec.recipegenerator.ui.RecipeGenerator.INSETS;
-import static de.pardertec.recipegenerator.ui.RecipeGenerator.RESOLUTION_BASE;
+import static de.pardertec.recipegenerator.ui.RecipeGenerator.*;
 
 /**
  * Created by Thiemo on 19.04.2016.
  */
-public class RecipeDetailsPanel {
+public class RecipeDetailsPanel implements DetailsPanel {
 
     private static final String BTN_ADD_INGREDIENT = "Zutat hinzufügen";
+    private final RecipeGenerator owner;
 
+    private JPanel recipeDetailsPanel = new JPanel(new GridBagLayout());
 
-    JPanel recipeDetailsPanel;
     private JComboBox<String> servingsBox = new JComboBox<>(new String[]{"1 Portion", "2 Portionen", "3 Portionen",
             "4 Portionen", "5 Portionen", "6 Portionen", "7 Portionen", "8 Portionen",
             "9 Portionen", "10 Portionen", "11 Portionen", "12 Portionen"});
@@ -31,9 +30,8 @@ public class RecipeDetailsPanel {
     private Recipe displayedRecipe;
     private JButton btnAddIngredient = new JButton(BTN_ADD_INGREDIENT);
 
-    RecipeDetailsPanel() {
-        //Right panel (recipe details)
-        recipeDetailsPanel = new JPanel(new GridBagLayout());
+    RecipeDetailsPanel(RecipeGenerator owner) {
+        this.owner = owner;
 
         //Recipe text area
         recipeText.setLineWrap(true);
@@ -81,22 +79,30 @@ public class RecipeDetailsPanel {
 
     }
 
-    void update(Recipe recipe) {
-        if (recipe == null) return;
+    @Override
+    public void display(BusinessObject selectedRecipe) {
+        displayedRecipe = (Recipe) selectedRecipe;
+        update();
+    }
 
-        recipeText.setText(recipe.getText());
-        servingsBox.setSelectedIndex(recipe.getServings() - 1);
+    void update() {
+        if (displayedRecipe == null) return;
+
+        recipeText.setText(displayedRecipe.getText());
+        servingsBox.setSelectedIndex(displayedRecipe.getServings() - 1);
 
         DefaultListModel<Map.Entry<Ingredient, Integer>> ingredients = new DefaultListModel<>();
-        for (Map.Entry<Ingredient, Integer> i : recipe.getIngredients().entrySet()) {
+        for (Map.Entry<Ingredient, Integer> i : displayedRecipe.getIngredients().entrySet()) {
             ingredients.addElement(i);
         }
         ingredientList.setModel(ingredients);
     }
 
-    public void display(Recipe selectedValue) {
-        displayedRecipe = selectedValue;
-        update(displayedRecipe);
+
+
+    @Override
+    public JPanel getPanel() {
+        return recipeDetailsPanel;
     }
 
     private class RecipeTextFocusListener implements FocusListener {
@@ -112,7 +118,7 @@ public class RecipeDetailsPanel {
         }
     }
 
-    protected void saveRecipeText() {
+    void saveRecipeText() {
         if (displayedRecipe != null) displayedRecipe.setText(recipeText.getText());
     }
 
@@ -120,7 +126,7 @@ public class RecipeDetailsPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             displayedRecipe.setServings(servingsBox.getSelectedIndex() + 1);
-            update(displayedRecipe);
+            update();
         }
     }
 
@@ -134,7 +140,7 @@ public class RecipeDetailsPanel {
             } else {
                 if (e.getClickCount() > 1) displayedRecipe.removeIngredient(ingredientList.getSelectedValue().getKey());
             }
-            update(displayedRecipe);
+            update();
         }
 
 
@@ -148,15 +154,14 @@ public class RecipeDetailsPanel {
     private class AddIngredientlistener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
             if (displayedRecipe == null) return;
             addIngredientByDialog(displayedRecipe);
-            update(displayedRecipe);
+            update();
         }
     }
 
     private void addIngredientByDialog(Recipe r) {
-        Set<Ingredient> allIngredients = RecipeCollection.getIngredientsCopy();
+        SortedSet<Ingredient> allIngredients = owner.getCollection().getIngredientsCopy();
         Ingredient[] possibilities = allIngredients.toArray(new Ingredient[allIngredients.size()]);
 
         Ingredient i = (Ingredient) JOptionPane.showInputDialog(

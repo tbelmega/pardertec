@@ -125,6 +125,12 @@ public class RecipeCollection {
         recipes.remove(r.id);
     }
 
+    public void remove(BusinessObject b) {
+        if (b instanceof Recipe) remove((Recipe) b);
+        if (b instanceof Allergen) remove((Allergen) b);
+        if (b instanceof Ingredient) remove((Ingredient) b);
+    }
+
     public void importJSON(String s) {
         JSONObject document = new JSONObject(s);
         importRecipes(document);

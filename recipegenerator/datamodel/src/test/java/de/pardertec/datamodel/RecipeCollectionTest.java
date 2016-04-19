@@ -14,6 +14,7 @@ import static de.pardertec.util.JSONUtil.assertEqualJSONContent;
 import static de.pardertec.util.JSONUtil.assertJSONArrayContainsValue;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.fail;
 
 /**
  * Created by Thiemo on 27.01.2016.

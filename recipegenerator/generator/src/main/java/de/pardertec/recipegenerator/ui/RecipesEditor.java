@@ -4,104 +4,47 @@ import de.pardertec.datamodel.*;
 
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.*;
 import java.awt.event.*;
-import java.util.Map;
-import java.util.Set;
-
-import static de.pardertec.recipegenerator.ui.RecipeGenerator.*;
-import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorderLayout;
 
 /**
  * Created by Thiemo on 31.01.2016.
  */
 public class RecipesEditor extends AbstractEditor {
 
-
-    //Main panel (recipe list)
-    private JPanel recipesListPanel;
-    private JList<Recipe> recipeList;
-    private JPanel btnPanel;
-
-    //Right panel (recipe details)
-    private RecipeDetailsPanel detailsPanel;
-
     public RecipesEditor(RecipeGenerator owner) {
         super(owner);
     }
 
-    protected void createEditorPanel() {
-
-        //Main panel (recipe list)
-        recipesListPanel = createPanelWithCustomBorderLayout();
-
-        //Center list for recipes
-        recipeList = new JList<>(new DefaultListModel<>());
-        recipeList.getSelectionModel().addListSelectionListener(new SelectedRecipeChangeListener());
-        recipesListPanel.add(new JScrollPane(recipeList), BorderLayout.CENTER);
-
-        //Button "New"
-        btnPanel = new JPanel();
-        btnNew.addActionListener(new AddRecipeAction());
-        btnPanel.add(btnNew);
-
-        //Button "Delete"
-        btnDelete.addActionListener(new DeleteRecipeAction());
-        btnPanel.add(btnDelete);
-
-        recipesListPanel.add(btnPanel, BorderLayout.SOUTH);
-
-        detailsPanel = new RecipeDetailsPanel();
-        updateRecipeList();
-
-        //Add created elements to editor
-        BoxLayout layout = new BoxLayout(editorPanel, BoxLayout.LINE_AXIS);
-        editorPanel.setLayout(layout);
-        editorPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-        editorPanel.add(recipesListPanel, BorderLayout.CENTER);
-        editorPanel.add(detailsPanel.recipeDetailsPanel, BorderLayout.EAST);
+    @Override
+    protected DetailsPanel createDetailsPanel() {
+        return new RecipeDetailsPanel(owner);
     }
 
-    void updateRecipeList() {
-        updateRecipeList(recipeList.getSelectedValue());
+    protected void customizeEditorPanel() {
+        mainList.getSelectionModel().addListSelectionListener(new SelectedRecipeChangeListener());
     }
 
-    void updateRecipeList(Recipe selectedRecipe) {
-        DefaultListModel<Recipe> recipeListModel = new DefaultListModel<>();
-
-        for (Recipe r : recipesCollection().getRecipesCopy()) {
-            recipeListModel.addElement(r);
+    protected DefaultListModel<BusinessObject> getUpdatedListModel() {
+        DefaultListModel<BusinessObject> listModel = new DefaultListModel<>();
+        for (BusinessObject bo : recipesCollection().getRecipesCopy()) {
+            listModel.addElement(bo);
         }
-
-        recipeList.setModel(recipeListModel);
-        detailsPanel.saveRecipeText();
-        recipeList.setSelectedValue(selectedRecipe, true);
-        detailsPanel.update(recipeList.getSelectedValue());
+        return listModel;
     }
 
-
-
-    public Container getEditorPanel() {
-        return editorPanel;
-    }
-
-
-
-    private class DeleteRecipeAction implements ActionListener {
+    private class SelectedRecipeChangeListener implements ListSelectionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            Recipe r = recipeList.getSelectedValue();
-            recipesCollection().remove(r);
-            RecipesEditor.this.updateRecipeList();
+        public void valueChanged(ListSelectionEvent e) {
+            ((RecipeDetailsPanel) detailsPanel).saveRecipeText();
+            detailsPanel.display(mainList.getSelectedValue());
         }
     }
 
-    private class AddRecipeAction implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
+    @Override
+    protected ActionListener createAddActionListener() {
+        return e -> {
             String s = (String) JOptionPane.showInputDialog(
                     RecipesEditor.this.editorPanel,
                     "Bezeichnung eingeben",
@@ -114,18 +57,11 @@ public class RecipesEditor extends AbstractEditor {
             if ((s != null) && (s.length() > 0)) {
                 Recipe recipe = new Recipe(s);
                 recipesCollection().add(recipe);
-                RecipesEditor.this.updateRecipeList(recipe);
+                ((RecipeDetailsPanel) detailsPanel).saveRecipeText();
+                mainList.setSelectedValue(recipe, true);
+                RecipesEditor.this.updateView();
             }
 
-        }
-    }
-
-
-    private class SelectedRecipeChangeListener implements ListSelectionListener {
-        @Override
-        public void valueChanged(ListSelectionEvent e) {
-            detailsPanel.saveRecipeText();
-            detailsPanel.display(recipeList.getSelectedValue());
-        }
+        };
     }
 }

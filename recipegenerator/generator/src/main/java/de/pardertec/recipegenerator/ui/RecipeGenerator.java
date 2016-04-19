@@ -78,17 +78,17 @@ public class RecipeGenerator {
 
     void showAllergensEditor() {
         replaceCenterComponent(allergensEditor);
-        allergensEditor.updateAllergensList();
+        allergensEditor.updateView();
     }
 
     void showIngredientsEditor() {
         replaceCenterComponent(ingredientsEditor);
-        ingredientsEditor.updateIngredientsList();
+        ingredientsEditor.updateView();
     }
 
     void showRecipesEditor() {
         replaceCenterComponent(recipesEditor);
-        recipesEditor.updateRecipeList();
+        recipesEditor.updateView();
     }
 
     private void replaceCenterComponent(AbstractEditor editor) {

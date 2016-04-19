@@ -48,11 +48,6 @@ public class ImportExportTest extends AbstractRecipeGeneratorTest {
         //assert
         String data = FileUtil.readFile(f);
 
-        System.out.println(data);
-        System.out.println(testAllergen.getId());
-        System.out.println(testIngredient.getId());
-        System.out.println(testRecipe.getId());
-
         assertTrue(data.contains(testAllergen.getId()));
         assertTrue(data.contains(testIngredient.getId()));
         assertTrue(data.contains(testRecipe.getId()));
