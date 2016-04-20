@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".recipes.detail.RecipeDetailActivityFragment"
+    tools:showIn="@layout/content_recipe_detail">
+
+    <TextView
+        android:id="@+id/recipe_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="recipe title"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/text_medium"
+        android:layout_margin="@dimen/small_margin"
+        />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="duration"
+        android:layout_below="@id/recipe_title"
+        android:layout_alignParentLeft="true"
+        android:textSize="@dimen/text_very_small"
+        android:layout_margin="@dimen/small_margin"/>
+
+    <TextView
+        android:id="@+id/difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="difficulty"
+        android:lines="2"
+        android:layout_below="@id/recipe_title"
+        android:layout_alignParentRight="true"
+        android:textSize="@dimen/text_very_small"
+        android:layout_margin="@dimen/small_margin"/>
+
+    <TextView
+        android:id="@+id/servings"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="ingredients for n servings"
+        android:layout_below="@id/duration"
+        android:layout_alignParentLeft="true"
+        android:textSize="@dimen/text_very_small"
+        android:layout_margin="@dimen/small_margin"/>
+
+    <Button
+        android:id="@+id/servings_plus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/servings"
+        android:layout_alignBaseline="@id/servings"
+        android:text="+"
+        />
+
+    <Button
+        android:id="@+id/servings_minus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/servings_plus"
+        android:layout_alignBaseline="@id/servings"
+        android:text="-"
+        />
+
+    <fragment
+        android:id="@+id/ingredients_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_below="@id/servings"
+        tools:layout="@layout/fragment_ingredients_list"
+        android:name="de.pardertec.smartmeal.recipes.detail.IngredientsListFragment"
+        />
+    <fragment
+        android:id="@+id/steps_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_below="@id/ingredients_list"
+        tools:layout="@layout/fragment_steps_list"
+        android:name="de.pardertec.smartmeal.recipes.detail.StepsListFragment"
+        />
+
+</RelativeLayout>
