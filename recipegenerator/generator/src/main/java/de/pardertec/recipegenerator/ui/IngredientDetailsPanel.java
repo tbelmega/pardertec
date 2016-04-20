@@ -12,6 +12,7 @@ import java.util.SortedSet;
 
 import static de.pardertec.recipegenerator.ui.RecipeGenerator.COLUMN_WIDTH;
 import static de.pardertec.recipegenerator.ui.RecipeGenerator.RESOLUTION_BASE;
+import static de.pardertec.recipegenerator.ui.UiUtil.clickedBelowTheListItems;
 
 /**
  * Created by Thiemo on 19.04.2016.
@@ -104,19 +105,13 @@ public class IngredientDetailsPanel implements DetailsPanel {
         public void mouseClicked(MouseEvent e) {
             if (dispayedIngredient == null) return;
 
-            if (clickedBelowTheListItems(e)) {
-                addAllergenByDialog(dispayedIngredient);
-            } else {
-                dispayedIngredient.removeAllergen(allergensList.getSelectedValue());
-            }
+            if (clickedBelowTheListItems(e, allergensList)) addAllergenByDialog(dispayedIngredient);
+            else dispayedIngredient.removeAllergen(allergensList.getSelectedValue());
+
             update();
         }
     }
 
-    private boolean clickedBelowTheListItems(MouseEvent e) {
-        int index = allergensList.locationToIndex(e.getPoint());
-        return index == -1 || !allergensList.getCellBounds(index, index).contains(e.getPoint());
-    }
 
     private void addAllergenByDialog(Ingredient i) {
         SortedSet<Allergen> allAllergens = owner.getCollection().getAllergensCopy();

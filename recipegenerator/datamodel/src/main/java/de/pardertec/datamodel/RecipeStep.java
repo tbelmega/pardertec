@@ -47,4 +47,9 @@ public class RecipeStep {
                 append(text).
                 toHashCode();
     }
+
+    @Override
+    public String toString() {
+        return text;
+    }
 }

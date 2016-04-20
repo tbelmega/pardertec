@@ -3,14 +3,19 @@ package de.pardertec.recipegenerator.ui;
 import de.pardertec.datamodel.BusinessObject;
 import de.pardertec.datamodel.Ingredient;
 import de.pardertec.datamodel.Recipe;
+import de.pardertec.datamodel.RecipeStep;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.NumberFormat;
 import java.util.Map;
 import java.util.SortedSet;
+import java.util.stream.IntStream;
 
 import static de.pardertec.recipegenerator.ui.RecipeGenerator.*;
+import static de.pardertec.recipegenerator.ui.UiUtil.clickedBelowTheListItems;
 
 /**
  * Created by Thiemo on 19.04.2016.
@@ -18,65 +23,101 @@ import static de.pardertec.recipegenerator.ui.RecipeGenerator.*;
 public class RecipeDetailsPanel implements DetailsPanel {
 
     private static final String BTN_ADD_INGREDIENT = "Zutat hinzufügen";
+    private static final String BTN_ADD_STEP = "Rezeptschritt hinzufügen";
+    public static final String DURATION_LABEL_TEXT = "Dauer in Minuten: ";
     private final RecipeGenerator owner;
+    private Recipe displayedRecipe;
+    private JPanel recipeDetailsPanel = new JPanel();
 
-    private JPanel recipeDetailsPanel = new JPanel(new GridBagLayout());
+    //Recipe text
+    private JTextArea recipeText = new JTextArea(6,25);
 
+    //Recipe steps
+    private ListModel<RecipeStep> stepListModel = new DefaultListModel<>();
+
+    private JList<RecipeStep> stepJList = new JList<>(stepListModel);
+    private JButton btnAddStep = new JButton(BTN_ADD_STEP);
+
+    private final JTextField durationTextField = new JTextField(5);
+
+    //Number of servings
     private JComboBox<String> servingsBox = new JComboBox<>(new String[]{"1 Portion", "2 Portionen", "3 Portionen",
             "4 Portionen", "5 Portionen", "6 Portionen", "7 Portionen", "8 Portionen",
             "9 Portionen", "10 Portionen", "11 Portionen", "12 Portionen"});
+
+    //Ingredients
     private JList<Map.Entry<Ingredient, Integer>> ingredientList = new JList<>(new DefaultListModel<>());
-    private JTextArea recipeText = new JTextArea();
-    private Recipe displayedRecipe;
     private JButton btnAddIngredient = new JButton(BTN_ADD_INGREDIENT);
 
+
+
     RecipeDetailsPanel(RecipeGenerator owner) {
+        GridBagLayout layout = new GridBagLayout();
+        layout.columnWidths = new int[] { COLUMN_WIDTH * 2};
+        recipeDetailsPanel.setLayout(layout);
+
         this.owner = owner;
+        int componentsCounter = 0;
 
         //Recipe text area
         recipeText.setLineWrap(true);
         recipeText.setWrapStyleWord(true);
         recipeText.addFocusListener(new RecipeTextFocusListener());
-        recipeText.setPreferredSize(new Dimension((int) (COLUMN_WIDTH * 1.5), RESOLUTION_BASE * 3));
 
-        GridBagConstraints recipeTextAreaConstraints = new GridBagConstraints();
-        recipeTextAreaConstraints.insets = INSETS;
-        recipeTextAreaConstraints.gridx = 0;
-        recipeTextAreaConstraints.gridy = 0;
+        GridBagConstraints recipeTextAreaConstraints = createGridBagConstraints(componentsCounter++);
         recipeTextAreaConstraints.fill = GridBagConstraints.HORIZONTAL;
-        recipeDetailsPanel.add(recipeText, recipeTextAreaConstraints);
+        recipeDetailsPanel.add(new JScrollPane(recipeText,
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER),
+                recipeTextAreaConstraints);
 
         //steps list
+        stepJList.addMouseListener(new StepsListMouseAdapter());
+        GridBagConstraints stepsListConstraints = createGridBagConstraints(componentsCounter++);
+        stepsListConstraints.fill = GridBagConstraints.HORIZONTAL;
+        recipeDetailsPanel.add(new JScrollPane(stepJList), stepsListConstraints);
+
+        //Add step button
+        btnAddStep.addActionListener(e -> addStepToRecipe());
+        GridBagConstraints buttonAddStepConstrains = createGridBagConstraints(componentsCounter++);
+        recipeDetailsPanel.add(btnAddStep, buttonAddStepConstrains);
 
         //Selection drop down servings
         servingsBox.addActionListener(new ServingsModifiedListener());
-        GridBagConstraints servingsBoxConstraints = new GridBagConstraints();
-        servingsBoxConstraints.insets = INSETS;
-        servingsBoxConstraints.gridx = 0;
-        servingsBoxConstraints.gridy = 1;
+        GridBagConstraints servingsBoxConstraints = createGridBagConstraints(componentsCounter++);
         servingsBoxConstraints.fill = GridBagConstraints.HORIZONTAL;
         recipeDetailsPanel.add(servingsBox, servingsBoxConstraints);
 
         //Duration text field
+        JPanel durationPanel = new JPanel();
+        durationPanel.add(new JLabel(DURATION_LABEL_TEXT));
+        durationPanel.add(durationTextField);
+        durationTextField.addFocusListener(new DurationFieldFocusListener());
+        GridBagConstraints durationPanelConstraints = createGridBagConstraints(componentsCounter++);
+        durationPanelConstraints.fill = GridBagConstraints.HORIZONTAL;
+        recipeDetailsPanel.add(durationPanel, durationPanelConstraints);
 
         //Ingredients list
         ingredientList.addMouseListener(new IngredientListClickedListener());
         ingredientList.setPreferredSize(new Dimension(COLUMN_WIDTH, RESOLUTION_BASE * 2));
-        GridBagConstraints ingredientsListConstraints = new GridBagConstraints();
-        ingredientsListConstraints.insets = INSETS;
-        ingredientsListConstraints.gridx = 0;
-        ingredientsListConstraints.gridy = 2;
+        GridBagConstraints ingredientsListConstraints = createGridBagConstraints(componentsCounter++);
         ingredientsListConstraints.fill = GridBagConstraints.BOTH;
         recipeDetailsPanel.add(new JScrollPane(ingredientList), ingredientsListConstraints);
 
         //Add ingredient button
-        btnAddIngredient.addActionListener(new AddIngredientlistener());
-        GridBagConstraints buttonAddIngredientConstrains = new GridBagConstraints();
-        buttonAddIngredientConstrains.gridx = 0;
-        buttonAddIngredientConstrains.gridy = 3;
+        btnAddIngredient.addActionListener(e -> addIngredientToRecipe());
+        GridBagConstraints buttonAddIngredientConstrains = createGridBagConstraints(componentsCounter++);
         recipeDetailsPanel.add(btnAddIngredient, buttonAddIngredientConstrains);
 
 
+    }
+
+    private GridBagConstraints createGridBagConstraints(int componentsCounter) {
+        GridBagConstraints ingredientsListConstraints = new GridBagConstraints();
+        ingredientsListConstraints.insets = INSETS;
+        ingredientsListConstraints.gridx = 0;
+        ingredientsListConstraints.gridy = componentsCounter;
+        return ingredientsListConstraints;
     }
 
     @Override
@@ -85,11 +126,20 @@ public class RecipeDetailsPanel implements DetailsPanel {
         update();
     }
 
-    void update() {
+    private void update() {
         if (displayedRecipe == null) return;
 
         recipeText.setText(displayedRecipe.getText());
+
+        DefaultListModel<RecipeStep> steps = new DefaultListModel<>();
+        for (RecipeStep s: displayedRecipe.getStepsCopy()) {
+            steps.addElement(s);
+        }
+        stepJList.setModel(steps);
+
         servingsBox.setSelectedIndex(displayedRecipe.getServings() - 1);
+
+        durationTextField.setText(String.valueOf(displayedRecipe.getDuration()));
 
         DefaultListModel<Map.Entry<Ingredient, Integer>> ingredients = new DefaultListModel<>();
         for (Map.Entry<Ingredient, Integer> i : displayedRecipe.getIngredients().entrySet()) {
@@ -106,10 +156,8 @@ public class RecipeDetailsPanel implements DetailsPanel {
     }
 
     private class RecipeTextFocusListener implements FocusListener {
-
         @Override
         public void focusGained(FocusEvent e) {
-
         }
 
         @Override
@@ -151,16 +199,13 @@ public class RecipeDetailsPanel implements DetailsPanel {
         }
     }
 
-    private class AddIngredientlistener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (displayedRecipe == null) return;
-            addIngredientByDialog(displayedRecipe);
-            update();
-        }
+    public void addIngredientToRecipe() {
+        if (displayedRecipe == null) return;
+        addIngredientByDialog(displayedRecipe);
+        update();
     }
 
-    private void addIngredientByDialog(Recipe r) {
+    private void addIngredientByDialog(Recipe displayedRecipe) {
         SortedSet<Ingredient> allIngredients = owner.getCollection().getIngredientsCopy();
         Ingredient[] possibilities = allIngredients.toArray(new Ingredient[allIngredients.size()]);
 
@@ -187,6 +232,73 @@ public class RecipeDetailsPanel implements DetailsPanel {
                         "")
         );
 
-        r.setIngredientWithAmount(i, amount);
+        displayedRecipe.setIngredientWithAmount(i, amount);
+    }
+
+    public void addStepToRecipe() {
+        if (displayedRecipe == null) return;
+        addRecipeStepByDialog(displayedRecipe);
+        update();
+    }
+
+    private void addRecipeStepByDialog(Recipe displayedRecipe) {
+        JTextArea textArea = new JTextArea(6, 40);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(false);
+        JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+        //Create a dropdown list of numbers to choose from, ranging from 1 to current numbers of steps + 1
+        int n = displayedRecipe.getStepCount();
+        Integer[] values = new Integer[n + 1];
+        IntStream.rangeClosed(1,n+1).forEach(val -> values[val-1] = val);
+        JComboBox<Integer> stepNumber = new JComboBox<>(values);
+        stepNumber.setSelectedIndex(n);
+
+
+        JComponent[] components = new JComponent[] {
+                new JLabel("Arbeitsschritt beschreiben"),
+                scrollPane,
+                new JLabel("Einfügen als Schritt Nummer..."),
+                stepNumber
+        };
+
+
+        int result = JOptionPane.showConfirmDialog(null, components, "Arbeitsschritt hinzufügen", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION ) {
+            String text = textArea.getText();
+            if (StringUtils.isNotBlank(text)) {
+                displayedRecipe.addStep(stepNumber.getSelectedIndex(), text);
+            }
+
+        }
+    }
+
+    private class DurationFieldFocusListener implements FocusListener {
+        @Override
+        public void focusGained(FocusEvent e) {
+
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+            try {
+                int duration = Integer.parseUnsignedInt(durationTextField.getText());
+                displayedRecipe.setDuration(duration);
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null, "Kein gültiger Wert für die Dauer des Rezepts: " + durationTextField.getText());
+            }
+        }
+    }
+
+    private class StepsListMouseAdapter extends MouseAdapter {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (clickedBelowTheListItems(e, stepJList)) addStepToRecipe();
+                else if (e.getClickCount() > 1){
+                    displayedRecipe.removeStep(stepJList.getSelectedIndex());
+                    update();
+                }
+            }
     }
 }
