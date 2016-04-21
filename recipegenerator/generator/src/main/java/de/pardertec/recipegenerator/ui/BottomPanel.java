@@ -107,7 +107,7 @@ public class BottomPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             fileChooser.setCurrentDirectory(executionDirectory);
-            int returnValue = fileChooser.showOpenDialog(BottomPanel.this.panel);
+            int returnValue = fileChooser.showOpenDialog(owner.mainFrame);
 
             if (returnValue == JFileChooser.APPROVE_OPTION) {
                 importRecipes(fileChooser);
@@ -119,10 +119,10 @@ public class BottomPanel {
             try {
                 String s = FileUtil.readFile(f);
                 owner.getCollection().importJSON(s);
-                JOptionPane.showMessageDialog(panel, "Import successful.");
+                JOptionPane.showMessageDialog(owner.mainFrame, "Import successful.");
             } catch (Exception e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(panel, "Import failed.");
+                JOptionPane.showMessageDialog(owner.mainFrame, "Import failed.");
             }
         }
     }

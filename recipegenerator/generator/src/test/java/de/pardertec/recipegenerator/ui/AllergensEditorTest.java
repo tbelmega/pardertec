@@ -1,7 +1,6 @@
 package de.pardertec.recipegenerator.ui;
 
 import de.pardertec.datamodel.Allergen;
-import de.pardertec.datamodel.RecipeCollection;
 import org.testng.annotations.Test;
 
 import javax.swing.*;
@@ -27,7 +26,7 @@ public class AllergensEditorTest extends AbstractRecipeGeneratorTest {
 
         //act
         clickButton(mainFrame, AbstractEditor.BTN_NEW);
-        type("Lactose");
+        typeCharacters("Lactose");
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.delay(50);
 
@@ -45,7 +44,7 @@ public class AllergensEditorTest extends AbstractRecipeGeneratorTest {
         clickButton(mainFrame, ButtonPanel.BUTTON_MANAGE_ALLERGENS);
         JList<Allergen> list = (JList<Allergen>) findComponentByName(mainFrame, AllergensEditor.ALLERGENS_LIST_NAME);
         clickButton(mainFrame, AbstractEditor.BTN_NEW);
-        type("Lactose");
+        typeCharacters("Lactose");
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.delay(50);
 

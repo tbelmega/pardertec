@@ -17,14 +17,15 @@ import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorder
  */
 public abstract class AbstractEditor {
     protected final RecipeGenerator owner;
-
     public static final String BTN_NEW = "Neu";
-    public static final String BTN_DELETE = "Löschen";
 
+    public static final String BTN_DELETE = "Löschen";
     protected JPanel editorPanel = new JPanel();
+
     protected JButton btnNew = new JButton(BTN_NEW);
     protected JButton btnDelete = new JButton(BTN_DELETE);
 
+    public static final String MAIN_LIST_NAME = "mainJList";
     protected JList<BusinessObject> mainList = new JList<>(new DefaultListModel<>());
     protected JPanel mainListPanel;
     protected JPanel btnPanel = new JPanel();
@@ -38,6 +39,7 @@ public abstract class AbstractEditor {
         btnPanel.add(btnNew);
         btnPanel.add(btnDelete);
 
+        mainList.setName(MAIN_LIST_NAME);
         mainListPanel = createPanelWithCustomBorderLayout();
         mainListPanel.add(new JScrollPane(mainList), BorderLayout.CENTER);
         mainListPanel.add(btnPanel, BorderLayout.SOUTH);

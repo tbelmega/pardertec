@@ -3,10 +3,7 @@ package de.pardertec;
 import de.pardertec.datamodel.*;
 import de.pardertec.recipegenerator.ui.AbstractRecipeGeneratorTest;
 import de.pardertec.recipegenerator.ui.BottomPanel;
-import de.pardertec.recipegenerator.ui.RecipeGenerator;
 import de.pardertec.util.FileUtil;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import java.awt.*;
@@ -14,7 +11,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 
 import static de.pardertec.testing.swing.SwingTestUtil.clickButton;
-import static de.pardertec.testing.swing.SwingTestUtil.type;
+import static de.pardertec.testing.swing.SwingTestUtil.typeCharacters;
 import static org.testng.AssertJUnit.assertTrue;
 
 /**
@@ -40,7 +37,7 @@ public class ImportExportTest extends AbstractRecipeGeneratorTest {
 
         //act
         clickButton(mainFrame, BottomPanel.BUTTON_EXPORT);
-        type(f.getName());
+        typeCharacters(f.getName());
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.delay(100);
@@ -64,7 +61,7 @@ public class ImportExportTest extends AbstractRecipeGeneratorTest {
         recipeGenerator.getCollection().add(testRecipe);
 
         clickButton(mainFrame, BottomPanel.BUTTON_EXPORT);
-        type(f.getName());
+        typeCharacters(f.getName());
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.delay(100);
@@ -73,7 +70,7 @@ public class ImportExportTest extends AbstractRecipeGeneratorTest {
 
         //act
         clickButton(mainFrame, BottomPanel.BUTTON_IMPORT);
-        type(f.getName());
+        typeCharacters(f.getName());
         robot.waitForIdle();
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.delay(100);

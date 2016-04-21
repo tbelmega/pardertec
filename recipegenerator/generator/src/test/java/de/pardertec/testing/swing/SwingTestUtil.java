@@ -13,6 +13,9 @@ import static org.testng.AssertJUnit.fail;
  */
 public class SwingTestUtil {
 
+    public static Window getFocusedWindow() {
+        return KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusedWindow();
+    }
 
     public static void assertActiveWindowTitleIs(String title) throws Exception {
         new Robot().waitForIdle();
@@ -72,16 +75,17 @@ public class SwingTestUtil {
         return c instanceof JButton && text.equals(((JButton) c).getText());
     }
 
-    public static void type(String s) {
+    public static void typeCharacters(String s) {
         Robot robot = createRobotNonThrowing();
 
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
+
             if (Character.isUpperCase(c)) {
                 robot.keyPress(KeyEvent.VK_SHIFT);
             }
-            robot.keyPress(Character.toUpperCase(c));
-            robot.keyRelease(Character.toUpperCase(c));
+            robot.keyPress(KeyEvent.getExtendedKeyCodeForChar(c));
+            robot.keyRelease(KeyEvent.getExtendedKeyCodeForChar(c));
 
             if (Character.isUpperCase(c)) {
                 robot.keyRelease(KeyEvent.VK_SHIFT);
