@@ -1,14 +1,9 @@
 package de.pardertec.recipegenerator.ui;
 
-import de.pardertec.datamodel.BusinessObject;
-import de.pardertec.datamodel.Ingredient;
-import de.pardertec.datamodel.Recipe;
-import de.pardertec.datamodel.RecipeStep;
+import de.pardertec.datamodel.*;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Map;
@@ -29,6 +24,10 @@ public class RecipeDetailsPanel implements DetailsPanel {
     public static final String RECIPE_TEXT_AREA_NAME = "recipeTextArea";
     public static final String RECIPE_STEP_TEXT_AREA_NAME = "recipeStepTextArea";
     public static final String STEPS_LIST_NAME = "recipeStepList";
+    public static final String SERVINGS_BOX_NAME = "servingsSelectionBox";
+    public static final String DURATION_TEXTFIELD_NAME = "durationTextField";
+    public static final String INGREDIENTS_LIST_NAME = "ingredientsList";
+    public static final String DIFFICULTY_BOX_NAME = "difficultySelectionBox";
 
     private final RecipeGenerator owner;
     private Recipe displayedRecipe;
@@ -43,7 +42,11 @@ public class RecipeDetailsPanel implements DetailsPanel {
     private JList<RecipeStep> stepJList = new JList<>(stepListModel);
     private JButton btnAddStep = new JButton(BTN_ADD_STEP);
 
+    //duration
     private final JTextField durationTextField = new JTextField(5);
+
+    //difficulty
+    private final JComboBox<Difficulty> difficultyJComboBox = new JComboBox<>(Difficulty.values());
 
     //Number of servings
     private JComboBox<String> servingsBox = new JComboBox<>(new String[]{"1 Portion", "2 Portionen", "3 Portionen",
@@ -90,12 +93,27 @@ public class RecipeDetailsPanel implements DetailsPanel {
         recipeDetailsPanel.add(btnAddStep, buttonAddStepConstrains);
 
         //Selection drop down servings
-        servingsBox.addActionListener(new ServingsModifiedListener());
+        servingsBox.setName(SERVINGS_BOX_NAME);
+        servingsBox.addActionListener(e -> {
+            displayedRecipe.setServings(servingsBox.getSelectedIndex() + 1);
+            update();
+        });
         GridBagConstraints servingsBoxConstraints = createGridBagConstraints(componentsCounter++);
         servingsBoxConstraints.fill = GridBagConstraints.HORIZONTAL;
         recipeDetailsPanel.add(servingsBox, servingsBoxConstraints);
 
+        //Selection drop down difficulty
+        difficultyJComboBox.setName(DIFFICULTY_BOX_NAME);
+        difficultyJComboBox.addActionListener(e -> {
+            displayedRecipe.setDifficulty((Difficulty)difficultyJComboBox.getSelectedItem());
+            update();
+        });
+        GridBagConstraints difficultyBoxConstraints = createGridBagConstraints(componentsCounter++);
+        difficultyBoxConstraints.fill = GridBagConstraints.HORIZONTAL;
+        recipeDetailsPanel.add(difficultyJComboBox, difficultyBoxConstraints);
+
         //Duration text field
+        durationTextField.setName(DURATION_TEXTFIELD_NAME);
         JPanel durationPanel = new JPanel();
         durationPanel.add(new JLabel(DURATION_LABEL_TEXT));
         durationPanel.add(durationTextField);
@@ -105,6 +123,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
         recipeDetailsPanel.add(durationPanel, durationPanelConstraints);
 
         //Ingredients list
+        ingredientList.setName(INGREDIENTS_LIST_NAME);
         ingredientList.addMouseListener(new IngredientListClickedListener());
         ingredientList.setPreferredSize(new Dimension(COLUMN_WIDTH, RESOLUTION_BASE * 2));
         GridBagConstraints ingredientsListConstraints = createGridBagConstraints(componentsCounter++);
@@ -145,6 +164,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
         stepJList.setModel(steps);
 
         servingsBox.setSelectedIndex(displayedRecipe.getServings() - 1);
+        difficultyJComboBox.setSelectedItem(displayedRecipe.getDifficulty());
 
         durationTextField.setText(String.valueOf(displayedRecipe.getDuration()));
 
@@ -174,14 +194,6 @@ public class RecipeDetailsPanel implements DetailsPanel {
 
     void saveRecipeText() {
         if (displayedRecipe != null) displayedRecipe.setText(recipeText.getText());
-    }
-
-    private class ServingsModifiedListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            displayedRecipe.setServings(servingsBox.getSelectedIndex() + 1);
-            update();
-        }
     }
 
     private class IngredientListClickedListener extends MouseAdapter {

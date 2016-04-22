@@ -1,27 +1,32 @@
 package de.pardertec.recipegenerator.ui;
 
-import de.pardertec.datamodel.Recipe;
-import de.pardertec.datamodel.RecipeStep;
+import de.pardertec.datamodel.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Map;
 
 import static de.pardertec.testing.swing.SwingTestUtil.*;
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.fail;
 
 /**
  * Created by Thiemo on 21.04.2016.
  */
 public class RecipeEditorTest {
 
+    public static final int DELAY = 100;
     private RecipeGenerator recipeGenerator;
     private JFrame mainFrame;
+
     public static final String TEST_RECIPE_NAME = "testrecipename";
     public static final String TEST_RECIPE_TEXT = "testrecipetext";
+    public static final String TEST_INGREDIENT_NAME = "testIngredientName";
     public static final Recipe TEST_RECIPE = new Recipe(TEST_RECIPE_NAME);
+    public static final Ingredient TEST_INGREDIENT = new Ingredient(TEST_INGREDIENT_NAME, Measure.GRAMS, VeganismStatus.CONTAINS_MEAT);
 
 
     @BeforeMethod
@@ -44,7 +49,7 @@ public class RecipeEditorTest {
 
         robot.waitForIdle();
         robot.keyPress(KeyEvent.VK_ENTER);
-        robot.delay(50);
+        robot.delay(DELAY);
 
         //assert
         JList<Recipe> mainList = (JList<Recipe>) findComponentByName(mainFrame, AbstractEditor.MAIN_LIST_NAME);
@@ -63,7 +68,7 @@ public class RecipeEditorTest {
         recipeTextArea.requestFocus();
         typeCharacters(TEST_RECIPE_TEXT);
         FocusManager.getCurrentManager().focusNextComponent();
-        robot.delay(50);
+        robot.delay(DELAY);
 
         //assert
         assertEquals(TEST_RECIPE_TEXT, recipeTextArea.getText());
@@ -83,7 +88,7 @@ public class RecipeEditorTest {
         FocusManager.getCurrentManager().focusNextComponent();
         FocusManager.getCurrentManager().focusNextComponent();
         robot.keyPress(KeyEvent.VK_ENTER);
-        robot.delay(50);
+        robot.delay(DELAY);
 
         //assert
         assertEquals(TEST_RECIPE_TEXT, TEST_RECIPE.getStep(0).getText());
@@ -95,22 +100,79 @@ public class RecipeEditorTest {
 
     @Test
     public void testSetServings() throws Exception {
+        //arrange
+        Robot robot = new Robot();
+        createAndSelectRecipe();
 
+        //act
+        JComboBox<String> servingsBox = (JComboBox<String>)findComponentByName(mainFrame, RecipeDetailsPanel.SERVINGS_BOX_NAME);
+        servingsBox.setSelectedIndex(3);
+        robot.delay(DELAY);
+
+        //assert
+        assertEquals(4, TEST_RECIPE.getServings());
+    }
+
+
+    @Test
+    public void testSetDifficulty() throws Exception {
+        //arrange
+        Robot robot = new Robot();
+        createAndSelectRecipe();
+
+        //act
+        JComboBox<Difficulty> difficultyBox= (JComboBox<Difficulty>)findComponentByName(mainFrame, RecipeDetailsPanel.DIFFICULTY_BOX_NAME);
+        difficultyBox.setSelectedItem(Difficulty.EASY);
+        robot.waitForIdle();
+
+        //assert
+        assertEquals(Difficulty.EASY, TEST_RECIPE.getDifficulty());
     }
 
     @Test
     public void testSetDuration() throws Exception {
+        //arrange
+        Robot robot = new Robot();
+        createAndSelectRecipe();
 
+        //act
+        JTextField duration = (JTextField) findComponentByName(mainFrame, RecipeDetailsPanel.DURATION_TEXTFIELD_NAME);
+        duration.setText("");
+        duration.requestFocus();
+        robot.delay(DELAY);
+        robot.waitForIdle();
+        typeCharacters("180");
+        FocusManager.getCurrentManager().focusNextComponent();
+        robot.delay(DELAY);
+
+        //assert
+        assertEquals("180", duration.getText());
+        assertEquals(180, TEST_RECIPE.getDuration());
     }
 
-    @Test
-    public void testSetDifficulty() throws Exception {
-
-    }
 
     @Test
     public void testAddIngredient() throws Exception {
+        //arrange
+        Robot robot = new Robot();
+        createAndSelectRecipe();
+        recipeGenerator.getCollection().add(TEST_INGREDIENT);
 
+        //act
+        clickButton(mainFrame, RecipeDetailsPanel.BTN_ADD_INGREDIENT);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.waitForIdle();
+        typeCharacters("50");
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.delay(DELAY);
+
+        //assert
+        assertEquals(new Integer(50), TEST_RECIPE.getIngredients().get(TEST_INGREDIENT));
+
+        JList<Map.Entry<Ingredient, Integer>> steps = (JList<Map.Entry<Ingredient, Integer>>) findComponentByName(mainFrame, RecipeDetailsPanel.INGREDIENTS_LIST_NAME);
+        steps.setSelectedIndex(0);
+        Ingredient ingredient = steps.getSelectedValue().getKey();
+        assertEquals(TEST_INGREDIENT, ingredient);
     }
 
 

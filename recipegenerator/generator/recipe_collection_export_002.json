@@ -2,45 +2,45 @@
     "recipes": [
         {
             "duration": 30,
-            "difficulty": "Unbekannt",
+            "difficulty": "Leicht",
             "servings": 4,
             "name": "Thiemos Spezialnudeln",
             "ingredients": [
                 {
-                    "amount": 250,
-                    "ingredient": "df5e3999-05ad-4750-aa64-91c22a3c9acc"
+                    "amount": 1,
+                    "ingredient": "c7dbed01-cc47-4f65-be37-514f8005a17e"
                 },
                 {
                     "amount": 100,
                     "ingredient": "5e172428-91a2-492c-9f74-d11e80c9bdff"
                 },
                 {
-                    "amount": 50,
-                    "ingredient": "b144565a-6c7a-4100-a7a9-4a6a5292ffdb"
-                },
-                {
-                    "amount": 100,
-                    "ingredient": "f0d01502-e3b9-40ac-badd-c8231ecffe48"
+                    "amount": 250,
+                    "ingredient": "df5e3999-05ad-4750-aa64-91c22a3c9acc"
                 },
                 {
                     "amount": 200,
                     "ingredient": "d3576858-e779-412f-b47c-eb36c171a541"
                 },
                 {
+                    "amount": 100,
+                    "ingredient": "f0d01502-e3b9-40ac-badd-c8231ecffe48"
+                },
+                {
                     "amount": 50,
                     "ingredient": "8de478ac-ce12-4bca-bd0f-b27165cff495"
                 },
                 {
-                    "amount": 500,
-                    "ingredient": "4716f2a7-bf4d-4981-b24f-9f56454df46a"
+                    "amount": 50,
+                    "ingredient": "b144565a-6c7a-4100-a7a9-4a6a5292ffdb"
                 },
                 {
                     "amount": 500,
                     "ingredient": "7f28756b-9182-43fd-877a-f2fd6d2c7684"
                 },
                 {
-                    "amount": 1,
-                    "ingredient": "c7dbed01-cc47-4f65-be37-514f8005a17e"
+                    "amount": 500,
+                    "ingredient": "4716f2a7-bf4d-4981-b24f-9f56454df46a"
                 }
             ],
             "id": "02449af1-d909-430a-ac6c-12c4c7a2ec1e",
@@ -58,33 +58,17 @@
         },
         {
             "duration": 40,
-            "difficulty": "Unbekannt",
+            "difficulty": "Leicht",
             "servings": 4,
             "name": "Spaghetti Bolognese",
             "ingredients": [
                 {
-                    "amount": 100,
-                    "ingredient": "4ba9a066-9bdb-45f9-a5ce-52b30f1b41e0"
-                },
-                {
-                    "amount": 500,
-                    "ingredient": "34a140e8-d008-4c60-be4a-68941ea18c91"
+                    "amount": 1,
+                    "ingredient": "c7dbed01-cc47-4f65-be37-514f8005a17e"
                 },
                 {
                     "amount": 50,
                     "ingredient": "5e172428-91a2-492c-9f74-d11e80c9bdff"
-                },
-                {
-                    "amount": 2,
-                    "ingredient": "179e8631-a7e8-4217-98b6-4982d9a44207"
-                },
-                {
-                    "amount": 50,
-                    "ingredient": "b144565a-6c7a-4100-a7a9-4a6a5292ffdb"
-                },
-                {
-                    "amount": 50,
-                    "ingredient": "f0d01502-e3b9-40ac-badd-c8231ecffe48"
                 },
                 {
                     "amount": 80,
@@ -92,19 +76,35 @@
                 },
                 {
                     "amount": 500,
+                    "ingredient": "34a140e8-d008-4c60-be4a-68941ea18c91"
+                },
+                {
+                    "amount": 2,
+                    "ingredient": "179e8631-a7e8-4217-98b6-4982d9a44207"
+                },
+                {
+                    "amount": 500,
                     "ingredient": "ddc98dca-0f6e-460e-a3bb-a70ef5347804"
+                },
+                {
+                    "amount": 50,
+                    "ingredient": "f0d01502-e3b9-40ac-badd-c8231ecffe48"
                 },
                 {
                     "amount": 20,
                     "ingredient": "8de478ac-ce12-4bca-bd0f-b27165cff495"
                 },
                 {
-                    "amount": 500,
-                    "ingredient": "7f28756b-9182-43fd-877a-f2fd6d2c7684"
+                    "amount": 100,
+                    "ingredient": "4ba9a066-9bdb-45f9-a5ce-52b30f1b41e0"
                 },
                 {
-                    "amount": 1,
-                    "ingredient": "c7dbed01-cc47-4f65-be37-514f8005a17e"
+                    "amount": 50,
+                    "ingredient": "b144565a-6c7a-4100-a7a9-4a6a5292ffdb"
+                },
+                {
+                    "amount": 500,
+                    "ingredient": "7f28756b-9182-43fd-877a-f2fd6d2c7684"
                 }
             ],
             "id": "19688d4a-916d-48d3-b12b-e2a3768b7198",
@@ -113,13 +113,33 @@
         },
         {
             "duration": 25,
-            "difficulty": "Unbekannt",
+            "difficulty": "Leicht",
             "servings": 2,
             "name": "Caesar Salad",
             "ingredients": [
                 {
                     "amount": 1,
-                    "ingredient": "23b43d50-ac0f-4624-90a5-f6312512a8bf"
+                    "ingredient": "c7dbed01-cc47-4f65-be37-514f8005a17e"
+                },
+                {
+                    "amount": 150,
+                    "ingredient": "e27e8df5-a146-41bd-9cf5-9bda9bb9c4e9"
+                },
+                {
+                    "amount": 300,
+                    "ingredient": "04f75a32-894a-4b67-93a7-01cdc647cf13"
+                },
+                {
+                    "amount": 2,
+                    "ingredient": "ad1b0d00-2a92-4742-8d1c-5a388cf5f1bd"
+                },
+                {
+                    "amount": 1,
+                    "ingredient": "b4616aa0-c068-4698-bbc2-b3120286d07d"
+                },
+                {
+                    "amount": 50,
+                    "ingredient": "8de478ac-ce12-4bca-bd0f-b27165cff495"
                 },
                 {
                     "amount": 200,
@@ -127,27 +147,7 @@
                 },
                 {
                     "amount": 1,
-                    "ingredient": "b4616aa0-c068-4698-bbc2-b3120286d07d"
-                },
-                {
-                    "amount": 2,
-                    "ingredient": "ad1b0d00-2a92-4742-8d1c-5a388cf5f1bd"
-                },
-                {
-                    "amount": 300,
-                    "ingredient": "04f75a32-894a-4b67-93a7-01cdc647cf13"
-                },
-                {
-                    "amount": 50,
-                    "ingredient": "8de478ac-ce12-4bca-bd0f-b27165cff495"
-                },
-                {
-                    "amount": 150,
-                    "ingredient": "e27e8df5-a146-41bd-9cf5-9bda9bb9c4e9"
-                },
-                {
-                    "amount": 1,
-                    "ingredient": "c7dbed01-cc47-4f65-be37-514f8005a17e"
+                    "ingredient": "23b43d50-ac0f-4624-90a5-f6312512a8bf"
                 }
             ],
             "id": "061a35ae-4ea9-4e3d-bc62-ff2ee6c11f64",
