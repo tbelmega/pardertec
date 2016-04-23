@@ -33,7 +33,7 @@ public class IngredientTest {
         assertTrue(cheeseAsJson.has(JSON_KEY_ID));
         assertEquals("Käse", cheeseAsJson.getString(JSON_KEY_NAME));
         assertEquals(GRAMS.toString(), cheeseAsJson.getString(JSON_KEY_MEASURE));
-        assertEquals(VEGETARIAN.toString(), cheeseAsJson.getString(JSON_KEY_STATUS));
+        assertEquals(VEGETARIAN.getCode(), cheeseAsJson.getInt(JSON_KEY_STATUS));
         assertEquals(lactose.getId(), cheeseAsJson.getJSONArray(JSON_KEY_ALLERGENS).getString(0));
 
     }
