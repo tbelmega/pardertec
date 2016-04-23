@@ -15,11 +15,15 @@ import java.io.IOException;
  */
 public class BottomPanel {
 
-    public static final String BUTTON_CLOSE = "Schließen";
-    public static final String BUTTON_EXPORT = "Export";
-    public static final String BUTTON_IMPORT = "Import";
-    public static final String CLOSE_DIALOG_TITLE = "Warnung";
-    public static final String CLOSE_DIALOG_MESSAGE = "Programm schließen?";
+    public static final String BUTTON_CLOSE = "button.close";
+    public static final String BUTTON_EXPORT = "button.export";
+    public static final String BUTTON_IMPORT = "button.import";
+    public static final String CLOSE_DIALOG_TITLE = "warning";
+    public static final String CLOSE_DIALOG_MESSAGE = "dialog.close.message";
+    public static final String EXPORT_SUCCESSFUL = "dialog.export.success";
+    public static final String EXPORT_FAILED = "dialog.export.failed";
+    public static final String IMPORT_SUCCESSFUL = "dialog.import.success";
+    public static final String IMPORT_FAILED = "dialog.import.failed";
 
     private final JPanel panel = new JPanel();
     private final RecipeGenerator owner;
@@ -45,15 +49,15 @@ public class BottomPanel {
     }
 
     private void addButtons() {
-        btnImport = new JButton(BUTTON_IMPORT);
+        btnImport = new JButton(owner.string(BUTTON_IMPORT));
         btnImport.addActionListener(new ImportRecipesAction());
         this.panel.add(btnImport);
 
-        btnExport = new JButton(BUTTON_EXPORT);
+        btnExport = new JButton(owner.string(BUTTON_EXPORT));
         btnExport.addActionListener(new ExportRecipesAction());
         this.panel.add(btnExport);
 
-        btnClose = new JButton(BUTTON_CLOSE);
+        btnClose = new JButton(owner.string(BUTTON_CLOSE));
         btnClose.addActionListener(new CloseAction());
         this.panel.add(btnClose);
 
@@ -71,8 +75,8 @@ public class BottomPanel {
         public void actionPerformed(ActionEvent e)
         {
             int dialogResult = JOptionPane.showConfirmDialog(null,
-                    CLOSE_DIALOG_MESSAGE,
-                    CLOSE_DIALOG_TITLE,
+                    owner.string(CLOSE_DIALOG_MESSAGE),
+                    owner.string(CLOSE_DIALOG_TITLE),
                     JOptionPane.YES_NO_OPTION);
             if (dialogResult == JOptionPane.YES_OPTION) owner.close();
         }
@@ -96,9 +100,9 @@ public class BottomPanel {
 
             try {
                 FileUtil.writeTextFile(f, s);
-                JOptionPane.showMessageDialog(panel, "Export successful.\n" + f.getAbsolutePath());
+                JOptionPane.showMessageDialog(panel, owner.string(EXPORT_SUCCESSFUL) + " " + f.getAbsolutePath());
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(panel, "Export failed.");
+                JOptionPane.showMessageDialog(panel, owner.string(EXPORT_FAILED));
             }
         }
     }
@@ -119,10 +123,10 @@ public class BottomPanel {
             try {
                 String s = FileUtil.readFile(f);
                 owner.getCollection().importJSON(s);
-                JOptionPane.showMessageDialog(owner.mainFrame, "Import successful.");
+                JOptionPane.showMessageDialog(owner.mainFrame, owner.string(IMPORT_SUCCESSFUL));
             } catch (Exception e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(owner.mainFrame, "Import failed.");
+                JOptionPane.showMessageDialog(owner.mainFrame, owner.string(IMPORT_FAILED));
             }
         }
     }

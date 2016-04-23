@@ -19,9 +19,9 @@ import static org.testng.AssertJUnit.assertTrue;
  */
 public class ImportExportTest extends AbstractRecipeGeneratorTest {
 
-
+    public static final Measure GRAMS = new Measure("Gramm");
     private Allergen testAllergen = new Allergen("TestAllergen");
-    private Ingredient testIngredient = new Ingredient("TestIngredient", Measure.GRAMS, VeganismStatus.CONTAINS_MEAT);
+    private Ingredient testIngredient = new Ingredient("TestIngredient", GRAMS, VeganismStatus.CONTAINS_MEAT);
     private Recipe testRecipe = new Recipe("TestRecipe");
 
 

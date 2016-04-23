@@ -8,6 +8,7 @@ import javax.swing.FocusManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Locale;
 import java.util.Map;
 
 import static de.pardertec.testing.swing.SwingTestUtil.*;
@@ -26,12 +27,13 @@ public class RecipeEditorTest {
     public static final String TEST_RECIPE_TEXT = "testrecipetext";
     public static final String TEST_INGREDIENT_NAME = "testIngredientName";
     public static final Recipe TEST_RECIPE = new Recipe(TEST_RECIPE_NAME);
-    public static final Ingredient TEST_INGREDIENT = new Ingredient(TEST_INGREDIENT_NAME, Measure.GRAMS, VeganismStatus.CONTAINS_MEAT);
+    public static final Measure GRAMS = new Measure("Gramm");
+    public static final Ingredient TEST_INGREDIENT = new Ingredient(TEST_INGREDIENT_NAME, GRAMS, VeganismStatus.CONTAINS_MEAT);
 
 
     @BeforeMethod
     public void setUp() {
-        recipeGenerator = new RecipeGenerator();
+        recipeGenerator = new RecipeGenerator(Locale.GERMANY);
         recipeGenerator.initializeFrame();
         mainFrame = recipeGenerator.mainFrame;
         clickButton(mainFrame, ButtonPanel.BUTTON_MANAGE_RECIPES);

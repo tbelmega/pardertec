@@ -18,9 +18,7 @@ import static de.pardertec.recipegenerator.ui.UiUtil.clickedBelowTheListItems;
  */
 public class RecipeDetailsPanel implements DetailsPanel {
 
-    public static final String BTN_ADD_INGREDIENT = "Zutat hinzufügen";
-    public static final String BTN_ADD_STEP = "Rezeptschritt hinzufügen";
-    public static final String DURATION_LABEL_TEXT = "Dauer in Minuten: ";
+
     public static final String RECIPE_TEXT_AREA_NAME = "recipeTextArea";
     public static final String RECIPE_STEP_TEXT_AREA_NAME = "recipeStepTextArea";
     public static final String STEPS_LIST_NAME = "recipeStepList";
@@ -28,6 +26,21 @@ public class RecipeDetailsPanel implements DetailsPanel {
     public static final String DURATION_TEXTFIELD_NAME = "durationTextField";
     public static final String INGREDIENTS_LIST_NAME = "ingredientsList";
     public static final String DIFFICULTY_BOX_NAME = "difficultySelectionBox";
+
+    public static final String BTN_ADD_INGREDIENT = "ingredient.add";
+    public static final String BTN_ADD_STEP = "step.add";
+    public static final String DURATION_LABEL_TEXT = "duration.in.min";
+
+    private static final String SET_AMOUNT = "set.amount";
+    private static final String ADD_INGREDIENT = "ingredient.add";
+    private static final String SELECT_INGREDIENT = "ingredient.select";
+
+    public static final String STEP_DESCRIBE = "step.describe";
+    public static final String STEP_INSERT_AS_NUMBER = "step.insert.as.number";
+    public static final String STEP_ADD = "step.add";
+    public static final String WARNING_INVALID_DURATION = "warning.invalid.duration";
+
+    public static final String MEASURE_REPLACE_TAG = "<MEASURE>";
 
     private final RecipeGenerator owner;
     private Recipe displayedRecipe;
@@ -40,7 +53,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
     private ListModel<RecipeStep> stepListModel = new DefaultListModel<>();
 
     private JList<RecipeStep> stepJList = new JList<>(stepListModel);
-    private JButton btnAddStep = new JButton(BTN_ADD_STEP);
+    private JButton btnAddStep;
 
     //duration
     private final JTextField durationTextField = new JTextField(5);
@@ -55,7 +68,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
 
     //Ingredients
     private JList<Map.Entry<Ingredient, Integer>> ingredientList = new JList<>(new DefaultListModel<>());
-    private JButton btnAddIngredient = new JButton(BTN_ADD_INGREDIENT);
+    private JButton btnAddIngredient;
     private final JTextArea stepInputDialogTextArea = new JTextArea(6, 40);
 
 
@@ -88,6 +101,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
         recipeDetailsPanel.add(new JScrollPane(stepJList), stepsListConstraints);
 
         //Add step button
+        btnAddStep = new JButton(owner.string(BTN_ADD_STEP));
         btnAddStep.addActionListener(e -> addStepToRecipe());
         GridBagConstraints buttonAddStepConstrains = createGridBagConstraints(componentsCounter++);
         recipeDetailsPanel.add(btnAddStep, buttonAddStepConstrains);
@@ -115,7 +129,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
         //Duration text field
         durationTextField.setName(DURATION_TEXTFIELD_NAME);
         JPanel durationPanel = new JPanel();
-        durationPanel.add(new JLabel(DURATION_LABEL_TEXT));
+        durationPanel.add(new JLabel(owner.string(DURATION_LABEL_TEXT)));
         durationPanel.add(durationTextField);
         durationTextField.addFocusListener(new DurationFieldFocusListener());
         GridBagConstraints durationPanelConstraints = createGridBagConstraints(componentsCounter++);
@@ -131,6 +145,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
         recipeDetailsPanel.add(new JScrollPane(ingredientList), ingredientsListConstraints);
 
         //Add ingredient button
+        btnAddIngredient = new JButton(owner.string(BTN_ADD_INGREDIENT));
         btnAddIngredient.addActionListener(e -> addIngredientToRecipe());
         GridBagConstraints buttonAddIngredientConstrains = createGridBagConstraints(componentsCounter++);
         recipeDetailsPanel.add(btnAddIngredient, buttonAddIngredientConstrains);
@@ -228,8 +243,8 @@ public class RecipeDetailsPanel implements DetailsPanel {
 
         Ingredient i = (Ingredient) JOptionPane.showInputDialog(
                 null,
-                "Zutat auswählen",
-                "Zutat hinzufügen",
+                owner.string(SELECT_INGREDIENT),
+                owner.string(ADD_INGREDIENT),
                 JOptionPane.PLAIN_MESSAGE,
                 null,
                 possibilities,
@@ -241,8 +256,8 @@ public class RecipeDetailsPanel implements DetailsPanel {
 
                 (String) JOptionPane.showInputDialog(
                         null,
-                        "Menge in " + i.getMeasure() + " eingeben",
-                        "Zutat hinzufügen",
+                        owner.string(SET_AMOUNT).replace(MEASURE_REPLACE_TAG, i.getMeasure().getName()),
+                        owner.string(ADD_INGREDIENT),
                         JOptionPane.PLAIN_MESSAGE,
                         null,
                         null,
@@ -274,14 +289,14 @@ public class RecipeDetailsPanel implements DetailsPanel {
 
 
         JComponent[] components = new JComponent[]{
-                new JLabel("Arbeitsschritt beschreiben"),
+                new JLabel(owner.string(STEP_DESCRIBE)),
                 scrollPane,
-                new JLabel("Einfügen als Schritt Nummer..."),
+                new JLabel(owner.string(STEP_INSERT_AS_NUMBER)),
                 stepNumber
         };
 
 
-        int result = JOptionPane.showConfirmDialog(owner.mainFrame, components, "Arbeitsschritt hinzufügen", JOptionPane.OK_CANCEL_OPTION);
+        int result = JOptionPane.showConfirmDialog(owner.mainFrame, components, owner.string(STEP_ADD), JOptionPane.OK_CANCEL_OPTION);
 
         if (result == JOptionPane.OK_OPTION) {
             String text = stepInputDialogTextArea.getText();
@@ -304,7 +319,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
                 int duration = Integer.parseUnsignedInt(durationTextField.getText());
                 displayedRecipe.setDuration(duration);
             } catch (NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(null, "Kein gültiger Wert für die Dauer des Rezepts: " + durationTextField.getText());
+                JOptionPane.showMessageDialog(null, owner.string(WARNING_INVALID_DURATION) + durationTextField.getText());
             }
         }
     }

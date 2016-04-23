@@ -13,6 +13,8 @@ import java.awt.event.*;
  */
 public class RecipesEditor extends AbstractEditor {
 
+    public static final String NEW_RECIPE = "recipe.new";
+
     public RecipesEditor(RecipeGenerator owner) {
         super(owner);
     }
@@ -47,8 +49,8 @@ public class RecipesEditor extends AbstractEditor {
         return e -> {
             String s = (String) JOptionPane.showInputDialog(
                     RecipesEditor.this.editorPanel,
-                    "Bezeichnung eingeben",
-                    "Neues Rezept",
+                    string(SET_NAME),
+                    string(NEW_RECIPE),
                     JOptionPane.PLAIN_MESSAGE,
                     null,
                     null,

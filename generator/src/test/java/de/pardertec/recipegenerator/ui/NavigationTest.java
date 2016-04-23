@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Locale;
 
 import static de.pardertec.testing.swing.SwingTestUtil.assertActiveWindowTitleIs;
 import static de.pardertec.testing.swing.SwingTestUtil.clickButton;
@@ -21,7 +22,7 @@ public class NavigationTest {
 
     @BeforeMethod
     public void setUp() {
-        recipeGenerator = new RecipeGenerator();
+        recipeGenerator = new RecipeGenerator(Locale.GERMANY);
         recipeGenerator.initializeFrame();
         mainFrame = recipeGenerator.mainFrame;
 

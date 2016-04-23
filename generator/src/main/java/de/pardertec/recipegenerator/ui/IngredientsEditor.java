@@ -12,6 +12,11 @@ import java.awt.event.ActionListener;
  */
 public class IngredientsEditor extends AbstractEditor {
 
+    public static final String NEUE_ZUTAT = "ingredient.new";
+    public static final String SELECT_MEASURE = "measure.select";
+    public static final String SELECT_STATUS = "status.select";
+
+
     public IngredientsEditor(RecipeGenerator owner) {
         super(owner);
     }
@@ -46,8 +51,8 @@ public class IngredientsEditor extends AbstractEditor {
         return e -> {
             String s = (String) JOptionPane.showInputDialog(
                     IngredientsEditor.this.editorPanel,
-                    "Bezeichnung eingeben",
-                    "Neue Zutat",
+                    string(SET_NAME),
+                    string(NEUE_ZUTAT),
                     JOptionPane.PLAIN_MESSAGE,
                     null,
                     null,
@@ -55,17 +60,17 @@ public class IngredientsEditor extends AbstractEditor {
 
             Measure m = (Measure) JOptionPane.showInputDialog(
                     IngredientsEditor.this.editorPanel,
-                    "Maßeinheit auswählen",
-                    "Neue Zutat",
+                    string(SELECT_MEASURE),
+                    string(NEUE_ZUTAT),
                     JOptionPane.PLAIN_MESSAGE,
                     null,
-                    Measure.values(),
+                    recipesCollection().getMeasuresCopy().toArray(),
                     "");
 
             VeganismStatus v = (VeganismStatus) JOptionPane.showInputDialog(
                     IngredientsEditor.this.editorPanel,
-                    "Status auswählen",
-                    "Neue Zutat",
+                    string(SELECT_STATUS),
+                    string(NEUE_ZUTAT),
                     JOptionPane.PLAIN_MESSAGE,
                     null,
                     VeganismStatus.values(),

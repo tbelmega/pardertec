@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 public class AllergensEditor extends AbstractEditor {
 
     public static final String ALLERGENS_LIST_NAME = "AllergensList";
+    public static final String NEW_ALLERGEN = "allergen.new";
 
     public AllergensEditor(RecipeGenerator owner) {
         super(owner);
@@ -51,8 +52,8 @@ public class AllergensEditor extends AbstractEditor {
         return e -> {
             String s = JOptionPane.showInputDialog(
                     AllergensEditor.this.editorPanel,
-                    "Bezeichnung eingeben",
-                    "Neues Allergen",
+                    string(SET_NAME),
+                    string(NEW_ALLERGEN),
                     JOptionPane.PLAIN_MESSAGE);
 
             if ((s != null) && (s.length() > 0)) {

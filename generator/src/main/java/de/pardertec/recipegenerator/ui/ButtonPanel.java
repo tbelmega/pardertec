@@ -13,9 +13,10 @@ import static de.pardertec.recipegenerator.ui.RecipeGenerator.RESOLUTION_BASE;
  */
 public class ButtonPanel {
 
-    public static final String BUTTON_MANAGE_RECIPES = "Rezepte verwalten";
-    public static final String BUTTON_MANAGE_INGREDIENTS = "Zutaten verwalten";
-    public static final String BUTTON_MANAGE_ALLERGENS = "Allergene verwalten";
+    public static final String BUTTON_MANAGE_RECIPES = "button.manage.recipes";
+    public static final String BUTTON_MANAGE_INGREDIENTS = "button.manage.ingredients";
+    public static final String BUTTON_MANAGE_ALLERGENS = "button.manage.allergens";
+    public static final String BUTTON_MANAGE_MEASURES = "button.manage.measures";
 
     public static final Dimension BUTTON_DIMENSION = new Dimension(RESOLUTION_BASE * 3, RESOLUTION_BASE);
 
@@ -34,21 +35,21 @@ public class ButtonPanel {
     }
 
     private void addButtons() {
-        JButton btnRecipes = new JButton(BUTTON_MANAGE_RECIPES);
+        JButton btnRecipes = new JButton(owner.string(BUTTON_MANAGE_RECIPES));
         btnRecipes.addActionListener(new ShowRecipesEditorAction());
         btnRecipes.setPreferredSize(BUTTON_DIMENSION);
         this.panel.add(btnRecipes);
 
         this.panel.add(new JPanel());
 
-        JButton btnIngredients = new JButton(BUTTON_MANAGE_INGREDIENTS);
+        JButton btnIngredients = new JButton(owner.string(BUTTON_MANAGE_INGREDIENTS));
         btnIngredients.addActionListener(new ShowIngredientsEditorAction());
         btnIngredients.setPreferredSize(BUTTON_DIMENSION);
         this.panel.add(btnIngredients);
 
         this.panel.add(new JPanel());
 
-        JButton btnAllergens = new JButton(BUTTON_MANAGE_ALLERGENS);
+        JButton btnAllergens = new JButton(owner.string(BUTTON_MANAGE_ALLERGENS));
         btnAllergens.addActionListener(new ShowAllergensEditorAction());
         btnAllergens.setPreferredSize(BUTTON_DIMENSION);
         this.panel.add(btnAllergens);

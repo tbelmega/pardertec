@@ -1,13 +1,16 @@
 package de.pardertec.recipegenerator.ui;
 
 import de.pardertec.datamodel.*;
+import sun.swing.DefaultLookup;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Set;
 import java.util.SortedSet;
 
 import static de.pardertec.recipegenerator.ui.RecipeGenerator.COLUMN_WIDTH;
@@ -19,6 +22,8 @@ import static de.pardertec.recipegenerator.ui.UiUtil.clickedBelowTheListItems;
  */
 public class IngredientDetailsPanel implements DetailsPanel {
 
+    public static final String SELECT_ALLERGEN = "allergen.select";
+    public static final String ADD_ALLERGEN = "allergen.add";
     private final RecipeGenerator owner;
 
     private JPanel ingredientDetailPanel = new JPanel(new GridBagLayout());
@@ -32,6 +37,7 @@ public class IngredientDetailsPanel implements DetailsPanel {
 
         //Selection drop down vegan
         veganismBox = new JComboBox<>(VeganismStatus.values());
+        veganismBox.setRenderer( new VeganismStatusRenderer() );
         veganismBox.addActionListener(new VeganModifiedListener());
         GridBagConstraints veganBoxConstraints = new GridBagConstraints();
         veganBoxConstraints.anchor = GridBagConstraints.WEST;
@@ -41,7 +47,9 @@ public class IngredientDetailsPanel implements DetailsPanel {
         ingredientDetailPanel.add(veganismBox, veganBoxConstraints);
 
         //Selection drop down measure
-        measureBox = new JComboBox<>(Measure.values());
+        Set<Measure> measuresSet = owner.getCollection().getMeasuresCopy();
+        Measure[] measures = measuresSet.toArray(new Measure[measuresSet.size()]);
+        measureBox = new JComboBox<>(measures);
         measureBox.addActionListener(new MeasureModifiedListener());
         GridBagConstraints measureBoxConstraints = new GridBagConstraints();
         measureBoxConstraints.gridx = 0;
@@ -119,13 +127,25 @@ public class IngredientDetailsPanel implements DetailsPanel {
 
         Allergen a = (Allergen) JOptionPane.showInputDialog(
                 null,
-                "Allergen auswählen",
-                "Allergen hinzufügen",
+                owner.string(SELECT_ALLERGEN),
+                owner.string(ADD_ALLERGEN),
                 JOptionPane.PLAIN_MESSAGE,
                 null,
                 possibilities,
                 "");
 
         i.addAllergen(a);
+    }
+
+    /**
+     * Render the cell content with the translated string instead of the standard toString() value.
+     */
+    private class VeganismStatusRenderer extends DefaultListCellRenderer {
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            VeganismStatus status = (VeganismStatus) value;
+            String textRepresentation = status.toString(owner.strings);
+            return super.getListCellRendererComponent(list, textRepresentation, index, isSelected, cellHasFocus);
+        }
     }
 }

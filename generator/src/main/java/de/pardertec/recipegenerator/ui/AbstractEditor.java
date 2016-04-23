@@ -16,14 +16,15 @@ import static de.pardertec.recipegenerator.ui.UiUtil.createPanelWithCustomBorder
  * Created by Thiemo on 12.04.2016.
  */
 public abstract class AbstractEditor {
+    public static final String SET_NAME = "set.name";
     protected final RecipeGenerator owner;
-    public static final String BTN_NEW = "Neu";
 
-    public static final String BTN_DELETE = "Löschen";
+    public static final String BTN_NEW = "button.new";
+    public static final String BTN_DELETE = "button.delete";
+
     protected JPanel editorPanel = new JPanel();
-
-    protected JButton btnNew = new JButton(BTN_NEW);
-    protected JButton btnDelete = new JButton(BTN_DELETE);
+    protected JButton btnNew;
+    protected JButton btnDelete;
 
     public static final String MAIN_LIST_NAME = "mainJList";
     protected JList<BusinessObject> mainList = new JList<>(new DefaultListModel<>());
@@ -34,7 +35,9 @@ public abstract class AbstractEditor {
     public AbstractEditor(RecipeGenerator owner) {
         this.owner = owner;
 
+        btnNew = new JButton(string(BTN_NEW));
         btnNew.addActionListener(createAddActionListener());
+        btnDelete = new JButton(owner.strings.getString(BTN_DELETE));
         btnDelete.addActionListener(new DeleteAction());
         btnPanel.add(btnNew);
         btnPanel.add(btnDelete);
@@ -55,6 +58,10 @@ public abstract class AbstractEditor {
         detailsPanel = createDetailsPanel();
         editorPanel.add(detailsPanel.getPanel());
         updateView();
+    }
+
+    protected String string(String key) {
+        return owner.string(key);
     }
 
     protected abstract DetailsPanel createDetailsPanel();
