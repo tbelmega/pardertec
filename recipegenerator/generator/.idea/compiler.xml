@@ -17,16 +17,14 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Annotation profile for receipegenerator" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="receipegenerator" />
-      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="receipegenerator" target="1.8" />
+      <module name="datamodel_main" target="1.7" />
+      <module name="datamodel_test" target="1.7" />
+      <module name="receipegenerator_main" target="1.8" />
+      <module name="receipegenerator_test" target="1.8" />
+      <module name="utils_main" target="1.7" />
+      <module name="utils_test" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

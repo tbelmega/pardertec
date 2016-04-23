@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/receipegenerator.iml" filepath="$PROJECT_DIR$/receipegenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/datamodel.iml" filepath="$PROJECT_DIR$/.idea/modules/datamodel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/datamodel_main.iml" filepath="$PROJECT_DIR$/.idea/modules/datamodel_main.iml" group="datamodel" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/datamodel_test.iml" filepath="$PROJECT_DIR$/.idea/modules/datamodel_test.iml" group="datamodel" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/receipegenerator.iml" filepath="$PROJECT_DIR$/.idea/modules/receipegenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/receipegenerator_main.iml" filepath="$PROJECT_DIR$/.idea/modules/receipegenerator_main.iml" group="receipegenerator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/receipegenerator_test.iml" filepath="$PROJECT_DIR$/.idea/modules/receipegenerator_test.iml" group="receipegenerator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/utils.iml" filepath="$PROJECT_DIR$/.idea/modules/utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/utils_main.iml" filepath="$PROJECT_DIR$/.idea/modules/utils_main.iml" group="utils" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/utils_test.iml" filepath="$PROJECT_DIR$/.idea/modules/utils_test.iml" group="utils" />
     </modules>
   </component>
 </project>
