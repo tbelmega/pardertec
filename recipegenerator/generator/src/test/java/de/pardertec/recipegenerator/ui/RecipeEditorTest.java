@@ -4,6 +4,7 @@ import de.pardertec.datamodel.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import javax.swing.FocusManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -11,7 +12,6 @@ import java.util.Map;
 
 import static de.pardertec.testing.swing.SwingTestUtil.*;
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.fail;
 
 /**
  * Created by Thiemo on 21.04.2016.
