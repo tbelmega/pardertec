@@ -40,12 +40,14 @@ configurations.all {
 dependencies {
     // App's dependencies, including test
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(":utils")
+    compile project(":datamodel")
     compile 'com.android.support:appcompat-v7:22.+'
     compile 'com.android.support:design:22.+'
     compile 'com.android.support:recyclerview-v7:22.+'
     compile 'com.android.support:cardview-v7:22.+'
-    compile project(":utils")
-    compile project(":datamodel")
+
+
 
     // Dependencies for local unit tests
     testCompile 'junit:junit:4.12'

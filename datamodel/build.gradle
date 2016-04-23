@@ -1,0 +1,26 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'de.pardertec'
+version = '1.0'
+
+description = """"""
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+
+
+repositories {
+        
+     maven {
+         url "http://repo.maven.apache.org/maven2"
+         mavenLocal()
+     }
+}
+dependencies {
+    compile group: 'org.testng', name: 'testng', version:'6.9.10'
+    compile group: 'org.json', name: 'json', version:'20151123'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.0'
+    compile group: 'de.pardertec', name: 'utils', version:'1.0'
+}
