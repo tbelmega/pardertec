@@ -27,7 +27,9 @@ public class Measure extends BusinessObject {
 
     public static Measure fromJSON(JSONObject jsonObject) {
         String name = jsonObject.getString(JSON_KEY_NAME);
-        String id = jsonObject.getString(JSON_KEY_ID);
+        String id;
+        if (jsonObject.has(JSON_KEY_ID)) id = jsonObject.getString(JSON_KEY_ID);
+        else id = UUID.randomUUID().toString();
         return new Measure(UUID.fromString(id), name);
     }
 
