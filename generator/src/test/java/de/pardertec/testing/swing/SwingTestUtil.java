@@ -37,6 +37,7 @@ public class SwingTestUtil {
         createRobotNonThrowing().waitForIdle();
     }
 
+
     public static JButton findButtonByText(Container container, String text) {
         createRobotNonThrowing().waitForIdle();
         java.util.Queue<Container> containersToSearch = new LinkedList<>();

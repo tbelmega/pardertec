@@ -21,18 +21,18 @@ public class AllergensEditorTest extends AbstractRecipeGeneratorTest {
     public void testAddingAnAllergen() throws Exception {
         //arrange
         Robot robot = new Robot();
-        clickButton(mainFrame, ButtonPanel.BUTTON_MANAGE_ALLERGENS);
+        clickButton(mainFrame, app.i18n(ButtonPanel.BUTTON_MANAGE_ALLERGENS));
         JList<Allergen> list = (JList<Allergen>) findComponentByName(mainFrame, AllergensEditor.ALLERGENS_LIST_NAME);
 
         //act
-        clickButton(mainFrame, AbstractEditor.BTN_NEW);
+        clickButton(mainFrame, app.i18n(AbstractEditor.BTN_NEW));
         typeCharacters("Lactose");
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.delay(50);
 
         //assert
         Allergen a = list.getModel().getElementAt(0);
-        recipeGenerator.getCollection().remove(a);
+        app.getCollection().remove(a);
         assertEquals("First list entry should be the added allergen now.",
                 "Lactose", a.getName());
     }
@@ -41,9 +41,9 @@ public class AllergensEditorTest extends AbstractRecipeGeneratorTest {
     public void testDeletingAnAllergen() throws Exception {
         //arrange
         Robot robot = new Robot();
-        clickButton(mainFrame, ButtonPanel.BUTTON_MANAGE_ALLERGENS);
+        clickButton(mainFrame, app.i18n(ButtonPanel.BUTTON_MANAGE_ALLERGENS));
         JList<Allergen> list = (JList<Allergen>) findComponentByName(mainFrame, AllergensEditor.ALLERGENS_LIST_NAME);
-        clickButton(mainFrame, AbstractEditor.BTN_NEW);
+        clickButton(mainFrame, app.i18n(AbstractEditor.BTN_NEW));
         typeCharacters("Lactose");
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.delay(50);
@@ -51,7 +51,7 @@ public class AllergensEditorTest extends AbstractRecipeGeneratorTest {
         //act
         list.setSelectedIndex(0);
         robot.waitForIdle();
-        clickButton(mainFrame, AbstractEditor.BTN_DELETE);
+        clickButton(mainFrame, app.i18n(AbstractEditor.BTN_DELETE));
 
         //assert
         assertEquals("ListModel should contain 0 elements now.",

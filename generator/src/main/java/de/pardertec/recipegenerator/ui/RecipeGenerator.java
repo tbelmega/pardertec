@@ -125,7 +125,7 @@ public class RecipeGenerator {
         this.collection = RecipeCollection.create();
     }
 
-    public String string(String key) {
+    public String i18n(String key) {
         return strings.getString(key);
     }
 }

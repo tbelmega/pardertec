@@ -10,14 +10,13 @@ import java.util.Locale;
  */
 public class AbstractRecipeGeneratorTest {
 
-    protected RecipeGenerator recipeGenerator;
+    protected RecipeGenerator app;
     protected JFrame mainFrame;
 
     @BeforeMethod
     public void setUp() {
-        recipeGenerator = new RecipeGenerator(Locale.GERMANY);
-        recipeGenerator.initializeFrame();
-        mainFrame = recipeGenerator.mainFrame;
-
+        app = new RecipeGenerator(Locale.GERMANY);
+        app.initializeFrame();
+        mainFrame = app.mainFrame;
     }
 }

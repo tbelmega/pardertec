@@ -31,12 +31,12 @@ public class ImportExportTest extends AbstractRecipeGeneratorTest {
         //arrange
         File f = new File("ExportTest.json");
         f.deleteOnExit();
-        recipeGenerator.getCollection().add(testAllergen);
-        recipeGenerator.getCollection().add(testIngredient);
-        recipeGenerator.getCollection().add(testRecipe);
+        app.getCollection().add(testAllergen);
+        app.getCollection().add(testIngredient);
+        app.getCollection().add(testRecipe);
 
         //act
-        clickButton(mainFrame, BottomPanel.BUTTON_EXPORT);
+        clickButton(mainFrame, app.i18n(BottomPanel.BUTTON_EXPORT));
         typeCharacters(f.getName());
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);
@@ -56,29 +56,29 @@ public class ImportExportTest extends AbstractRecipeGeneratorTest {
         //arrange
         File f = new File("ImportTest.json");
         f.deleteOnExit();
-        recipeGenerator.getCollection().add(testAllergen);
-        recipeGenerator.getCollection().add(testIngredient);
-        recipeGenerator.getCollection().add(testRecipe);
+        app.getCollection().add(testAllergen);
+        app.getCollection().add(testIngredient);
+        app.getCollection().add(testRecipe);
 
-        clickButton(mainFrame, BottomPanel.BUTTON_EXPORT);
+        clickButton(mainFrame, app.i18n(BottomPanel.BUTTON_EXPORT));
         typeCharacters(f.getName());
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.delay(100);
 
-        recipeGenerator.resetRecipes();
+        app.resetRecipes();
 
         //act
-        clickButton(mainFrame, BottomPanel.BUTTON_IMPORT);
+        clickButton(mainFrame, app.i18n(BottomPanel.BUTTON_IMPORT));
         typeCharacters(f.getName());
         robot.waitForIdle();
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.delay(100);
 
         //assert
-        assertTrue(recipeGenerator.getCollection().contains(testRecipe));
-        assertTrue(recipeGenerator.getCollection().contains(testAllergen));
-        assertTrue(recipeGenerator.getCollection().contains(testIngredient));
+        assertTrue(app.getCollection().contains(testRecipe));
+        assertTrue(app.getCollection().contains(testAllergen));
+        assertTrue(app.getCollection().contains(testIngredient));
     }
 
 

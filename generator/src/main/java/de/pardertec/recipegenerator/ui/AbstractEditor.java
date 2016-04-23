@@ -1,7 +1,6 @@
 package de.pardertec.recipegenerator.ui;
 
 import de.pardertec.datamodel.BusinessObject;
-import de.pardertec.datamodel.Ingredient;
 import de.pardertec.datamodel.RecipeCollection;
 
 import javax.swing.*;
@@ -61,7 +60,7 @@ public abstract class AbstractEditor {
     }
 
     protected String string(String key) {
-        return owner.string(key);
+        return owner.i18n(key);
     }
 
     protected abstract DetailsPanel createDetailsPanel();

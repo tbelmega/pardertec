@@ -5,7 +5,10 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.stream.IntStream;
@@ -101,7 +104,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
         recipeDetailsPanel.add(new JScrollPane(stepJList), stepsListConstraints);
 
         //Add step button
-        btnAddStep = new JButton(owner.string(BTN_ADD_STEP));
+        btnAddStep = new JButton(owner.i18n(BTN_ADD_STEP));
         btnAddStep.addActionListener(e -> addStepToRecipe());
         GridBagConstraints buttonAddStepConstrains = createGridBagConstraints(componentsCounter++);
         recipeDetailsPanel.add(btnAddStep, buttonAddStepConstrains);
@@ -129,7 +132,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
         //Duration text field
         durationTextField.setName(DURATION_TEXTFIELD_NAME);
         JPanel durationPanel = new JPanel();
-        durationPanel.add(new JLabel(owner.string(DURATION_LABEL_TEXT)));
+        durationPanel.add(new JLabel(owner.i18n(DURATION_LABEL_TEXT)));
         durationPanel.add(durationTextField);
         durationTextField.addFocusListener(new DurationFieldFocusListener());
         GridBagConstraints durationPanelConstraints = createGridBagConstraints(componentsCounter++);
@@ -145,7 +148,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
         recipeDetailsPanel.add(new JScrollPane(ingredientList), ingredientsListConstraints);
 
         //Add ingredient button
-        btnAddIngredient = new JButton(owner.string(BTN_ADD_INGREDIENT));
+        btnAddIngredient = new JButton(owner.i18n(BTN_ADD_INGREDIENT));
         btnAddIngredient.addActionListener(e -> addIngredientToRecipe());
         GridBagConstraints buttonAddIngredientConstrains = createGridBagConstraints(componentsCounter++);
         recipeDetailsPanel.add(btnAddIngredient, buttonAddIngredientConstrains);
@@ -243,8 +246,8 @@ public class RecipeDetailsPanel implements DetailsPanel {
 
         Ingredient i = (Ingredient) JOptionPane.showInputDialog(
                 null,
-                owner.string(SELECT_INGREDIENT),
-                owner.string(ADD_INGREDIENT),
+                owner.i18n(SELECT_INGREDIENT),
+                owner.i18n(ADD_INGREDIENT),
                 JOptionPane.PLAIN_MESSAGE,
                 null,
                 possibilities,
@@ -256,8 +259,8 @@ public class RecipeDetailsPanel implements DetailsPanel {
 
                 (String) JOptionPane.showInputDialog(
                         null,
-                        owner.string(SET_AMOUNT).replace(MEASURE_REPLACE_TAG, i.getMeasure().getName()),
-                        owner.string(ADD_INGREDIENT),
+                        owner.i18n(SET_AMOUNT).replace(MEASURE_REPLACE_TAG, i.getMeasure().getName()),
+                        owner.i18n(ADD_INGREDIENT),
                         JOptionPane.PLAIN_MESSAGE,
                         null,
                         null,
@@ -289,14 +292,14 @@ public class RecipeDetailsPanel implements DetailsPanel {
 
 
         JComponent[] components = new JComponent[]{
-                new JLabel(owner.string(STEP_DESCRIBE)),
+                new JLabel(owner.i18n(STEP_DESCRIBE)),
                 scrollPane,
-                new JLabel(owner.string(STEP_INSERT_AS_NUMBER)),
+                new JLabel(owner.i18n(STEP_INSERT_AS_NUMBER)),
                 stepNumber
         };
 
 
-        int result = JOptionPane.showConfirmDialog(owner.mainFrame, components, owner.string(STEP_ADD), JOptionPane.OK_CANCEL_OPTION);
+        int result = JOptionPane.showConfirmDialog(owner.mainFrame, components, owner.i18n(STEP_ADD), JOptionPane.OK_CANCEL_OPTION);
 
         if (result == JOptionPane.OK_OPTION) {
             String text = stepInputDialogTextArea.getText();
@@ -319,7 +322,7 @@ public class RecipeDetailsPanel implements DetailsPanel {
                 int duration = Integer.parseUnsignedInt(durationTextField.getText());
                 displayedRecipe.setDuration(duration);
             } catch (NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(null, owner.string(WARNING_INVALID_DURATION) + durationTextField.getText());
+                JOptionPane.showMessageDialog(null, owner.i18n(WARNING_INVALID_DURATION) + durationTextField.getText());
             }
         }
     }

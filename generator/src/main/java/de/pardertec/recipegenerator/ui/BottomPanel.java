@@ -1,6 +1,5 @@
 package de.pardertec.recipegenerator.ui;
 
-import de.pardertec.datamodel.RecipeCollection;
 import de.pardertec.util.FileUtil;
 
 import javax.swing.*;
@@ -49,15 +48,15 @@ public class BottomPanel {
     }
 
     private void addButtons() {
-        btnImport = new JButton(owner.string(BUTTON_IMPORT));
+        btnImport = new JButton(owner.i18n(BUTTON_IMPORT));
         btnImport.addActionListener(new ImportRecipesAction());
         this.panel.add(btnImport);
 
-        btnExport = new JButton(owner.string(BUTTON_EXPORT));
+        btnExport = new JButton(owner.i18n(BUTTON_EXPORT));
         btnExport.addActionListener(new ExportRecipesAction());
         this.panel.add(btnExport);
 
-        btnClose = new JButton(owner.string(BUTTON_CLOSE));
+        btnClose = new JButton(owner.i18n(BUTTON_CLOSE));
         btnClose.addActionListener(new CloseAction());
         this.panel.add(btnClose);
 
@@ -75,8 +74,8 @@ public class BottomPanel {
         public void actionPerformed(ActionEvent e)
         {
             int dialogResult = JOptionPane.showConfirmDialog(null,
-                    owner.string(CLOSE_DIALOG_MESSAGE),
-                    owner.string(CLOSE_DIALOG_TITLE),
+                    owner.i18n(CLOSE_DIALOG_MESSAGE),
+                    owner.i18n(CLOSE_DIALOG_TITLE),
                     JOptionPane.YES_NO_OPTION);
             if (dialogResult == JOptionPane.YES_OPTION) owner.close();
         }
@@ -100,9 +99,9 @@ public class BottomPanel {
 
             try {
                 FileUtil.writeTextFile(f, s);
-                JOptionPane.showMessageDialog(panel, owner.string(EXPORT_SUCCESSFUL) + " " + f.getAbsolutePath());
+                JOptionPane.showMessageDialog(panel, owner.i18n(EXPORT_SUCCESSFUL) + " " + f.getAbsolutePath());
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(panel, owner.string(EXPORT_FAILED));
+                JOptionPane.showMessageDialog(panel, owner.i18n(EXPORT_FAILED));
             }
         }
     }
@@ -123,10 +122,10 @@ public class BottomPanel {
             try {
                 String s = FileUtil.readFile(f);
                 owner.getCollection().importJSON(s);
-                JOptionPane.showMessageDialog(owner.mainFrame, owner.string(IMPORT_SUCCESSFUL));
+                JOptionPane.showMessageDialog(owner.mainFrame, owner.i18n(IMPORT_SUCCESSFUL));
             } catch (Exception e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(owner.mainFrame, owner.string(IMPORT_FAILED));
+                JOptionPane.showMessageDialog(owner.mainFrame, owner.i18n(IMPORT_FAILED));
             }
         }
     }

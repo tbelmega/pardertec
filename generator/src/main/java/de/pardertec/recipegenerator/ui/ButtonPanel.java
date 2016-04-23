@@ -1,7 +1,6 @@
 package de.pardertec.recipegenerator.ui;
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,21 +34,21 @@ public class ButtonPanel {
     }
 
     private void addButtons() {
-        JButton btnRecipes = new JButton(owner.string(BUTTON_MANAGE_RECIPES));
+        JButton btnRecipes = new JButton(owner.i18n(BUTTON_MANAGE_RECIPES));
         btnRecipes.addActionListener(new ShowRecipesEditorAction());
         btnRecipes.setPreferredSize(BUTTON_DIMENSION);
         this.panel.add(btnRecipes);
 
         this.panel.add(new JPanel());
 
-        JButton btnIngredients = new JButton(owner.string(BUTTON_MANAGE_INGREDIENTS));
+        JButton btnIngredients = new JButton(owner.i18n(BUTTON_MANAGE_INGREDIENTS));
         btnIngredients.addActionListener(new ShowIngredientsEditorAction());
         btnIngredients.setPreferredSize(BUTTON_DIMENSION);
         this.panel.add(btnIngredients);
 
         this.panel.add(new JPanel());
 
-        JButton btnAllergens = new JButton(owner.string(BUTTON_MANAGE_ALLERGENS));
+        JButton btnAllergens = new JButton(owner.i18n(BUTTON_MANAGE_ALLERGENS));
         btnAllergens.addActionListener(new ShowAllergensEditorAction());
         btnAllergens.setPreferredSize(BUTTON_DIMENSION);
         this.panel.add(btnAllergens);

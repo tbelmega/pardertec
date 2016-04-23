@@ -8,7 +8,6 @@ import javax.swing.FocusManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.Locale;
 import java.util.Map;
 
 import static de.pardertec.testing.swing.SwingTestUtil.*;
@@ -17,11 +16,9 @@ import static org.testng.AssertJUnit.assertEquals;
 /**
  * Created by Thiemo on 21.04.2016.
  */
-public class RecipeEditorTest {
+public class RecipeEditorTest extends AbstractRecipeGeneratorTest {
 
     public static final int DELAY = 100;
-    private RecipeGenerator recipeGenerator;
-    private JFrame mainFrame;
 
     public static final String TEST_RECIPE_NAME = "testrecipename";
     public static final String TEST_RECIPE_TEXT = "testrecipetext";
@@ -32,11 +29,8 @@ public class RecipeEditorTest {
 
 
     @BeforeMethod
-    public void setUp() {
-        recipeGenerator = new RecipeGenerator(Locale.GERMANY);
-        recipeGenerator.initializeFrame();
-        mainFrame = recipeGenerator.mainFrame;
-        clickButton(mainFrame, ButtonPanel.BUTTON_MANAGE_RECIPES);
+    public void clickRecipes() {
+        clickButton(mainFrame, app.i18n(ButtonPanel.BUTTON_MANAGE_RECIPES));
 
     }
 
@@ -46,7 +40,7 @@ public class RecipeEditorTest {
         Robot robot = new Robot();
 
         //create new recipe
-        clickButton(mainFrame, AbstractEditor.BTN_NEW);
+        clickButton(mainFrame, app.i18n(AbstractEditor.BTN_NEW));
         typeCharacters(TEST_RECIPE_NAME);
 
         robot.waitForIdle();
@@ -85,7 +79,7 @@ public class RecipeEditorTest {
         createAndSelectRecipe();
 
         //act
-        clickButton(mainFrame, RecipeDetailsPanel.BTN_ADD_STEP);
+        clickButton(mainFrame, app.i18n(RecipeDetailsPanel.BTN_ADD_STEP));
         typeCharacters(TEST_RECIPE_TEXT);
         FocusManager.getCurrentManager().focusNextComponent();
         FocusManager.getCurrentManager().focusNextComponent();
@@ -158,10 +152,10 @@ public class RecipeEditorTest {
         //arrange
         Robot robot = new Robot();
         createAndSelectRecipe();
-        recipeGenerator.getCollection().add(TEST_INGREDIENT);
+        app.getCollection().add(TEST_INGREDIENT);
 
         //act
-        clickButton(mainFrame, RecipeDetailsPanel.BTN_ADD_INGREDIENT);
+        clickButton(mainFrame, app.i18n(RecipeDetailsPanel.BTN_ADD_INGREDIENT));
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.waitForIdle();
         typeCharacters("50");
@@ -179,8 +173,8 @@ public class RecipeEditorTest {
 
 
     public void createAndSelectRecipe() {
-        recipeGenerator.getCollection().add(TEST_RECIPE);
-        clickButton(mainFrame, ButtonPanel.BUTTON_MANAGE_RECIPES);
+        app.getCollection().add(TEST_RECIPE);
+        clickButton(mainFrame, app.i18n(ButtonPanel.BUTTON_MANAGE_RECIPES));
 
         JList<Recipe> mainList = (JList<Recipe>) findComponentByName(mainFrame, AbstractEditor.MAIN_LIST_NAME);
         mainList.setSelectedIndex(0);
