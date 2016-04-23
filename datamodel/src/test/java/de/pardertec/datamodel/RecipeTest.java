@@ -17,6 +17,7 @@ public class RecipeTest {
 
     RecipeCollection collection = RecipeCollection.create();
 
+    Measure GRAMS = new Measure("Gramm");
     public static final Allergen LACTOSE = new Allergen("Laktose");
     public static final String RECIPE_NAME = "Purer Käse";
     public static final String RECIPE_TEXT = "Heute gibt es Käse. Für 2 Personen.";
@@ -25,7 +26,7 @@ public class RecipeTest {
     public static final int NUMBER_OF_SERVINGS = 2;
     public static final int AMOUNT_OF_CHEESE = 1000;
     public static final int DURATION_IN_MINUTES = 30;
-    private Ingredient cheese = new Ingredient("Käse", Measure.GRAMS, VeganismStatus.VEGETARIAN);
+    private Ingredient cheese = new Ingredient("Käse", GRAMS, VeganismStatus.VEGETARIAN);
     private Recipe recipe;
 
     @BeforeMethod

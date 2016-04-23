@@ -10,6 +10,7 @@ import java.util.UUID;
 public abstract class BusinessObject implements Comparable<BusinessObject> {
     public static final String JSON_KEY_ID = "id";
     public static final String JSON_KEY_NAME = "name";
+
     public final UUID id;
     protected String name;
 

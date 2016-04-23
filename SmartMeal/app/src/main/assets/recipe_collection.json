@@ -167,7 +167,7 @@
             "measure": "Gramm",
             "name": "Spiralnudeln",
             "id": "4716f2a7-bf4d-4981-b24f-9f56454df46a",
-            "status": "Vegetarisch",
+            "status": 200,
             "allergens": [
                 "7db72e76-a7ed-417a-b699-f4c2234c927a",
                 "25012345-3a08-46b6-8c15-38c850b84b96"
@@ -177,14 +177,14 @@
             "measure": "Gramm",
             "name": "Seranoschinken",
             "id": "d3576858-e779-412f-b47c-eb36c171a541",
-            "status": "Enthält Fleisch",
+            "status": 100,
             "allergens": ["140ed6e6-29b9-4040-847e-940231b226e6"]
         },
         {
             "measure": "Gramm",
             "name": "Hackfleisch, gemischt",
             "id": "ddc98dca-0f6e-460e-a3bb-a70ef5347804",
-            "status": "Enthält Fleisch",
+            "status": 100,
             "allergens": [
                 "a6bb5785-08b5-4e56-a5e3-d1531deb1638",
                 "140ed6e6-29b9-4040-847e-940231b226e6"
@@ -194,56 +194,56 @@
             "measure": "Stück",
             "name": "Knochblauchzehe",
             "id": "179e8631-a7e8-4217-98b6-4982d9a44207",
-            "status": "Vegan",
+            "status": 300,
             "allergens": []
         },
         {
             "measure": "Stück",
             "name": "Ei",
             "id": "ad1b0d00-2a92-4742-8d1c-5a388cf5f1bd",
-            "status": "Vegetarisch",
+            "status": 200,
             "allergens": ["7db72e76-a7ed-417a-b699-f4c2234c927a"]
         },
         {
             "measure": "Milliliter",
             "name": "Tomatenmark",
             "id": "9fd9bbc2-8e8e-4fc5-9e6b-ae3086b4e5b7",
-            "status": "Vegan",
+            "status": 300,
             "allergens": []
         },
         {
             "measure": "Gramm",
             "name": "Parmesankäse",
             "id": "4ba9a066-9bdb-45f9-a5ce-52b30f1b41e0",
-            "status": "Vegetarisch",
+            "status": 200,
             "allergens": ["7cbfae2d-c315-4403-a013-72a21bdfbfa9"]
         },
         {
             "measure": "Gramm",
             "name": "Rucolasalat",
             "id": "df5e3999-05ad-4750-aa64-91c22a3c9acc",
-            "status": "Vegan",
+            "status": 300,
             "allergens": []
         },
         {
             "measure": "Gramm",
             "name": "Zucker",
             "id": "5e172428-91a2-492c-9f74-d11e80c9bdff",
-            "status": "Vegan",
+            "status": 300,
             "allergens": []
         },
         {
             "measure": "Gramm",
             "name": "Pfeffer",
             "id": "b144565a-6c7a-4100-a7a9-4a6a5292ffdb",
-            "status": "Vegan",
+            "status": 300,
             "allergens": []
         },
         {
             "measure": "Gramm",
             "name": "Spaghetti",
             "id": "34a140e8-d008-4c60-be4a-68941ea18c91",
-            "status": "Vegetarisch",
+            "status": 200,
             "allergens": [
                 "7db72e76-a7ed-417a-b699-f4c2234c927a",
                 "25012345-3a08-46b6-8c15-38c850b84b96"
@@ -253,56 +253,56 @@
             "measure": "Milliliter",
             "name": "Joghurt",
             "id": "e27e8df5-a146-41bd-9cf5-9bda9bb9c4e9",
-            "status": "Vegetarisch",
+            "status": 200,
             "allergens": ["6f2aac4d-1d21-4da8-9fd5-f4dce43f97fb"]
         },
         {
             "measure": "Milliliter",
             "name": "Passierte Tomaten",
             "id": "7f28756b-9182-43fd-877a-f2fd6d2c7684",
-            "status": "Vegan",
+            "status": 300,
             "allergens": []
         },
         {
             "measure": "Milliliter",
             "name": "Sonnenblumenöl",
             "id": "8de478ac-ce12-4bca-bd0f-b27165cff495",
-            "status": "Vegan",
+            "status": 300,
             "allergens": []
         },
         {
             "measure": "Gramm",
             "name": "Hähnchenbrustfilet",
             "id": "04f75a32-894a-4b67-93a7-01cdc647cf13",
-            "status": "Enthält Fleisch",
+            "status": 100,
             "allergens": ["6d06d984-f1c0-41c0-8a13-e491e3f84393"]
         },
         {
             "measure": "Stück",
             "name": "Paprika",
             "id": "23b43d50-ac0f-4624-90a5-f6312512a8bf",
-            "status": "Vegan",
+            "status": 300,
             "allergens": []
         },
         {
             "measure": "Stück",
             "name": "Gurke",
             "id": "b4616aa0-c068-4698-bbc2-b3120286d07d",
-            "status": "Enthält Fleisch",
+            "status": 100,
             "allergens": []
         },
         {
             "measure": "Stück",
             "name": "Zwiebeln",
             "id": "c7dbed01-cc47-4f65-be37-514f8005a17e",
-            "status": "Vegan",
+            "status": 300,
             "allergens": []
         },
         {
             "measure": "Gramm",
             "name": "Salz",
             "id": "f0d01502-e3b9-40ac-badd-c8231ecffe48",
-            "status": "Vegan",
+            "status": 300,
             "allergens": []
         }
     ],

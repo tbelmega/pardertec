@@ -12,10 +12,12 @@ import java.util.*;
 public class RecipeCollection {
 
     public static final String JSON_KEY_RECIPES = "recipes";
+    public static final String JSON_KEY_MEASURES = "measures";
 
     private Map<UUID, Recipe> recipes = new HashMap<>();
     private Map<UUID, Ingredient> ingredients = new HashMap<>();
     private Map<UUID, Allergen> allergens = new HashMap<>();
+    private Map<UUID, Measure> measures = new HashMap<>();
 
 
     private RecipeCollection() {
@@ -37,11 +39,16 @@ public class RecipeCollection {
         for (Allergen allergen : ingredient.getAllergens()) {
             add(allergen);
         }
+        measures.put(ingredient.getMeasure().id, ingredient.getMeasure());
         ingredients.put(ingredient.id, ingredient);
     }
 
     public  void add(Allergen allergen) {
         allergens.put(allergen.id, allergen);
+    }
+
+    public  void add(Measure measure) {
+        measures.put(measure.id, measure);
     }
 
 
@@ -57,39 +64,26 @@ public class RecipeCollection {
         return allergens.values().contains(myAllergen);
     }
 
+    public boolean contains(Measure myMeasure) { return measures.containsValue(myMeasure); }
+
     /**
-     * This method creates a JSON representation of the RecipeCollection, including all recipes/ingredients/allergens
+     * This method creates a JSON representation of the RecipeCollection, including all recipes/ingredients/allergens/meaasures
      */
     public JSONObject toJson() {
         JSONObject jsonRepresentation = new JSONObject();
-        jsonRepresentation.put(JSON_KEY_RECIPES, createRecipesRepresentation());
-        jsonRepresentation.put(Recipe.JSON_KEY_INGREDIENTS, createIngredientsRepresentation());
-        jsonRepresentation.put(Ingredient.JSON_KEY_ALLERGENS, createAllergensRepresentation());
+        jsonRepresentation.put(JSON_KEY_RECIPES, createRepresentation(recipes.values()));
+        jsonRepresentation.put(Recipe.JSON_KEY_INGREDIENTS, createRepresentation(ingredients.values()));
+        jsonRepresentation.put(Ingredient.JSON_KEY_ALLERGENS, createRepresentation(allergens.values()));
+        jsonRepresentation.put(JSON_KEY_MEASURES, createRepresentation(measures.values()));
         return jsonRepresentation;
     }
 
-    private JSONArray createAllergensRepresentation() {
-        JSONArray allAllergens = new JSONArray();
-        for (Allergen a : allergens.values()) {
-            allAllergens.put(a.toJson());
+    private JSONArray createRepresentation(Collection<? extends BusinessObject> values) {
+        JSONArray jsonArray = new JSONArray();
+        for (BusinessObject b : values) {
+            jsonArray.put(b.toJson());
         }
-        return allAllergens;
-    }
-
-    private  JSONArray createIngredientsRepresentation() {
-        JSONArray allIngredients = new JSONArray();
-        for (Ingredient i : ingredients.values()) {
-            allIngredients.put(i.toJson());
-        }
-        return allIngredients;
-    }
-
-    private JSONArray createRecipesRepresentation() {
-        JSONArray allRecipes = new JSONArray();
-        for (Recipe r : recipes.values()) {
-            allRecipes.put(r.toJson());
-        }
-        return allRecipes;
+        return jsonArray;
     }
 
     /**
@@ -97,6 +91,10 @@ public class RecipeCollection {
      */
     public SortedSet<Allergen> getAllergensCopy() {
         return new TreeSet<>(allergens.values());
+    }
+
+    public SortedSet<Measure> getMeasuresCopy() {
+        return new TreeSet<>(measures.values());
     }
 
     /**
@@ -113,22 +111,12 @@ public class RecipeCollection {
         return new TreeSet<>(recipes.values());
     }
 
-    public void remove(Allergen a) {
-        allergens.remove(a.id);
-    }
-
-    public void remove(Ingredient i) {
-        ingredients.remove(i.id);
-    }
-
-    public void remove(Recipe r) {
-        recipes.remove(r.id);
-    }
 
     public void remove(BusinessObject b) {
-        if (b instanceof Recipe) remove((Recipe) b);
-        if (b instanceof Allergen) remove((Allergen) b);
-        if (b instanceof Ingredient) remove((Ingredient) b);
+        if (b instanceof Recipe) recipes.remove(((Recipe) b).id);
+        if (b instanceof Allergen) allergens.remove(((Allergen) b).id);
+        if (b instanceof Measure) measures.remove(((Measure) b).id);
+        if (b instanceof Ingredient) ingredients.remove(((Ingredient) b).id);
     }
 
     public void importJSON(String s) {
@@ -153,12 +141,25 @@ public class RecipeCollection {
     private void importIngredients(JSONObject document) {
         JSONArray ingredients = document.getJSONArray(Recipe.JSON_KEY_INGREDIENTS);
 
-
+        importMeasures(document);
         importAllergens(document);
 
         for (int i = 0; i < ingredients.length(); i++) {
             importIngredient(ingredients.getJSONObject(i));
         }
+    }
+
+    private void importMeasures(JSONObject document) {
+        JSONArray measures = document.getJSONArray(JSON_KEY_MEASURES);
+
+        for (int i = 0; i < measures.length(); i++) {
+            importMeasure(measures.getJSONObject(i));
+        }
+    }
+
+    private void importMeasure(JSONObject jsonObject) {
+        Measure measure = Measure.fromJSON(jsonObject);
+        measures.put(measure.id, measure);
     }
 
     private void importIngredient(JSONObject jsonObject) {
@@ -190,7 +191,11 @@ public class RecipeCollection {
     public boolean isEmpty() {
         return allergens.isEmpty() &&
                 ingredients.isEmpty() &&
+                measures.isEmpty() &&
                 recipes.isEmpty();
     }
 
+    public Measure getMeasure(UUID uuid) {
+        return measures.get(uuid);
+    }
 }

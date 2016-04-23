@@ -1,1 +1,4 @@
 rootProject.name = 'receipegenerator'
+include ':utils', ':datamodel'
+project(':utils').projectDir = new File(settingsDir,"../utils")
+project(':datamodel').projectDir = new File(settingsDir,"../datamodel")

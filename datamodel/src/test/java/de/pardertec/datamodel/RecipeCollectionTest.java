@@ -7,14 +7,12 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static de.pardertec.datamodel.Ingredient.JSON_KEY_ALLERGENS;
-import static de.pardertec.datamodel.Measure.*;
 import static de.pardertec.datamodel.RecipeCollection.JSON_KEY_RECIPES;
 import static de.pardertec.datamodel.VeganismStatus.*;
 import static de.pardertec.util.JSONUtil.assertEqualJSONContent;
 import static de.pardertec.util.JSONUtil.assertJSONArrayContainsValue;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
-import static org.testng.AssertJUnit.fail;
 
 /**
  * Created by Thiemo on 27.01.2016.
@@ -24,6 +22,10 @@ public class RecipeCollectionTest {
     RecipeCollection collection = RecipeCollection.create();
 
 
+
+    public static final Measure MILLILITERS = new Measure("Milliliter");
+    public static final Measure PIECES = new Measure("Stück");
+    public static final Measure GRAMS = new Measure("Gramm");
     public static final Allergen LAKTOSE = new Allergen("Laktose");
     public static final Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
     public static Recipe spaghettiBolognese;

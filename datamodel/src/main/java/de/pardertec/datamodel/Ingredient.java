@@ -35,16 +35,15 @@ public class Ingredient extends BusinessObject {
     }
 
 
-
-    public void addAllergen(Allergen allergen){
+    public void addAllergen(Allergen allergen) {
         if (allergen != null) this.allergens.add(allergen);
     }
 
-    public void removeAllergen(Allergen allergen){
+    public void removeAllergen(Allergen allergen) {
         this.allergens.remove(allergen);
     }
 
-    public Set<Allergen> getAllergens(){
+    public Set<Allergen> getAllergens() {
         return new HashSet<>(this.allergens);
     }
 
@@ -65,8 +64,12 @@ public class Ingredient extends BusinessObject {
     }
 
     public boolean equals(Object obj) {
-        if (obj == null) { return false; }
-        if (obj == this) { return true; }
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
         if (obj.getClass() != getClass()) {
             return false;
         }
@@ -90,7 +93,7 @@ public class Ingredient extends BusinessObject {
 
     public JSONObject toJson() {
         JSONObject jsonRepresentation = super.toJson();
-        jsonRepresentation.put(JSON_KEY_MEASURE, this.measure.toString());
+        jsonRepresentation.put(JSON_KEY_MEASURE, this.measure.getId());
         jsonRepresentation.put(JSON_KEY_STATUS, this.status.getCode());
         jsonRepresentation.put(JSON_KEY_ALLERGENS, createAllergensRepresentation());
 
@@ -99,7 +102,7 @@ public class Ingredient extends BusinessObject {
 
     private JSONArray createAllergensRepresentation() {
         JSONArray allergens = new JSONArray();
-        for (Allergen a: this.allergens){
+        for (Allergen a : this.allergens) {
             allergens.put(a.getId());
         }
         return allergens;
@@ -108,7 +111,8 @@ public class Ingredient extends BusinessObject {
     public static Ingredient fromJSON(JSONObject jsonObject, RecipeCollection collection) {
         String name = jsonObject.getString(JSON_KEY_NAME);
         String id = jsonObject.getString(JSON_KEY_ID);
-        Measure measure = Measure.getEnum(jsonObject.getString(JSON_KEY_MEASURE));
+        String measureId = jsonObject.getString(JSON_KEY_MEASURE);
+        Measure measure = collection.getMeasure(UUID.fromString(measureId));
         VeganismStatus status = VeganismStatus.getEnum(jsonObject.getInt(JSON_KEY_STATUS));
         JSONArray allergens = jsonObject.getJSONArray(JSON_KEY_ALLERGENS);
 
@@ -129,14 +133,13 @@ public class Ingredient extends BusinessObject {
     }
 
 
-
     @Override
     protected int compareInstancesWithSameName(BusinessObject o) {
         Ingredient i = (Ingredient) o;
         int compareMeasure = measure.compareTo(i.getMeasure());
         if (compareMeasure == 0) {
             int compareStatus = status.compareTo(i.getStatus());
-            if ( compareStatus == 0 ) {
+            if (compareStatus == 0) {
                 return id.compareTo(o.id);
             } else return compareStatus;
         } else return compareMeasure;

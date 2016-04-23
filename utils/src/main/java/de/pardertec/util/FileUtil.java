@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class FileUtil {
 
-    public static final String UTF_8 = StandardCharsets.UTF_8.toString();
+    public static final String UTF_8 = StandardCharsets.UTF_8.name();
     private static final String END_OF_FILE = "\\A";
 
     /**
