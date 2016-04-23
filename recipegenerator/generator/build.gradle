@@ -1,0 +1,23 @@
+apply plugin: 'java'
+
+group = 'de.pardertec'
+version = '1.0-SNAPSHOT'
+
+description = """"""
+
+repositories {
+     maven {
+         url "http://repo.maven.apache.org/maven2"
+         mavenLocal()
+     }
+}
+
+dependencies {
+    compile project (":utils")
+    compile project (":datamodel")
+
+    compile group: 'org.testng', name: 'testng', version:'6.9.10'
+    compile group: 'org.json', name: 'json', version:'20151123'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.0'
+
+}
