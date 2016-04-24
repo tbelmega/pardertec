@@ -9,93 +9,125 @@
     tools:context=".recipes.detail.RecipeDetailActivityFragment"
     tools:showIn="@layout/content_recipe_detail">
 
-    <TextView
-        android:id="@+id/recipe_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="recipe title"
-        android:layout_centerHorizontal="true"
-        android:textSize="@dimen/text_medium"
-        android:layout_margin="@dimen/small_margin"
-        />
-
-    <TextView
-        android:id="@+id/duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="duration"
-        android:layout_below="@id/recipe_title"
-        android:layout_alignParentLeft="true"
-        android:textSize="@dimen/text_very_small"
-        android:layout_margin="@dimen/small_margin"/>
-
-    <TextView
-        android:id="@+id/difficulty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="difficulty"
-        android:lines="2"
-        android:layout_below="@id/recipe_title"
-        android:layout_alignParentRight="true"
-        android:textSize="@dimen/text_very_small"
-        android:layout_margin="@dimen/small_margin"/>
-
-    <TextView
-        android:id="@+id/servings"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="ingredients for n servings"
-        android:layout_below="@id/duration"
-        android:layout_alignParentLeft="true"
-        android:textSize="@dimen/text_very_small"
-        android:layout_margin="@dimen/small_margin"/>
-
-    <Button
-        android:id="@+id/servings_plus"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_toRightOf="@id/servings"
-        android:layout_alignBaseline="@id/servings"
-        android:text="+"
-        />
-
-    <Button
-        android:id="@+id/servings_minus"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_toRightOf="@id/servings_plus"
-        android:layout_alignBaseline="@id/servings"
-        android:text="-"
-        />
-
-    <TextView
-        android:id="@+id/recipe_text"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="8"
-        android:text="t\ne\nx\nt"
-        android:layout_below="@id/servings"
-        android:layout_alignParentLeft="true"
-        android:textSize="@dimen/text_very_small"
-        android:layout_margin="@dimen/small_margin"/>
+        android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/ingredients_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:layout_below="@id/recipe_text"
-        tools:layout="@layout/fragment_ingredients_list"
-        android:name="de.pardertec.smartmeal.recipes.detail.IngredientsListFragment"
-        />
-    <fragment
-        android:id="@+id/steps_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:layout_below="@id/ingredients_list"
-        tools:layout="@layout/fragment_steps_list"
-        android:name="de.pardertec.smartmeal.recipes.detail.StepsListFragment"
-        />
+        <RelativeLayout
+            android:id="@+id/scrollview_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/recipe_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/small_margin"
+                android:text="recipe title"
+                android:textSize="@dimen/text_medium" />
+
+            <ImageView
+                android:id="@+id/recipe_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_below="@id/recipe_title"
+                android:layout_margin="20dp"
+                android:src="@drawable/sample_image_1"/>
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/recipe_image"
+                android:layout_margin="@dimen/small_margin"
+                android:text="duration"
+                android:textSize="@dimen/text_very_small" />
+
+            <TextView
+                android:id="@+id/difficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/recipe_image"
+                android:layout_margin="@dimen/small_margin"
+                android:lines="2"
+                android:text="difficulty"
+                android:textSize="@dimen/text_very_small" />
+
+            <TextView
+                android:id="@+id/servings"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/duration"
+                android:layout_margin="@dimen/small_margin"
+                android:text="ingredients for n servings"
+                android:textSize="@dimen/text_very_small" />
+
+            <Button
+                android:id="@+id/servings_plus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@id/servings"
+                android:layout_toRightOf="@id/servings"
+                android:text="+" />
+
+            <Button
+                android:id="@+id/servings_minus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@id/servings"
+                android:layout_toRightOf="@id/servings_plus"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/recipe_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/servings"
+                android:layout_margin="@dimen/small_margin"
+                android:maxLines="8"
+                android:text="t\ne\nx\nt"
+                android:textSize="@dimen/text_very_small" />
+
+            <TextView
+                android:id="@+id/ingredients_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zutaten"
+                android:layout_below="@id/recipe_text"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+
+            <ListView
+                android:id="@+id/ingredients_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ingredients_header"
+                android:layout_margin="@dimen/small_margin"
+                android:drawSelectorOnTop="false" />
+
+            <TextView
+                android:id="@+id/steps_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zubereitung"
+                android:layout_below="@id/ingredients_list"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+
+            <ListView
+                android:id="@+id/steps_list"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/steps_header"
+                android:layout_margin="@dimen/small_margin"
+                android:drawSelectorOnTop="false" />
+
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
