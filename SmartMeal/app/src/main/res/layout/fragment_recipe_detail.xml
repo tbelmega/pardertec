@@ -68,12 +68,23 @@
         android:text="-"
         />
 
+    <TextView
+        android:id="@+id/recipe_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="8"
+        android:text="t\ne\nx\nt"
+        android:layout_below="@id/servings"
+        android:layout_alignParentLeft="true"
+        android:textSize="@dimen/text_very_small"
+        android:layout_margin="@dimen/small_margin"/>
+
     <fragment
         android:id="@+id/ingredients_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:layout_below="@id/servings"
+        android:layout_below="@id/recipe_text"
         tools:layout="@layout/fragment_ingredients_list"
         android:name="de.pardertec.smartmeal.recipes.detail.IngredientsListFragment"
         />

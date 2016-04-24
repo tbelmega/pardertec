@@ -12,6 +12,7 @@ import de.pardertec.datamodel.RecipeCollection;
 import de.pardertec.smartmeal.recipes.list.RecipeListActivity;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 /**
  * Created by Thiemo on 22.04.2016.
@@ -28,12 +29,14 @@ public class SmartMealApplicationTest {
     public void testThatRecipeCollectionIsImportedFromFile() throws Exception {
         //arrange
         SmartMealApplication app = (SmartMealApplication) recipeListActivityTestRule.getActivity().getApplication();
+        assert app.getRecipeCollection().isEmpty();
 
         //act
         app.importRecipes();
 
         //assert
-        RecipeCollection recipes = app.recipes();
-        assertEquals(3, recipes.getRecipesCopy().size());
+        RecipeCollection recipes = app.getRecipeCollection();
+        assertTrue("Should have imported all reciepes from file assets/recipe_collection.json",
+                3 <= recipes.getRecipesCopy().size());
     }
 }

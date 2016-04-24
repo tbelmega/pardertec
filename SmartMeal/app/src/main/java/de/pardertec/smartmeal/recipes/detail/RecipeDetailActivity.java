@@ -1,5 +1,6 @@
 package de.pardertec.smartmeal.recipes.detail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,10 +9,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import de.pardertec.datamodel.Recipe;
+import de.pardertec.datamodel.RecipeCollection;
 import de.pardertec.smartmeal.R;
+import de.pardertec.smartmeal.SmartMealApplication;
+
+import static de.pardertec.smartmeal.SmartMealApplication.EXTRA_RECIPE_ID;
 
 public class RecipeDetailActivity extends AppCompatActivity {
+
+    Recipe currentRecipe;
+    private TextView titleTextView;
+    private TextView textTextView;
+    private TextView durationTextView;
+    private TextView difficultyTextView;
+    private TextView servingsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +34,41 @@ public class RecipeDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        titleTextView = (TextView) findViewById(R.id.recipe_title);
+        textTextView = (TextView) findViewById(R.id.recipe_text);
+        durationTextView = (TextView) findViewById(R.id.duration);
+        difficultyTextView = (TextView) findViewById(R.id.difficulty);
+        servingsTextView = (TextView) findViewById(R.id.servings);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Intent intent = getIntent();
+        currentRecipe = load(intent.getStringExtra(EXTRA_RECIPE_ID));
+
+        titleTextView.setText(currentRecipe.getName());
+        textTextView.setText(currentRecipe.getText());
+        durationTextView.setText(currentRecipe.getDuration() + " " +
+                getResources().getString(R.string.minutes));
+        servingsTextView.setText(
+                getResources().getString(R.string.servings_for_persons).replace(
+                        getResources().getString(R.string.placeholder),
+                        currentRecipe.getServings().toString()));
+        difficultyTextView.setText(currentRecipe.getDifficulty().toString());
+
+        //show ingrdients
+
+        //show steps
+
+        //show image
+    }
+
+    private Recipe load(String id) {
+        RecipeCollection collection = ((SmartMealApplication)getApplication()).getRecipeCollection();
+        return collection.getRecipe(id);
     }
 
     @Override

@@ -198,4 +198,8 @@ public class RecipeCollection {
     public Measure getMeasure(UUID uuid) {
         return measures.get(uuid);
     }
+
+    public Recipe getRecipe(String id) {
+        return recipes.get(UUID.fromString(id));
+    }
 }

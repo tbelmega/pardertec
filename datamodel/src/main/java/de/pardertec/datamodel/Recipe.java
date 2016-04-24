@@ -54,7 +54,7 @@ public class Recipe extends BusinessObject  {
         this.servings = servings;
     }
 
-    public int getServings() {
+    public Integer getServings() {
         return servings;
     }
 
@@ -103,7 +103,7 @@ public class Recipe extends BusinessObject  {
         this.difficulty = difficulty;
     }
 
-    public int getDuration() {
+    public Integer getDuration() {
         return this.duration;
     }
 

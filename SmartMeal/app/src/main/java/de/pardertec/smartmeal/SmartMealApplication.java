@@ -1,9 +1,7 @@
 package de.pardertec.smartmeal;
 
-import android.app.Activity;
 import android.app.Application;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -15,13 +13,21 @@ import de.pardertec.util.FileUtil;
  * Created by Thiemo on 22.04.2016.
  */
 public class SmartMealApplication extends Application {
-    private static final String TAG = "SmartMeal" ;
+    public static final String TAG = "SmartMeal" ;
+
+    public static final String EXTRA_RECIPE_ID = "RecipeID";
+
 
     private RecipeCollection theCollection = RecipeCollection.create();
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        importRecipes();
+    }
+
     public void importRecipes() {
         String fileContent = importFile("recipe_collection.json");
-
         theCollection.importJSON(fileContent);
     }
 
@@ -34,7 +40,8 @@ public class SmartMealApplication extends Application {
         }
     }
 
-    public RecipeCollection recipes() {
+    public RecipeCollection getRecipeCollection() {
         return theCollection;
     }
+
 }
