@@ -1,7 +1,6 @@
 package de.pardertec.smartmeal.recipes.list;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -24,14 +23,15 @@ import de.pardertec.smartmeal.SmartMealApplication;
  */
 public class RecipeListActivityFragment extends Fragment {
 
+
     private RecyclerView recipeList;
-    private RecipeListAdapter.RecipeCardListener activityCommander;
+    private RecipeListActivity activityCommander;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            this.activityCommander = (RecipeListAdapter.RecipeCardListener) activity;
+            this.activityCommander = (RecipeListActivity) activity;
         } catch (ClassCastException e) {
             Log.e(SmartMealApplication.TAG, "The attached activity is supposed to implement RecipeCardListener.");
         }
@@ -52,13 +52,7 @@ public class RecipeListActivityFragment extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recipeList.setLayoutManager(llm);
-        recipeList.setAdapter(getRecipeListAdapter());
+        recipeList.setAdapter(new RecipeListAdapter(activityCommander, activityCommander.getRecipes()));
     }
 
-    @NonNull
-    private RecipeListAdapter getRecipeListAdapter() {
-        SmartMealApplication application = (SmartMealApplication) getActivity().getApplication();
-        List<Recipe> recipes = new LinkedList<>(application.getRecipeCollection().getRecipesCopy());
-        return new RecipeListAdapter(activityCommander, recipes);
-    }
 }

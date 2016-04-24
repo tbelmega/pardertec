@@ -7,4 +7,10 @@
     <string name="placeholder" translatable="false">-PLACEHOLDER-</string>
     <string name="servings_for_persons">Ingredients for -PLACEHOLDER- servings.</string>
     <string name="go">Go!</string>
+    <string name="search">Search</string>
+    <string name="abort">Abort</string>
+    <string name="none">None</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="vegan">Vegan</string>
+    <string name="search_hint">Search recipes</string>
 </resources>

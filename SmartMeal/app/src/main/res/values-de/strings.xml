@@ -6,4 +6,10 @@
     <string name="minutes">Minuten</string>
     <string name="servings_for_persons">Zutaten für -PLACEHOLDER- Portionen.</string>
     <string name="go">Los!</string>
+    <string name="abort">Abbrechen</string>
+    <string name="none">Keine Einschränkung</string>
+    <string name="search">Suche</string>
+    <string name="vegan">Vegan</string>
+    <string name="vegetarian">Vegetarisch</string>
+    <string name="search_hint">Suche Rezepte</string>
 </resources>
