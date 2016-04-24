@@ -5,4 +5,5 @@
     <string name="action_settings">Einstellungen</string>
     <string name="minutes">Minuten</string>
     <string name="servings_for_persons">Zutaten für -PLACEHOLDER- Portionen.</string>
+    <string name="go">Los!</string>
 </resources>

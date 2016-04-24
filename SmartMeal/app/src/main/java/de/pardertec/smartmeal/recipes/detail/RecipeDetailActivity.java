@@ -19,16 +19,16 @@ import java.util.List;
 
 import de.pardertec.datamodel.Ingredient;
 import de.pardertec.datamodel.Recipe;
-import de.pardertec.datamodel.RecipeCollection;
 import de.pardertec.datamodel.RecipeStep;
 import de.pardertec.smartmeal.R;
-import de.pardertec.smartmeal.SmartMealApplication;
+import de.pardertec.smartmeal.recipes.steps.StepSwipeActivity;
 
 import static de.pardertec.smartmeal.SmartMealApplication.EXTRA_RECIPE_ID;
+import static de.pardertec.smartmeal.utils.RecipeUtil.loadRecipe;
 
 public class RecipeDetailActivity extends AppCompatActivity {
 
-    Recipe currentRecipe;
+    Recipe selectedRecipe;
     private RecipeDetailActivityFragment ingredientsDetailFragment;
 
     private TextView titleTextView;
@@ -66,17 +66,17 @@ public class RecipeDetailActivity extends AppCompatActivity {
         super.onResume();
 
         Intent intent = getIntent();
-        currentRecipe = loadRecipe(intent.getStringExtra(EXTRA_RECIPE_ID));
+        selectedRecipe = loadRecipe(intent.getStringExtra(EXTRA_RECIPE_ID), getApplication());
 
-        titleTextView.setText(currentRecipe.getName());
-        textTextView.setText(currentRecipe.getText());
-        durationTextView.setText(currentRecipe.getDuration() + " " +
+        titleTextView.setText(selectedRecipe.getName());
+        textTextView.setText(selectedRecipe.getText());
+        durationTextView.setText(selectedRecipe.getDuration() + " " +
                 getResources().getString(R.string.minutes));
-        servingsTextView.setText(createServingsText(currentRecipe));
-        difficultyTextView.setText(currentRecipe.getDifficulty().toString());
+        servingsTextView.setText(createServingsText(selectedRecipe));
+        difficultyTextView.setText(selectedRecipe.getDifficulty().toString());
 
         //ingredients list
-        List<IngredientEntry> ingredients = getIngredientEntryList(currentRecipe);
+        List<IngredientEntry> ingredients = getIngredientEntryList(selectedRecipe);
         ArrayAdapter<IngredientEntry> ingredientEntryArrayAdapter = new ArrayAdapter<>(this,
                 R.layout.simple_list_item, ingredients);
         ingredientsList.setAdapter(ingredientEntryArrayAdapter);
@@ -91,7 +91,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
         fixListViewHeightBasedOnChildren(ingredientsList, width);
 
         //steps list
-        List<RecipeStep> steps = currentRecipe.getStepsCopy();
+        List<RecipeStep> steps = selectedRecipe.getStepsCopy();
         ArrayAdapter<RecipeStep> stepArrayAdapter = new ArrayAdapter<>(this,
                 R.layout.simple_list_item, steps);
         stepList.setAdapter(stepArrayAdapter);
@@ -104,10 +104,6 @@ public class RecipeDetailActivity extends AppCompatActivity {
     }
 
 
-    private Recipe loadRecipe(String id) {
-        RecipeCollection collection = ((SmartMealApplication)getApplication()).getRecipeCollection();
-        return collection.getRecipe(id);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -188,5 +184,11 @@ public class RecipeDetailActivity extends AppCompatActivity {
         public String toString() {
             return  ingredient.getName()+ ": " + amount + " " + ingredient.getMeasure();
         }
+    }
+
+    public void startSteps(View view) {
+        Intent intent = new Intent(this, StepSwipeActivity.class);
+        intent.putExtra(EXTRA_RECIPE_ID, selectedRecipe.getId());
+        startActivity(intent);
     }
 }
