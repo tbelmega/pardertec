@@ -42,6 +42,8 @@ public class RecipeListActivity extends AppCompatActivity implements RecipeListA
         String query = getQueryString();
 
         addMatchingRecipesToList(query);
+
+        //TODO: id list empty, show message
     }
 
     private void addMatchingRecipesToList(String query) {
@@ -51,9 +53,13 @@ public class RecipeListActivity extends AppCompatActivity implements RecipeListA
     }
 
     private boolean matches(String query, Recipe r) {
-        String recipeName = r.getName().toLowerCase();
-        String searchText = query.toLowerCase();
-        return recipeName.contains(searchText);
+        if (SmartMealApplication.getFilterBundle().isRestricted(r)) {
+            return false;
+        } else {
+            String recipeName = r.getName().toLowerCase();
+            String searchText = query.toLowerCase();
+            return recipeName.contains(searchText);
+        }
     }
 
     @Nullable

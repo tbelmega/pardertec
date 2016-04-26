@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.widget.SearchView;
 
 import de.pardertec.smartmeal.R;
-import de.pardertec.smartmeal.recipes.filter.SelectFilterActivity;
+import de.pardertec.smartmeal.recipes.filter.EditFilterActivity;
 import de.pardertec.smartmeal.recipes.list.RecipeListActivity;
 
 public class SmartMealActivity extends AppCompatActivity {
@@ -37,7 +37,7 @@ public class SmartMealActivity extends AppCompatActivity {
     }
 
     public void showSearchFilterActivity(MenuItem item) {
-        Intent intent = new Intent(this, SelectFilterActivity.class);
+        Intent intent = new Intent(this, EditFilterActivity.class);
         startActivity(intent);
     }
 

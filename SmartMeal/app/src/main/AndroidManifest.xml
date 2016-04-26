@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.pardertec.smartmeal">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
     <application
         android:name=".SmartMealApplication"
         android:allowBackup="true"
@@ -23,7 +27,7 @@
                 android:name="android.app.default_searchable"
                 android:value=".RecipeListActivity" />
         </activity>
-        <activity android:name=".recipes.filter.SelectFilterActivity"></activity>
+        <activity android:name=".recipes.filter.EditFilterActivity"></activity>
         <activity
             android:name=".recipes.list.RecipeListActivity"
             android:label="@string/app_name"
@@ -43,6 +47,10 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".recipes.steps.StepSwipeActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

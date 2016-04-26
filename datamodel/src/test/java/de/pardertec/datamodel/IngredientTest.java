@@ -3,7 +3,11 @@ package de.pardertec.datamodel;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
-import static de.pardertec.datamodel.Ingredient.*;
+import static de.pardertec.datamodel.Ingredient.JSON_KEY_ALLERGENS;
+import static de.pardertec.datamodel.Ingredient.JSON_KEY_ID;
+import static de.pardertec.datamodel.Ingredient.JSON_KEY_MEASURE;
+import static de.pardertec.datamodel.Ingredient.JSON_KEY_NAME;
+import static de.pardertec.datamodel.Ingredient.JSON_KEY_STATUS;
 import static de.pardertec.datamodel.VeganismStatus.CONTAINS_MEAT;
 import static de.pardertec.datamodel.VeganismStatus.VEGETARIAN;
 import static org.testng.AssertJUnit.assertEquals;
@@ -52,7 +56,7 @@ public class IngredientTest {
         Ingredient ingredient = Ingredient.fromJSON(jsonRepresentation, collection);
 
         //assert
-        assertTrue(ingredient.getAllergens().contains(lactose));
+        assertTrue(ingredient.getAllergensCopy().contains(lactose));
         assertEquals("Käse", ingredient.getName());
         assertEquals(GRAMS, ingredient.getMeasure());
         assertEquals(CONTAINS_MEAT, ingredient.getStatus());

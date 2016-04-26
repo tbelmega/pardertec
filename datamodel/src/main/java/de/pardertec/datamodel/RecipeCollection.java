@@ -3,7 +3,12 @@ package de.pardertec.datamodel;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.UUID;
 
 
 /**
@@ -36,7 +41,7 @@ public class RecipeCollection {
     }
 
     public void add(Ingredient ingredient) {
-        for (Allergen allergen : ingredient.getAllergens()) {
+        for (Allergen allergen : ingredient.getAllergensCopy()) {
             add(allergen);
         }
         measures.put(ingredient.getMeasure().id, ingredient.getMeasure());

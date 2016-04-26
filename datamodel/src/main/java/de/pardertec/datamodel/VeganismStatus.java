@@ -59,4 +59,14 @@ public enum VeganismStatus {
         }
         throw new IllegalArgumentException("No enum value for code " + code);
     }
+
+    /**
+     * Checks if this status is more exclusive then the argument status.
+     * For example, if this is VEGETARIAN and the argument is VEGAN, this is NOT more restrictive.
+     * @param status
+     * @return
+     */
+    public boolean restricts(VeganismStatus status) {
+        return this.code > status.code;
+    }
 }

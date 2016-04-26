@@ -68,6 +68,8 @@ public class RecipeDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         selectedRecipe = loadRecipe(intent.getStringExtra(EXTRA_RECIPE_ID), getApplication());
 
+        setTitle(selectedRecipe.getName());
+
         titleTextView.setText(selectedRecipe.getName());
         textTextView.setText(selectedRecipe.getText());
         durationTextView.setText(selectedRecipe.getDuration() + " " +

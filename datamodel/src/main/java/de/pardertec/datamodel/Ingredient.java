@@ -43,7 +43,7 @@ public class Ingredient extends BusinessObject {
         this.allergens.remove(allergen);
     }
 
-    public Set<Allergen> getAllergens() {
+    public Set<Allergen> getAllergensCopy() {
         return new HashSet<>(this.allergens);
     }
 
@@ -78,7 +78,7 @@ public class Ingredient extends BusinessObject {
                 .append(name, otherIngredient.name)
                 .append(status, otherIngredient.status)
                 .append(measure, otherIngredient.measure)
-                .append(allergens, otherIngredient.getAllergens())
+                .append(allergens, otherIngredient.getAllergensCopy())
                 .isEquals();
     }
 

@@ -15,4 +15,7 @@
     <string name="search_hint">Search recipes</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="edit_search_filters">Edit search filters</string>
+    <string name="save_filters">Save filters</string>
+    <string name="reset_filters">Reset filters</string>
+    <string name="exclude_allergens">Exclude allergens</string>
 </resources>

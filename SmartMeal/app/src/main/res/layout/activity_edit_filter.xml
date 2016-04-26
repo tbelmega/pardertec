@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="de.pardertec.smartmeal.recipes.filter.SelectFilterActivity">
+    tools:context=".recipes.filter.EditFilterActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,24 +17,39 @@
         android:layout_centerHorizontal="true"
         >
         <Button
+            android:onClick="saveFilters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="@string/search"
+            android:text="@string/save_filters"
+            android:lines="2"
             android:textAllCaps="false"
             android:textColor="@color/background_material_light"
             android:layout_margin="@dimen/small_margin"
-            android:onClick="startSearch"/>
+            />
 
         <Button
+            android:onClick="resetFilters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="@string/reset_filters"
+            android:lines="2"
+            android:textAllCaps="false"
+            android:textColor="@color/background_material_light"
+            android:layout_margin="@dimen/small_margin"
+            />
+
+        <Button
+            android:onClick="abort"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/colorPrimary"
             android:text="@string/abort"
             android:textAllCaps="false"
             android:textColor="@color/background_material_light"
             android:layout_margin="@dimen/small_margin"
-            android:onClick="abort"/>
+            />
 
     </LinearLayout>
 
@@ -47,12 +62,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-
             <RadioGroup
                 android:id="@+id/rg_vegan_status"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
 
                 <RadioButton
                     android:id="@+id/rb_vegan"
@@ -76,6 +90,32 @@
                     android:checked="true"/>
 
             </RadioGroup>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_material_dark"
+                android:layout_margin="@dimen/medium_margin"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/small_margin"
+                android:text="@string/exclude_allergens"/>
+
+            <ListView
+                android:id="@+id/allergens_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/small_margin"
+                ></ListView>
+
+            <TextView
+                android:id="@+id/no_allergens_excluded"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/small_margin"
+                android:text="No allergens excluded"/>
 
 
         </LinearLayout>

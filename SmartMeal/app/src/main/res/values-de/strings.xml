@@ -13,4 +13,7 @@
     <string name="vegetarian">Vegetarisch</string>
     <string name="search_hint">Suche Rezepte</string>
     <string name="edit_search_filters">Meine Suchfilter</string>
+    <string name="exclude_allergens">Allergene ausschließen</string>
+    <string name="reset_filters">Filter zurücksetzen</string>
+    <string name="save_filters">Übernehmen</string>
 </resources>
