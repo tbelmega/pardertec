@@ -46,8 +46,14 @@ public class RecipeListActivity extends AppCompatActivity implements RecipeListA
 
     private void addMatchingRecipesToList(String query) {
         for (Recipe r: ((SmartMealApplication) getApplication()).getRecipeCollection().getRecipesCopy()) {
-            if (query == null || r.getName().contains(query)) recipes.add(r);
+            if (query == null || matches(query, r)) recipes.add(r);
         }
+    }
+
+    private boolean matches(String query, Recipe r) {
+        String recipeName = r.getName().toLowerCase();
+        String searchText = query.toLowerCase();
+        return recipeName.contains(searchText);
     }
 
     @Nullable

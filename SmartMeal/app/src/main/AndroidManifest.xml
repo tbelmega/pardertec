@@ -9,7 +9,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".main.SmartMealActivity"
             android:label="@string/app_name"
@@ -19,35 +18,31 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
 
-
-        <activity android:name=".recipes.filter.SelectFilterActivity">
             <meta-data
                 android:name="android.app.default_searchable"
-                android:value=".RecipeListActivity"></meta-data>
+                android:value=".RecipeListActivity" />
         </activity>
-
+        <activity android:name=".recipes.filter.SelectFilterActivity"></activity>
         <activity
             android:name=".recipes.list.RecipeListActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
-        </activity>
 
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
         <activity
             android:name=".recipes.detail.RecipeDetailActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".recipes.steps.StepSwipeActivity" />
-
-
     </application>
 
 </manifest>

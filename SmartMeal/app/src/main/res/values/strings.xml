@@ -13,4 +13,6 @@
     <string name="vegetarian">Vegetarian</string>
     <string name="vegan">Vegan</string>
     <string name="search_hint">Search recipes</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="edit_search_filters">Edit search filters</string>
 </resources>

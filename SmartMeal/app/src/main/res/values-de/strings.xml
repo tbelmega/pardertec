@@ -12,4 +12,5 @@
     <string name="vegan">Vegan</string>
     <string name="vegetarian">Vegetarisch</string>
     <string name="search_hint">Suche Rezepte</string>
+    <string name="edit_search_filters">Meine Suchfilter</string>
 </resources>

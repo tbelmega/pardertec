@@ -25,20 +25,9 @@ public class SelectFilterActivity extends AppCompatActivity
 
         RadioGroup veganStatusRadioGroup = (RadioGroup) findViewById(R.id.rg_vegan_status);
         veganStatusRadioGroup.setOnCheckedChangeListener(this);
-
-        initializeSearchView();
     }
 
-    private void initializeSearchView() {
-        SearchView searchView = (SearchView) findViewById(R.id.search_view);
-        searchView.setIconifiedByDefault(false);
-        SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        ComponentName searchResultActivityName = new ComponentName(this, RecipeListActivity.class);
-        SearchableInfo searchableInfo = searchManager.getSearchableInfo(searchResultActivityName);
-        searchView.setSearchableInfo(
-                searchableInfo);
-    }
+
 
     public void startSearch(View view) {
         Intent intent = new Intent(this, RecipeListActivity.class);

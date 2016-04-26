@@ -10,13 +10,15 @@
     tools:showIn="@layout/content_recipe_detail">
 
     <ScrollView
+        android:id="@id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
             android:id="@+id/scrollview_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true">
 
             <TextView
                 android:id="@+id/recipe_title"
@@ -25,7 +27,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_margin="@dimen/small_margin"
                 android:text="recipe title"
-                android:textSize="@dimen/text_medium" />
+                android:textSize="@dimen/text_medium"
+                android:focusable="true"
+                />
 
             <ImageView
                 android:id="@+id/recipe_image"
@@ -130,10 +134,10 @@
                 android:drawSelectorOnTop="false" />
 
             <Button
+                android:id="@+id/btn_start_steps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/btn_start_steps"
                 android:text="@string/go"
                 android:lines="3"
                 android:textSize="@dimen/text_medium"
