@@ -4,7 +4,9 @@ import android.app.Application;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
+import de.pardertec.datamodel.Recipe;
 import de.pardertec.datamodel.RecipeCollection;
 import de.pardertec.datamodel.RecipeFilterBundle;
 import de.pardertec.util.FileUtil;
@@ -64,6 +66,14 @@ public class SmartMealApplication extends Application {
 
     public RecipeCollection getRecipeCollection() {
         return theCollection;
+    }
+
+    public static List<Recipe> getFilteredRecipes(String query) {
+        return getInstance().getFilteredRecipesFromInstance(query);
+    }
+
+    private List<Recipe> getFilteredRecipesFromInstance(String query) {
+        return theCollection.getFilteredRecipes(filterBundle, query);
     }
 
 }

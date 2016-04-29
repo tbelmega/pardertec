@@ -3,14 +3,22 @@ package de.pardertec.datamodel;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.util.Collection;
+import java.util.HashSet;
+
+import de.pardertec.util.AssertionUtil;
 
 import static de.pardertec.datamodel.Ingredient.JSON_KEY_ALLERGENS;
 import static de.pardertec.datamodel.RecipeCollection.JSON_KEY_RECIPES;
-import static de.pardertec.datamodel.VeganismStatus.*;
+import static de.pardertec.datamodel.VeganismStatus.CONTAINS_MEAT;
+import static de.pardertec.datamodel.VeganismStatus.VEGAN;
+import static de.pardertec.datamodel.VeganismStatus.VEGETARIAN;
 import static de.pardertec.util.JSONUtil.assertEqualJSONContent;
 import static de.pardertec.util.JSONUtil.assertJSONArrayContainsValue;
+import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -18,9 +26,6 @@ import static org.testng.AssertJUnit.assertTrue;
  * Created by Thiemo on 27.01.2016.
  */
 public class RecipeCollectionTest {
-
-    RecipeCollection collection = RecipeCollection.create();
-
 
 
     public static final Measure MILLILITERS = new Measure("Milliliter");
@@ -30,8 +35,11 @@ public class RecipeCollectionTest {
     public static final Ingredient MEAT = new Ingredient("Hackfleisch, gemischt", GRAMS, CONTAINS_MEAT);
     public static Recipe spaghettiBolognese;
 
-    @BeforeTest
+    private RecipeCollection collection;
+
+    @BeforeClass
     public void getRecipeCollection(){
+        collection = RecipeCollection.create();
         spaghettiBolognese = createSpaghettiBologneseRecipe();
         collection.add(spaghettiBolognese);
     }
@@ -118,6 +126,85 @@ public class RecipeCollectionTest {
         assertEqualJSONContent(LAKTOSE.toJson(), allergens.getJSONObject(0));
     }
 
+    @Test
+    public void testThatRecipeIsExcludedByName() {
+        //arrange
+        RecipeFilterBundle filter = new RecipeFilterBundle();
+
+        //act
+        boolean excluded = !RecipeCollection.isValidSearchResult(filter, "zzz", spaghettiBolognese);
+
+
+        //assert
+        assertTrue(excluded);
+    }
+
+    @Test
+    public void testThatRecipeIsNotExcludedByName() {
+        //arrange
+        RecipeFilterBundle filter = new RecipeFilterBundle();
+
+        //act
+        boolean excluded = !RecipeCollection.isValidSearchResult(filter, "a", spaghettiBolognese);
+
+        //assert
+        assertFalse(excluded);
+    }
+
+    @Test
+    public void testThatRecipeIsNotExcludedWhenQueryIsNull() {
+        //arrange
+        RecipeFilterBundle filter = new RecipeFilterBundle();
+
+        //act
+        boolean excluded = !RecipeCollection.isValidSearchResult(filter, null, spaghettiBolognese);
+
+        //assert
+        assertFalse(excluded);
+    }
+
+    @Test
+    public void testThatRecipeIsExcludedByStatus() {
+        //arrange
+        RecipeFilterBundle filter =
+                new RecipeFilterBundle(VeganismStatus.VEGAN, new HashSet<Allergen>());
+
+        //act
+        boolean excluded = !RecipeCollection.isValidSearchResult(filter, "a", spaghettiBolognese);
+
+        //assert
+        assertTrue(excluded);
+    }
+
+    @Test
+    public void testThatRecipeIsNotExcludedByStatus() {
+        //arrange
+        RecipeFilterBundle filter =
+                new RecipeFilterBundle(VeganismStatus.VEGAN, new HashSet<Allergen>());
+        Ingredient i = new Ingredient("Salt", new Measure("GRAMMS"), VeganismStatus.VEGAN);
+        Recipe r = new Recipe("Bread");
+        r.addIngredientWithAmount(i, 500);
+
+        //act
+        boolean excluded = !RecipeCollection.isValidSearchResult(filter, "a", r);
+
+        //assert
+        assertFalse(excluded);
+    }
+
+    @Test
+    public void testThat_getFilteredRecipesWithEmptyFilters_returnsAllRecipes() {
+        //arrange
+        RecipeFilterBundle bundle = new RecipeFilterBundle();
+
+        //act
+        Collection<Recipe> result = collection.getFilteredRecipes(bundle, "");
+
+        //assert
+        assertEquals(1, result.size());
+        AssertionUtil.assertContainsAll(result, collection.getRecipesCopy());
+    }
+
 
 
     public static Recipe createSpaghettiBologneseRecipe() {
@@ -137,17 +224,17 @@ public class RecipeCollectionTest {
 
         Recipe myRecipe = new Recipe("Spaghetti Bolognese");
 
-        myRecipe.setIngredientWithAmount(MEAT, 500);
-        myRecipe.setIngredientWithAmount(oil, 20);
-        myRecipe.setIngredientWithAmount(onions, 0);
-        myRecipe.setIngredientWithAmount(tomatoPaste, 50);
-        myRecipe.setIngredientWithAmount(sugar, 50);
-        myRecipe.setIngredientWithAmount(salt, 50);
-        myRecipe.setIngredientWithAmount(pepper, 50);
-        myRecipe.setIngredientWithAmount(garlicClove, 2);
-        myRecipe.setIngredientWithAmount(sievedTomatos, 500);
-        myRecipe.setIngredientWithAmount(spaghetti, 500);
-        myRecipe.setIngredientWithAmount(parmesan, 100);
+        myRecipe.addIngredientWithAmount(MEAT, 500);
+        myRecipe.addIngredientWithAmount(oil, 20);
+        myRecipe.addIngredientWithAmount(onions, 0);
+        myRecipe.addIngredientWithAmount(tomatoPaste, 50);
+        myRecipe.addIngredientWithAmount(sugar, 50);
+        myRecipe.addIngredientWithAmount(salt, 50);
+        myRecipe.addIngredientWithAmount(pepper, 50);
+        myRecipe.addIngredientWithAmount(garlicClove, 2);
+        myRecipe.addIngredientWithAmount(sievedTomatos, 500);
+        myRecipe.addIngredientWithAmount(spaghetti, 500);
+        myRecipe.addIngredientWithAmount(parmesan, 100);
 
         myRecipe.setServings(4);
         myRecipe.setText("foo");

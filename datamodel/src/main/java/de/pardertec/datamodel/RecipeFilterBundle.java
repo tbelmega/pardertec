@@ -21,15 +21,24 @@ public class RecipeFilterBundle {
     }
 
     public boolean isRestricted(Recipe r) {
+        boolean restricted = false;
         for (Ingredient i: r.getIngredients().keySet()) {
-            if (this.status.restricts(i.getStatus())) return true;
-            if (containsAnyRestrictedAllergens(i)) return true;
+            if (this.status.restricts(i.getStatus())) {
+                restricted = true;
+                break;
+            }
+            if (containsAnyRestrictedAllergens(i)) {
+                restricted = true;
+                break;
+            }
         }
-        return false;
+        return restricted;
     }
 
     private boolean containsAnyRestrictedAllergens(Ingredient i) {
-        i.getAllergensCopy().retainAll(this.allergens);
-        return !i.getAllergensCopy().isEmpty();
+        for (Allergen a: this.allergens) {
+            if (i.getAllergensCopy().contains(a)) return true;
+        }
+        return false;
     }
 }

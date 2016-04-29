@@ -1,6 +1,10 @@
 package de.pardertec.util;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Thiemo on 20.12.2015.
@@ -14,7 +18,7 @@ public class SubsetUtil {
             T currentElement = superList.get(i);
 
             if (size == 1) {
-                List<T> newSubList = Arrays.asList(currentElement);
+                List<T> newSubList = Collections.singletonList(currentElement);
                 setOfSubSets.add(new HashSet<>(newSubList));
             } else {
                 setOfSubSets.addAll(createAllSubSetsWithCurrentElementRecursively(size, superList, currentElement));

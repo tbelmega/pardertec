@@ -5,7 +5,11 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by Thiemo on 27.01.2016.
@@ -38,7 +42,7 @@ public class Recipe extends BusinessObject  {
         this.servings = servings;
     }
 
-    public void setIngredientWithAmount(Ingredient ingredient, int amount){
+    public void addIngredientWithAmount(Ingredient ingredient, int amount){
         this.ingredients.put(ingredient, amount);
     }
 
@@ -193,7 +197,7 @@ public class Recipe extends BusinessObject  {
             if (ingredient.has(JSON_KEY_AMOUNT)) amount = ingredient.getInt(JSON_KEY_AMOUNT);
 
             Ingredient i = collection.getIngredient(UUID.fromString(ingredientId));
-            this.setIngredientWithAmount(i, amount);
+            this.addIngredientWithAmount(i, amount);
         }
     }
 

@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -207,4 +209,22 @@ public class RecipeCollection {
     public Recipe getRecipe(String id) {
         return recipes.get(UUID.fromString(id));
     }
+
+    public List<Recipe> getFilteredRecipes(RecipeFilterBundle filterBundle, String query) {
+        List<Recipe> result = new LinkedList<>();
+        for (Recipe r: this.recipes.values()) {
+            if (isValidSearchResult(filterBundle, query, r)) {
+                result.add(r);
+            }
+        }
+        return result;
+    }
+
+    public static boolean isValidSearchResult(RecipeFilterBundle filterBundle, String query, Recipe r) {
+        boolean notFiltered = !filterBundle.isRestricted(r);
+        boolean containsSearchQueryOrQueryIsNull = query == null || r.getName().contains(query);
+        return notFiltered && containsSearchQueryOrQueryIsNull;
+    }
+
+
 }

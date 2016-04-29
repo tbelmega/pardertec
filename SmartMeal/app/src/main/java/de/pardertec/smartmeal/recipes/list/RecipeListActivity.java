@@ -40,26 +40,9 @@ public class RecipeListActivity extends AppCompatActivity implements RecipeListA
 
         recipes.clear();
         String query = getQueryString();
-
-        addMatchingRecipesToList(query);
+        recipes.addAll(SmartMealApplication.getFilteredRecipes(query));
 
         //TODO: id list empty, show message
-    }
-
-    private void addMatchingRecipesToList(String query) {
-        for (Recipe r: ((SmartMealApplication) getApplication()).getRecipeCollection().getRecipesCopy()) {
-            if (query == null || matches(query, r)) recipes.add(r);
-        }
-    }
-
-    private boolean matches(String query, Recipe r) {
-        if (SmartMealApplication.getFilterBundle().isRestricted(r)) {
-            return false;
-        } else {
-            String recipeName = r.getName().toLowerCase();
-            String searchText = query.toLowerCase();
-            return recipeName.contains(searchText);
-        }
     }
 
     @Nullable
@@ -68,7 +51,7 @@ public class RecipeListActivity extends AppCompatActivity implements RecipeListA
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             query = intent.getStringExtra(SearchManager.QUERY);
-            Log.i(TAG, query);
+            Log.i(TAG, "Search query: " + query);
         }
         return query;
     }

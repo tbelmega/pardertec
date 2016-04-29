@@ -19,15 +19,19 @@ android {
         applicationId "de.pardertec.smartmeal"
         minSdkVersion 19
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+            testCoverageEnabled false
+            shrinkResources false
         }
     }
     compileOptions {
@@ -48,23 +52,27 @@ configurations.all {
 dependencies {
     // App's dependencies, including test
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':utils')
-    compile project(':datamodel')
+    compile (project(':utils'))  {
+        exclude group: 'org.json'
+    }
+    compile (project(':datamodel')) {
+        exclude group: 'org.json'
+    }
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.android.support:design:23.+'
     compile 'com.android.support:recyclerview-v7:23.+'
     compile 'com.android.support:cardview-v7:23.+'
 
     //Dependencies Google Calendar API
-    compile 'com.google.android.gms:play-services-identity:8.4.0'
-    compile 'pub.devrel:easypermissions:0.1.5'
-    compile('com.google.api-client:google-api-client-android:1.20.0') {
-        exclude group: 'org.apache.httpcomponents'
-    }
-    compile('com.google.apis:google-api-services-calendar:v3-rev125-1.20.0') {
-        exclude group: 'org.apache.httpcomponents'
-    }
-    compile('com.google.code.findbugs:jsr305:2.0.1')
+//    compile 'com.google.android.gms:play-services-identity:8.4.0'
+//    compile 'pub.devrel:easypermissions:0.1.5'
+//    compile('com.google.api-client:google-api-client-android:1.20.0') {
+//        exclude group: 'org.apache.httpcomponents'
+//    }
+//    compile('com.google.apis:google-api-services-calendar:v3-rev125-1.20.0') {
+//        exclude group: 'org.apache.httpcomponents'
+//    }
+//    compile('com.google.code.findbugs:jsr305:2.0.1')
 
     // Dependencies for local unit tests
     testCompile 'junit:junit:4.12'

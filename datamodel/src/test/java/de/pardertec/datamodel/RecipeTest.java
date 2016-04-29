@@ -34,7 +34,7 @@ public class RecipeTest {
         cheese.addAllergen(LACTOSE);
 
         recipe = new Recipe(RECIPE_NAME);
-        recipe.setIngredientWithAmount(cheese, AMOUNT_OF_CHEESE);
+        recipe.addIngredientWithAmount(cheese, AMOUNT_OF_CHEESE);
         recipe.setServings(NUMBER_OF_SERVINGS);
         recipe.setDuration(DURATION_IN_MINUTES);
         recipe.setDifficulty(Difficulty.EASY);
@@ -101,8 +101,8 @@ public class RecipeTest {
         //assert
         assertEquals(RECIPE_NAME, recipe.getName());
         assertEquals(RECIPE_TEXT, recipe.getText());
-        assertEquals(NUMBER_OF_SERVINGS, recipe.getServings());
-        assertEquals(DURATION_IN_MINUTES, recipe.getDuration());
+        assertEquals(NUMBER_OF_SERVINGS, (int)recipe.getServings());
+        assertEquals(DURATION_IN_MINUTES, (int)recipe.getDuration());
         assertEquals(Difficulty.EASY, recipe.getDifficulty());
         assertEquals(s1, recipe.getStep(0));
         assertEquals(s2, recipe.getStep(1));
