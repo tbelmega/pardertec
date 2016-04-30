@@ -18,5 +18,5 @@
     <string name="save_filters">Save filters</string>
     <string name="reset_filters">Reset filters</string>
     <string name="exclude_allergens">Exclude allergens</string>
-    <string name="noSearchResults">No results for your search parameter</string>
+    <string name="no_search_results">No results for your search parameter</string>
 </resources>

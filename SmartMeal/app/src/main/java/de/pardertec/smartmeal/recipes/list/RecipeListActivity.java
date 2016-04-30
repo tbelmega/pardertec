@@ -47,7 +47,7 @@ public class RecipeListActivity extends AppCompatActivity implements RecipeListA
 
     private void showToastIfNoResults() {
         if (recipes.isEmpty()) {
-            String string = getString(R.string.noSearchResults);
+            String string = getString(R.string.no_search_results);
             Toast.makeText(this, string, Toast.LENGTH_LONG).show();
         }
     }
