@@ -8,7 +8,7 @@ import java.util.HashSet;
  */
 public class RecipeFilterBundle {
     private final Collection<Allergen> allergens;
-    private final VeganismStatus status;
+    private VeganismStatus status;
 
     public RecipeFilterBundle(VeganismStatus status, Collection<Allergen> allergens) {
         this.status = status;
@@ -40,5 +40,13 @@ public class RecipeFilterBundle {
             if (i.getAllergensCopy().contains(a)) return true;
         }
         return false;
+    }
+
+    public void setStatus(VeganismStatus status) {
+        this.status = status;
+    }
+
+    public VeganismStatus getStatus() {
+        return status;
     }
 }

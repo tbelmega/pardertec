@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +32,6 @@ public class RecipeListActivity extends AppCompatActivity implements RecipeListA
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
     }
 
     @Override
@@ -42,7 +42,14 @@ public class RecipeListActivity extends AppCompatActivity implements RecipeListA
         String query = getQueryString();
         recipes.addAll(SmartMealApplication.getFilteredRecipes(query));
 
-        //TODO: id list empty, show message
+        showToastIfNoResults();
+    }
+
+    private void showToastIfNoResults() {
+        if (recipes.isEmpty()) {
+            String string = getString(R.string.noSearchResults);
+            Toast.makeText(this, string, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Nullable

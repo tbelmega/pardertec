@@ -38,8 +38,14 @@ public class EditFilterActivity extends AppCompatActivity
 
     @Override
     protected void onResume() {
-        //TODO: display data from Application filter bundle
         super.onResume();
+        VeganismStatus status = SmartMealApplication.getFilterBundle().getStatus();
+        switch (status) {
+            case CONTAINS_MEAT: findViewById(R.id.rb_none).setSelected(true); break;
+            case VEGETARIAN: findViewById(R.id.rb_vegetarian).setSelected(true); break;
+            case VEGAN: findViewById(R.id.rb_vegan).setSelected(true); break;
+            default: throw new UnsupportedOperationException("Status option not implemented");
+        }
     }
 
     @Override
@@ -53,8 +59,8 @@ public class EditFilterActivity extends AppCompatActivity
     }
 
     public void resetFilters(View view) {
-        SmartMealApplication.setFilterBundle(new RecipeFilterBundle());
-        //TODO: show message
+        //TODO reset allergens
+        findViewById(R.id.rb_none).setSelected(true);
     }
 
     public void saveFilters(View view) {

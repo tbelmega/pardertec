@@ -16,4 +16,5 @@
     <string name="exclude_allergens">Allergene ausschließen</string>
     <string name="reset_filters">Filter zurücksetzen</string>
     <string name="save_filters">Übernehmen</string>
+    <string name="noSearchResults">Keine Suchergebnisse für die gewählten Sucheinstellungen.</string>
 </resources>
