@@ -4,8 +4,10 @@ import android.app.Application;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
+import de.pardertec.datamodel.Allergen;
 import de.pardertec.datamodel.Recipe;
 import de.pardertec.datamodel.RecipeCollection;
 import de.pardertec.datamodel.RecipeFilterBundle;
@@ -37,6 +39,8 @@ public class SmartMealApplication extends Application {
         instance = this;
         importRecipes();
     }
+
+
 
     public void importRecipes() {
         String fileContent = importFile(RECIPE_COLLECTION_ASSET);
@@ -76,4 +80,7 @@ public class SmartMealApplication extends Application {
         return theCollection.getFilteredRecipes(filterBundle, query);
     }
 
+    public static List<Allergen> getAllergens() {
+        return new ArrayList<>(getInstance().theCollection.getAllergensCopy());
+    }
 }

@@ -10,48 +10,56 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".recipes.filter.EditFilterActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         >
+        <Button
+            android:id="@+id/reset_filters_button"
+            android:onClick="resetFilters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="@string/reset_filters"
+            android:maxLines="3"
+            android:lines="3"
+            android:textAllCaps="false"
+            android:textColor="@color/background_material_light"
+            android:layout_margin="@dimen/small_margin"
+            android:maxWidth="50dp"
+            android:layout_centerHorizontal="true"
+            />
+
         <Button
             android:onClick="saveFilters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:text="@string/save_filters"
-            android:lines="2"
+            android:maxLines="3"
+            android:lines="3"
             android:textAllCaps="false"
             android:textColor="@color/background_material_light"
             android:layout_margin="@dimen/small_margin"
-            />
-
-        <Button
-            android:onClick="resetFilters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:text="@string/reset_filters"
-            android:lines="2"
-            android:textAllCaps="false"
-            android:textColor="@color/background_material_light"
-            android:layout_margin="@dimen/small_margin"
+            android:layout_toLeftOf="@id/reset_filters_button"
             />
 
         <Button
             android:onClick="abort"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:text="@string/abort"
+            android:maxLines="3"
+            android:lines="3"
             android:textAllCaps="false"
             android:textColor="@color/background_material_light"
             android:layout_margin="@dimen/small_margin"
+            android:layout_toRightOf="@id/reset_filters_button"
             />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -116,6 +124,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/small_margin"
                 android:text="No allergens excluded"/>
+
+            <Spinner
+                android:id="@+id/allergens_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                />
 
 
         </LinearLayout>

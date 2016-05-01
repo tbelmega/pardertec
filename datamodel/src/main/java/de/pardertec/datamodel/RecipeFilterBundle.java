@@ -1,23 +1,26 @@
 package de.pardertec.datamodel;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Thiemo on 26.04.2016.
  */
 public class RecipeFilterBundle {
-    private final Collection<Allergen> allergens;
+    private final List<Allergen> allergens;
     private VeganismStatus status;
 
     public RecipeFilterBundle(VeganismStatus status, Collection<Allergen> allergens) {
         this.status = status;
-        this.allergens = allergens;
+        this.allergens = new LinkedList<>(allergens);
+        Collections.sort(this.allergens);
     }
 
     public RecipeFilterBundle() {
-        this.status = VeganismStatus.CONTAINS_MEAT; //least restrictive status
-        this.allergens = new HashSet<>();
+        //by default, use least restrictive properties
+        this(VeganismStatus.CONTAINS_MEAT, new LinkedList<Allergen>());
     }
 
     public boolean isRestricted(Recipe r) {
@@ -48,5 +51,9 @@ public class RecipeFilterBundle {
 
     public VeganismStatus getStatus() {
         return status;
+    }
+
+    public List<Allergen> getAllergens() {
+        return allergens;
     }
 }

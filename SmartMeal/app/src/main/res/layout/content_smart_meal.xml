@@ -21,7 +21,8 @@
         android:scaleType="centerInside"
         android:adjustViewBounds="true"
         android:alpha="0.5"
-        android:src="@drawable/background" />
+        android:src="@drawable/background"
+        android:onClick="calendar"/>
 
     <SearchView
         android:id="@+id/search_view"

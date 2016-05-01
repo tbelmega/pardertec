@@ -10,9 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
 
 import de.pardertec.smartmeal.R;
+import de.pardertec.smartmeal.calendar.CalendarActivity;
 import de.pardertec.smartmeal.recipes.filter.EditFilterActivity;
 import de.pardertec.smartmeal.recipes.list.RecipeListActivity;
 
@@ -51,5 +53,10 @@ public class SmartMealActivity extends AppCompatActivity {
         SearchableInfo searchableInfo = searchManager.getSearchableInfo(searchResultActivityName);
         searchView.setSearchableInfo(
                 searchableInfo);
+    }
+
+    public void calendar(View view) {
+        Intent intent = new Intent(this, CalendarActivity.class);
+        startActivity(intent);
     }
 }
